@@ -136,7 +136,8 @@ window.SITE = {
       jacuzzi: [
         { src: "assets/video/jacuzzi.mp4", capNo: "Slik tar du av og på lokket", capEn: "How to take the cover off and put it back" },
         { src: "assets/img/manual-jacuzzi-temp.jpg", capNo: "Jacuzzien står klar på badetemperatur hele året", capEn: "The hot tub is kept at bathing temperature all year" },
-        { src: "assets/img/manual-jacuzzi-ph.jpg", capNo: "Vannverdiene sjekkes før hver ankomst", capEn: "The water values are checked before every arrival" }
+        { src: "assets/img/manual-jacuzzi-ph.jpg", capNo: "Vannverdiene sjekkes før hver ankomst", capEn: "The water values are checked before every arrival" },
+        { src: "assets/img/manual-spashock.jpg", capNo: "Spa Shock-granulatet står i garasjen — ett lokk etter bruk", capEn: "The Spa Shock granulate is in the garage — one capful after use" }
       ],
       badstue: [
         { src: "assets/video/badstue.mp4", capNo: "Slik skrur dere på badstuen i 1. etasje", capEn: "How to switch on the ground-floor sauna" },
@@ -150,7 +151,8 @@ window.SITE = {
         { src: "assets/img/kjokken-utsikt.avif", capNo: "Kjøkkenøya", capEn: "The kitchen island" }
       ],
       lading: [
-        { src: "assets/img/utside-garasje.jpg", capNo: "Garasje og parkering utenfor hytta", capEn: "Garage and parking outside the chalet" }
+        { src: "assets/img/utside-garasje.jpg", capNo: "Garasje og parkering utenfor hytta", capEn: "Garage and parking outside the chalet" },
+        { src: "assets/img/manual-parkering-vei.jpg", capNo: "Ekstra parkering på andre siden av veien, om det trengs", capEn: "Extra parking across the road if you need it" }
       ],
       soppel: [
         { src: "assets/img/manual-soppelstasjon.jpg", capNo: "Søppelstasjonen", capEn: "The waste station" }
