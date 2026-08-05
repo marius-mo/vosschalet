@@ -823,9 +823,13 @@
     // Bare interne sider er lov som viderekobling
     if (!/^[\w.-]+\.html(#[\w-]*)?$/.test(next)) next = "hytta.html";
 
+    // autocapitalize/autocorrect av: mobiltastatur gjør ellers gjerne
+    // «modernchalet» til «Modernchalet», og da slipper man ikke inn
     var pw = el("input", {
       class: "field-input", type: "password", id: "vc-pw",
-      autocomplete: "current-password", required: "", "aria-describedby": "vc-pw-help"
+      autocomplete: "current-password", required: "",
+      autocapitalize: "none", autocorrect: "off", spellcheck: "false",
+      "aria-describedby": "vc-pw-help"
     });
     var error = el("p", { class: "form-error", role: "alert", hidden: "" });
     var submit = el("button", { class: "btn btn-primary", type: "submit", text: L.submit });
@@ -846,7 +850,8 @@
       e.preventDefault();
       error.hidden = true;
       submit.disabled = true;
-      sha256Hex(pw.value).then(function (hex) {
+      // Fjern mellomrom som lett blir med ved kopiering fra en melding
+      sha256Hex(pw.value.trim()).then(function (hex) {
         if (hex === accessHash()) {
           unlock();
           location.href = next;

@@ -27,9 +27,9 @@ window.SITE = {
     airbnbUrl: "https://www.airbnb.com/h/vosschalet",
 
     hostName: "Michelle og Marius",
-    // TODO: fyll inn e-post dere vil bruke utad (eller la stå tom for å skjule)
+    // All kontakt går via Airbnb-meldinger. Fylles disse ut, dukker de
+    // opp i bunnteksten — la dem stå tomme for å holde dem skjult.
     email: "",
-    // TODO: telefonnummer gjestene kan ringe hvis det haster
     phone: "",
     address: "Tråstølen, Voss, Vestland",
 
@@ -46,12 +46,12 @@ window.SITE = {
     // Vises øverst i husmanualen, med kopier-knapp
     wifi: { ssid: "Zyxel_4012", password: "8U84CXYX4H" },
 
-    // TODO: sjekk at numrene stemmer, og fyll inn eget telefonnummer
+    // Vertskapet nås via Airbnb-meldinger, ikke telefon
     emergency: [
       { label: "Nød (brann / politi / ambulanse)", value: "110 · 112 · 113" },
       { label: "Legevakt", value: "116 117" },
       { label: "Veihjelp (Viking)", value: "06000" },
-      { label: "Vert – Michelle og Marius", value: "TODO: telefonnummer" }
+      { label: "Vert – Michelle og Marius", value: "Melding på Airbnb" }
     ],
 
     // Google Maps: åpne kartet, trykk Del → Bygg inn kart, og lim inn
@@ -433,12 +433,13 @@ window.SITE = {
           icon: "thermo",
           title: "Varme og klimaanlegg",
           paragraphs: [
-            "Hytta har klimaanlegg som både varmer og kjøler."
+            "Hytta har tre varmekilder, og de styres hver for seg."
           ],
           steps: [
-            "TODO: Hvor står panelet/fjernkontrollen, og hvordan justeres temperaturen?",
-            "TODO: Anbefalt temperatur inne (typisk 20–22 °C).",
-            "TODO: Har soverommene egen varmestyring?",
+            "Tilluft og ventilasjon styres med panelet nede i trappen i gangen.",
+            "Varmepumpen i stuen, som både varmer og kjøler, styres med egen fjernkontroll.",
+            "Termostatene på soverommene styrer gulvvarmen på det rommet.",
+            "20–22 °C i stuen er behagelig.",
             "Hold vinduer og terrassedør lukket når varmen eller kjølingen står på."
           ],
           tip: "Skru ned til normal temperatur i stedet for å skru helt av når dere er ute på dagstur — det bruker mindre strøm enn å varme opp igjen fra kaldt."
@@ -497,7 +498,7 @@ window.SITE = {
           ],
           steps: [
             "Innkjørselen til garasjen er bratt — kjør rolig, særlig ved snø og is.",
-            "TODO: Hvordan åpnes garasjeporten?",
+            "Garasjeporten åpnes med fjernkontrollen som henger i gangen.",
             "TODO: Hvordan brukes elbilladeren — egen kabel eller fast kabel? Er lading inkludert?",
             "Ved mye snø er det også god parkering på andre siden av veien."
           ],
@@ -508,15 +509,14 @@ window.SITE = {
           icon: "trash",
           title: "Søppel og kildesortering",
           paragraphs: [
-            "TODO: Beskriv hvordan avfall sorteres på hytta, og hvor poser finnes."
+            "Søppelet leveres på sorteringsstasjonen nede ved bommen — se bildet under."
           ],
           steps: [
-            "TODO: Restavfall — hvilken dunk og hvor står den?",
-            "TODO: Papir og papp.",
-            "TODO: Glass og metall — nærmeste returpunkt.",
-            "TODO: Panteflasker."
+            "Sorter avfallet i beholderne som står der.",
+            "Ta posene med ned, ikke sett dem igjen utenfor hytta.",
+            "Ta med full restavfallspose ut ved avreise, selv etter et kort opphold."
           ],
-          tip: "Ta gjerne med full restavfallspose ut ved avreise, selv om dunken er full."
+          tip: ""
         },
         {
           id: "avreise",
@@ -911,11 +911,12 @@ window.SITE = {
           id: "varme",
           icon: "thermo",
           title: "Heating and air conditioning",
-          paragraphs: ["The chalet has air conditioning that both heats and cools."],
+          paragraphs: ["The chalet has three sources of heat, each controlled separately."],
           steps: [
-            "TODO: Where is the panel or remote, and how do you adjust the temperature?",
-            "TODO: Recommended indoor temperature (typically 20–22 °C).",
-            "TODO: Do the bedrooms have their own controls?",
+            "Fresh air and ventilation are controlled from the panel at the bottom of the stairs in the hallway.",
+            "The heat pump in the living room, which both heats and cools, has its own remote control.",
+            "The thermostats in the bedrooms control the underfloor heating in that room.",
+            "20–22 °C in the living room is comfortable.",
             "Keep windows and the terrace door closed while heating or cooling is running."
           ],
           tip: "Turn it down rather than off when you head out for the day — that uses less power than heating up from cold."
@@ -972,7 +973,7 @@ window.SITE = {
           ],
           steps: [
             "The driveway to the garage is steep — take it slowly, especially in snow and ice.",
-            "TODO: How do you open the garage door?",
+            "The garage door opens with the remote control hanging in the hallway.",
             "TODO: How is the EV charger used — own cable or fixed cable? Is charging included?",
             "In heavy snow there is also good parking across the road."
           ],
@@ -982,14 +983,13 @@ window.SITE = {
           id: "soppel",
           icon: "trash",
           title: "Waste and recycling",
-          paragraphs: ["TODO: Describe how waste is sorted at the chalet and where the bags are kept."],
+          paragraphs: ["Waste goes to the sorting station down by the barrier — see the photo below."],
           steps: [
-            "TODO: General waste — which bin and where?",
-            "TODO: Paper and cardboard.",
-            "TODO: Glass and metal — nearest collection point.",
-            "TODO: Deposit bottles."
+            "Sort your waste into the containers there.",
+            "Take the bags down with you; please do not leave them outside the chalet.",
+            "Take the full waste bag out when you leave, even after a short stay."
           ],
-          tip: "Please take the full waste bag out when you leave, even if the bin is full."
+          tip: ""
         },
         {
           id: "avreise",
