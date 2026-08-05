@@ -29,9 +29,7 @@ All tekst ligger i `assets/js/content.js`. Filen er kommentert på norsk. Det fi
 * `no:` – norsk
 * `en:` – engelsk
 
-Endrer du noe i den ene, husk å endre tilsvarende i den andre. Punkter merket `TODO:` er ting
-som må fylles inn manuelt (wifi-passord, dørkode-rutine, telefonnummer, hvordan badstue og
-jacuzzi styres, søppelsortering osv.). Søk etter `TODO` i filen for å finne dem alle.
+Endrer du noe i den ene, husk å endre tilsvarende i den andre.
 
 Nøkkelinfo som gjelder begge språk (adresse, innsjekkstider, wifi, Airbnb-lenke, nødnumre,
 kart) ligger øverst i `meta:`.
@@ -100,15 +98,14 @@ kan også lese innholdet i husmanualen. Derfor:
 1. Last ned bildene fra Airbnb-annonsen (eller bruk originalene).
 2. Legg dem i `assets/img/`. Anbefalt: ca. 1600 px bredde, `.jpg` eller `.webp`, under 400 kB per bilde.
 3. Skriv filnavnet i `content.js`:
-   * Toppbildet: `media.hero`
+   * Toppbildet på landingssiden: `media.landing`
+   * Toppbildet på hyttesiden: `media.hero`
    * Galleriet: listen `media.gallery`
-   * Bilder i husmanualen: `image:` på hver seksjon
+   * Bilder i husmanualen: `media.manual` (se under)
 
 Bilder som ikke finnes ennå vises som en pen plassholder — siden ser aldri ødelagt ut mens du jobber.
 
-## Slik legger du inn video i husmanualen
-
-I `content.js`, feltet `video:` på en manual-seksjon:
+## Bilder og video i husmanualen
 
 Bilder og video i husmanualen ligger samlet under `media.manual` i `content.js`, gruppert
 per seksjon:
