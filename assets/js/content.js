@@ -130,17 +130,17 @@ window.SITE = {
       ankomst: [
         { src: "assets/video/ankomst-kjorevei.mp4", capNo: "Veien opp til hytta", capEn: "The drive up to the chalet" },
         { src: "assets/img/manual-kodelas.jpg", capNo: "Kodelåsen ved ytterdøren", capEn: "The keypad lock at the front door" },
-        { src: "assets/img/manual-nokler.jpg", capNo: "Nøkler til garasje og port", capEn: "Keys for the garage and the gate" },
-        { src: "assets/img/manual-nokkelkort.jpg", capNo: "Nøkkelkort til porten", capEn: "Key cards for the gate" }
+        { src: "assets/img/manual-nokler.jpg", capNo: "Fjernkontroll til garasjen og nøkkel til annekset henger i gangen", capEn: "The garage remote and the key to the annexe hang in the hallway" },
+        { src: "assets/img/manual-nokkelkort.jpg", capNo: "Bomkort til vegbommen", capEn: "Cards for the road barrier" }
       ],
       jacuzzi: [
         { src: "assets/video/jacuzzi.mp4", capNo: "Slik tar du av og på lokket", capEn: "How to take the cover off and put it back" },
-        { src: "assets/img/manual-jacuzzi-temp.jpg", capNo: "Temperatur og bobler styres i Arctic Spa-appen", capEn: "Temperature and jets are controlled in the Arctic Spa app" },
-        { src: "assets/img/manual-jacuzzi-ph.jpg", capNo: "Spa Boy viser vannkvaliteten — den passer seg selv", capEn: "Spa Boy shows the water quality — it looks after itself" }
+        { src: "assets/img/manual-jacuzzi-temp.jpg", capNo: "Jacuzzien står klar på badetemperatur hele året", capEn: "The hot tub is kept at bathing temperature all year" },
+        { src: "assets/img/manual-jacuzzi-ph.jpg", capNo: "Vannverdiene sjekkes før hver ankomst", capEn: "The water values are checked before every arrival" }
       ],
       badstue: [
-        { src: "assets/video/badstue.mp4", capNo: "Slik skrur du på badstuen", capEn: "How to switch the sauna on" },
-        { src: "assets/img/bad-badstue.avif", capNo: "Badstuen ligger på badet", capEn: "The sauna is in the bathroom" }
+        { src: "assets/video/badstue.mp4", capNo: "Slik skrur dere på badstuen i 1. etasje", capEn: "How to switch on the ground-floor sauna" },
+        { src: "assets/img/bad-badstue.avif", capNo: "Badstuen på badet i 1. etasje", capEn: "The sauna in the ground-floor bathroom" }
       ],
       peis: [
         { src: "assets/img/kjokken-peis.avif", capNo: "Peisen i stuen", capEn: "The fireplace in the living room" }
@@ -372,9 +372,11 @@ window.SITE = {
             "Innsjekk er fra kl. 15:00, og dere sjekker inn selv med smartlåsen — dere trenger ikke møte noen."
           ],
           steps: [
-            "TODO: Koden til ytterdøren sendes på Airbnb-melding før ankomst.",
-            "TODO: Beskriv hvordan låsen betjenes (tast koden, trykk på …).",
-            "TODO: Beskriv hvor reservenøkkel eventuelt ligger.",
+            "Koden til ytterdøren sendes på Airbnb-melding før ankomst.",
+            "Dra hånden over tastaturet for å vekke knappene.",
+            "Tast koden, og trykk deretter på symbolet med åpen hengelås.",
+            "Dere trenger ingen nøkkel til selve hytta — låsen går på kode.",
+            "I gangen henger fjernkontroll til garasjen, nøkkel til annekset og bomkort til vegbommen. Bruk dem gjerne så lenge dere bor her, og heng dem tilbake før avreise.",
             "Innkjørselen ned til garasjen er bratt. Kjør rolig, spesielt når det er snø og is — det er også god parkering på andre siden av veien."
           ],
           tip: "Trenger dere tidlig innsjekk eller sen utsjekk, send en melding i god tid. Vi er fleksible når hytta er ledig."
@@ -384,14 +386,15 @@ window.SITE = {
           icon: "hottub",
           title: "Saltvannsjacuzzi",
           paragraphs: [
-            "Jacuzzien er en Arctic Spa med saltvannssystem. Den står klar og varm hele året, døgnet rundt — dere trenger ikke å fylle eller varme den opp selv."
+            "Jacuzzien er en Arctic Spa med saltvannssystem. Den holder standard badetemperatur hele året, døgnet rundt, så den er klar til bruk når dere kommer. Vi sjekker at vannverdiene er riktige før ankomst — ser vannet likevel ikke bra ut, vil vi gjerne ha beskjed."
           ],
           steps: [
             "Skyv lokket forsiktig av og legg det på lokkholderen — ikke på bakken eller snøen.",
             "Dusj før dere går uti. Såpe, sjampo og kremer ødelegger vannbalansen.",
-            "TODO: Slik styres temperatur og bobler (panel / app / knapp).",
+            "Temperatur og bobler styrer dere på panelet på selve boblebadet.",
             "Legg lokket på igjen med én gang dere er ferdige, ellers faller temperaturen og strømforbruket øker.",
-            "Ikke bruk glass i eller ved jacuzzien."
+            "Ikke bruk glass i eller ved jacuzzien.",
+            "Har dere brukt spaet i løpet av oppholdet: ha i omtrent ett lokk med Spa Shock (står i garasjen), kjør alle pumpene på fullt til de stopper av seg selv, og lukk lokket. Det balanserer vannet til neste gjest."
           ],
           tip: "Saltvannet er skånsomt mot hud og hår, men badetøy kan bleknes over tid — akkurat som i et vanlig spa."
         },
@@ -400,11 +403,10 @@ window.SITE = {
           icon: "sauna",
           title: "Badstue",
           paragraphs: [
-            "TODO: skriv hvor badstuen ligger, og omtrent hvor lang tid den bruker på å bli varm (typisk 30–45 minutter)."
+            "Badstuen ligger på badet i 1. etasje, og den blir fort varm."
           ],
           steps: [
-            "TODO: Slik skrur dere den på (bryter / panel).",
-            "TODO: Anbefalt temperatur og maks tid.",
+            "Videoen under viser hvordan dere skrur den på.",
             "Legg alltid et håndkle under dere på benken.",
             "Vann på steinene: bruk øsekaret, litt om gangen.",
             "Ikke tørk klær eller sko inne i badstuen — det er brannfarlig."
@@ -424,7 +426,7 @@ window.SITE = {
             "Tenn på, la døren stå på gløtt i et par minutter, og lukk den så.",
             "Når det brenner godt, skyv spjeldet halvveis inn.",
             "Legg aldri i mer enn tre kubber om gangen, og la aldri peisen stå ubevoktet.",
-            "TODO: Hvor finnes ved og opptenning, og hvor tømmes asken (kun når den er helt kald)?"
+            "Asken kastes i søppelpose i restavfallet — men bare når den er helt kald."
           ],
           tip: "Hytta har røykvarslere, men foreløpig ikke karbonmonoksidvarsler. Luft godt hvis det ryker inn, og la aldri peisen brenne mens dere sover."
         },
@@ -452,12 +454,13 @@ window.SITE = {
             "Kjøkkenet er fullt utstyrt med det dere trenger for å lage mat til hele følget."
           ],
           steps: [
-            "TODO: Type komfyr/platetopp, og eventuelle triks.",
-            "TODO: Oppvaskmaskin — hvor ligger tablettene, og hvilket program anbefaler dere?",
-            "TODO: Kaffetrakter/kaffemaskin — hva slags, og hvor er filtre/kapsler?",
+            "Platetoppen er induksjon, så kjelene må ha magnetisk bunn — de som ligger i skuffen fungerer.",
+            "Oppvaskmaskin: tablettene ligger under vasken, og programmet Auto fungerer fint til det meste.",
+            "Kaffe: både filterkaffe og kaffemaskin. Kaffen står i skapet ved siden av kaffetrakteren.",
+            "Kranen på kjøkkenet gir kokende vann — se videoen under.",
             "La kjøleskapet stå på når dere reiser."
           ],
-          tip: "Grillen på terrassen er fin til middag ute. TODO: skriv hvor gass/kull står, og hvordan den tennes."
+          tip: "Grillen på terrassen er kullgrill. Kull ligger som regel i garasjen, men det kan være tomt — ta gjerne med en sekk."
         },
         {
           id: "tv",
@@ -467,10 +470,11 @@ window.SITE = {
             "TV-en i stua er en smart-TV. Dere kan logge inn på egne strømmekontoer — husk bare å logge ut igjen før avreise."
           ],
           steps: [
-            "TODO: Slik skrur dere på TV-en og velger riktig kilde.",
+            "Det er TV både i stuen nede og i stuen oppe. TV-en oppe har surroundanlegg.",
             "Wifi-navn og passord finner dere øverst på denne siden.",
-            "TODO: Bluetooth-høyttaler eller lydanlegg — hva heter enheten?",
-            "Er nettet borte: TODO — hvor står ruteren, og kan den restartes?"
+            "Hytta har Sonos lydanlegg, med høyttalere i stuen og ute ved grillplassen.",
+            "Enkleste måte å spille musikk på: koble mobilen til wifi og send fra din egen strømmetjeneste.",
+            "Er nettet borte, send oss en melding på Airbnb, så hjelper vi dere videre."
           ],
           tip: ""
         },
@@ -482,9 +486,8 @@ window.SITE = {
             "Med ski in/ski out kommer dere rett fra bakken og inn — og da trengs et sted for alt det våte."
           ],
           steps: [
-            "TODO: Hvor settes ski, staver og brett?",
-            "TODO: Finnes tørkeskap eller støvelvarmer, og hvordan brukes det?",
-            "Vått yttertøy henger på knaggene, ikke over gulvet inne.",
+            "Ski, staver og brett settes i garasjen, eller inntil husveggen ved parkeringen.",
+            "Skisko og skiutstyr henges på vaskerommet — der er det godt egnet for å tørke klær.",
             "Ta av skistøvlene før dere går inn i stua."
           ],
           tip: ""
@@ -494,12 +497,12 @@ window.SITE = {
           icon: "car",
           title: "Parkering, garasje og elbillading",
           paragraphs: [
-            "Det er gratis parkering på stedet med plass til fem biler, samt garasje med elbillader (nivå 2)."
+            "Det er gratis parkering på stedet med plass til fem biler, samt garasje med elbillader."
           ],
           steps: [
             "Innkjørselen til garasjen er bratt — kjør rolig, særlig ved snø og is.",
             "Garasjeporten åpnes med fjernkontrollen som henger i gangen.",
-            "TODO: Hvordan brukes elbilladeren — egen kabel eller fast kabel? Er lading inkludert?",
+            "Elbilladeren har fastmontert type 2-kabel på 5 kW, og lading er inkludert for gjester.",
             "Ved mye snø er det også god parkering på andre siden av veien."
           ],
           tip: ""
@@ -558,7 +561,7 @@ window.SITE = {
       ],
       moreTitle: "Litt mer om praktiske ting",
       more: [
-        "Det er gratis parkering på stedet til fem biler, og elbillader (nivå 2) i garasjen.",
+        "Det er gratis parkering på stedet til fem biler, og elbillader i garasjen. Lading er inkludert for gjester.",
         "Innkjørselen til garasjen er bratt og kan være krevende ved mye snø. Det er også parkering på andre siden av veien.",
         "Hytta har røykvarslere. Karbonmonoksidvarsler er foreløpig ikke installert.",
         "Det finnes ikke videoovervåking inne eller ute på eiendommen.",
@@ -851,9 +854,11 @@ window.SITE = {
             "Check-in is from 15:00, and you check in yourself using the smart lock — there is no need to meet anyone."
           ],
           steps: [
-            "TODO: The door code is sent by Airbnb message before arrival.",
-            "TODO: Describe how the lock works (enter the code, press …).",
-            "TODO: Describe where the spare key is, if there is one.",
+            "The door code is sent by Airbnb message before arrival.",
+            "Wave your hand across the keypad to wake the buttons.",
+            "Enter the code, then press the open-padlock symbol.",
+            "You do not need a key for the chalet itself — the lock works on the code.",
+            "In the hallway you will find the garage remote, the key to the annexe and the card for the road barrier. Please use them during your stay and hang them back before you leave.",
             "The driveway down to the garage is steep. Take it slowly, especially in snow and ice — there is also good parking across the road."
           ],
           tip: "If you need an early check-in or late check-out, send us a message in good time. We are flexible when the chalet is free."
@@ -863,14 +868,15 @@ window.SITE = {
           icon: "hottub",
           title: "Salt-water hot tub",
           paragraphs: [
-            "The hot tub is an Arctic Spa with a salt-water system. It is kept hot all year, around the clock — you do not need to fill or heat it yourself."
+            "The hot tub is an Arctic Spa with a salt-water system. It is kept at bathing temperature all year, around the clock, so it is ready when you arrive. We check the water values before every arrival — if the water still does not look right, please tell us."
           ],
           steps: [
             "Slide the cover off carefully and place it on the cover lifter — not on the ground or in the snow.",
             "Shower before getting in. Soap, shampoo and lotions upset the water balance.",
-            "TODO: How to control the temperature and jets (panel / app / button).",
+            "Temperature and jets are set on the panel on the tub itself.",
             "Put the cover back on as soon as you are done, otherwise the temperature drops and power use rises.",
-            "No glass in or near the hot tub."
+            "No glass in or near the hot tub.",
+            "If you have used the spa during your stay: add about one capful of Spa Shock (kept in the garage), run all the pumps at full until they stop by themselves, and close the cover. That rebalances the water for the next guest."
           ],
           tip: "The salt water is gentle on skin and hair, but swimwear may fade over time — just like in any spa."
         },
@@ -879,11 +885,10 @@ window.SITE = {
           icon: "sauna",
           title: "Sauna",
           paragraphs: [
-            "TODO: describe where the sauna is and roughly how long it takes to heat up (typically 30–45 minutes)."
+            "The sauna is in the ground-floor bathroom, and it heats up quickly."
           ],
           steps: [
-            "TODO: How to switch it on (switch / panel).",
-            "TODO: Recommended temperature and maximum time.",
+            "The video below shows how to switch it on.",
             "Always sit on a towel.",
             "Water on the stones: use the ladle, a little at a time.",
             "Never dry clothes or boots inside the sauna — it is a fire hazard."
@@ -903,7 +908,7 @@ window.SITE = {
             "Light it, leave the door slightly ajar for a couple of minutes, then close it.",
             "Once burning well, push the damper halfway in.",
             "Never add more than three logs at a time, and never leave the fire unattended.",
-            "TODO: Where are firewood and firelighters kept, and where is ash emptied (only when completely cold)?"
+            "Ash goes in a bin bag with the general waste — but only once it is completely cold."
           ],
           tip: "The chalet has smoke alarms but no carbon monoxide alarm at present. Air the room well if smoke comes back in, and never leave the fire burning while you sleep."
         },
@@ -927,12 +932,13 @@ window.SITE = {
           title: "Kitchen and appliances",
           paragraphs: ["The kitchen is fully equipped for cooking for the whole group."],
           steps: [
-            "TODO: Type of cooker/hob and any quirks worth knowing.",
-            "TODO: Dishwasher — where are the tablets, and which programme do you recommend?",
-            "TODO: Coffee maker — what type, and where are filters or capsules?",
+            "The hob is induction, so pans need a magnetic base — the ones in the drawer work.",
+            "Dishwasher: tablets are under the sink, and the Auto programme handles most loads well.",
+            "Coffee: both filter coffee and a coffee machine. The coffee is in the cupboard next to the coffee maker.",
+            "The kitchen tap gives boiling water — see the video below.",
             "Please leave the fridge switched on when you go."
           ],
-          tip: "The barbecue on the terrace is great for dinner outside. TODO: note where the gas or charcoal is kept and how to light it."
+          tip: "The barbecue on the terrace is a charcoal grill. Charcoal is usually kept in the garage, but it can run out — bring a bag if you can."
         },
         {
           id: "tv",
@@ -942,10 +948,11 @@ window.SITE = {
             "The living room TV is a smart TV. You are welcome to sign in to your own streaming accounts — just remember to sign out before you leave."
           ],
           steps: [
-            "TODO: How to turn the TV on and select the right source.",
+            "There is a TV in the living room downstairs and in the lounge upstairs. The upstairs TV has a surround system.",
             "The Wi-Fi name and password are at the top of this page.",
-            "TODO: Bluetooth speaker or sound system — what is the device called?",
-            "If the internet drops: TODO — where is the router, and can it be restarted?"
+            "The chalet has a Sonos sound system, with speakers in the living room and outside by the barbecue.",
+            "Easiest way to play music: connect your phone to the Wi-Fi and cast from your own streaming service.",
+            "If the internet drops, send us a message on Airbnb and we will help."
           ],
           tip: ""
         },
@@ -957,9 +964,8 @@ window.SITE = {
             "With ski-in/ski-out you come straight off the slope and inside — which means there needs to be a place for all the wet gear."
           ],
           steps: [
-            "TODO: Where do skis, poles and boards go?",
-            "TODO: Is there a drying cabinet or boot warmer, and how is it used?",
-            "Hang wet outerwear on the hooks, not over the floor indoors.",
+            "Skis, poles and boards go in the garage, or against the wall by the parking area.",
+            "Ski boots and gear hang in the utility room — it is the best place in the house for drying clothes.",
             "Please take ski boots off before going into the living room."
           ],
           tip: ""
@@ -969,12 +975,12 @@ window.SITE = {
           icon: "car",
           title: "Parking, garage and EV charging",
           paragraphs: [
-            "There is free parking on the property for five cars, plus a garage with a level 2 EV charger."
+            "There is free parking on the property for five cars, plus a garage with an EV charger."
           ],
           steps: [
             "The driveway to the garage is steep — take it slowly, especially in snow and ice.",
             "The garage door opens with the remote control hanging in the hallway.",
-            "TODO: How is the EV charger used — own cable or fixed cable? Is charging included?",
+            "The EV charger has a fixed type 2 cable at 5 kW, and charging is included for guests.",
             "In heavy snow there is also good parking across the road."
           ],
           tip: ""
@@ -1030,7 +1036,7 @@ window.SITE = {
       ],
       moreTitle: "A few more practical things",
       more: [
-        "There is free parking on the property for five cars, and a level 2 EV charger in the garage.",
+        "There is free parking on the property for five cars, and an EV charger in the garage. Charging is included for guests.",
         "The driveway to the garage is steep and can be demanding in heavy snow. There is also parking across the road.",
         "The chalet has smoke alarms. A carbon monoxide alarm is not currently installed.",
         "There is no video surveillance inside or outside the property.",
