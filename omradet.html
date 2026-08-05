@@ -5,8 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Området · Voss Chalet</title>
 <meta name="description" content="Tips til Voss: ski i Voss Resort og Myrkdalen, fjellturer til Lønahorgi, rafting, sykling, Vossabadet, Flåmsbanen og Nærøyfjorden.">
+<meta name="robots" content="noindex">
 <meta name="theme-color" content="#2f5d50">
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<script>
+/* Rask sjekk før resten av siden lastes: uten innlogging sendes du til forsiden. */
+(function () {
+  try {
+    if (!localStorage.getItem("vc-auth")) {
+      location.replace("index.html?next=" + encodeURIComponent(location.pathname.split("/").pop() + location.hash));
+    }
+  } catch (e) {}
+})();
+</script>
 <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body data-page="area">

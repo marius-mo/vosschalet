@@ -101,6 +101,96 @@
     return svg;
   }
 
+  /* --- Passord ------------------------------------------------------
+     Passordet lagres aldri i klartekst. Vi sammenligner et sha256-
+     avtrykk med det som står i content.js.
+
+     MERK: dette holder gjestesidene utenfor søkemotorer og tilfeldige
+     besøkende, men er ikke ekte sikkerhet — den som leser kildekoden
+     kan finne innholdet. Ikke legg dørkoder eller lignende her.
+     ------------------------------------------------------------------ */
+
+  var AUTH_KEY = "vc-auth";
+
+  function utf8Bytes(str) {
+    var out = [], i, c, c2, cp;
+    for (i = 0; i < str.length; i++) {
+      c = str.charCodeAt(i);
+      if (c < 0x80) out.push(c);
+      else if (c < 0x800) out.push(0xc0 | (c >> 6), 0x80 | (c & 63));
+      else if (c >= 0xd800 && c <= 0xdbff) {
+        c2 = str.charCodeAt(++i);
+        cp = 0x10000 + ((c & 0x3ff) << 10) + (c2 & 0x3ff);
+        out.push(0xf0 | (cp >> 18), 0x80 | ((cp >> 12) & 63), 0x80 | ((cp >> 6) & 63), 0x80 | (cp & 63));
+      } else out.push(0xe0 | (c >> 12), 0x80 | ((c >> 6) & 63), 0x80 | (c & 63));
+    }
+    return out;
+  }
+
+  // Reserve for nettlesere uten crypto.subtle (f.eks. når filen åpnes
+  // rett fra disk, uten https)
+  function sha256Bytes(bytes) {
+    var K = [], H = [], n = 2, isP, f;
+    while (K.length < 64) {
+      isP = true;
+      for (f = 2; f * f <= n; f++) if (n % f === 0) { isP = false; break; }
+      if (isP) {
+        if (H.length < 8) H.push((Math.pow(n, 1 / 2) % 1 * 4294967296) | 0);
+        K.push((Math.pow(n, 1 / 3) % 1 * 4294967296) | 0);
+      }
+      n++;
+    }
+    var msg = bytes.slice(), bits = bytes.length * 8, i;
+    msg.push(0x80);
+    while (msg.length % 64 !== 56) msg.push(0);
+    for (i = 7; i >= 0; i--) msg.push(Math.floor(bits / Math.pow(2, i * 8)) & 255);
+
+    var w = new Array(64), a, b, c, d, e, g, h, hh, t1, t2, j, s0, s1, ch, maj;
+    function rr(v, s) { return (v >>> s) | (v << (32 - s)); }
+
+    for (var chunk = 0; chunk < msg.length; chunk += 64) {
+      for (j = 0; j < 16; j++) {
+        w[j] = (msg[chunk + j * 4] << 24) | (msg[chunk + j * 4 + 1] << 16) |
+               (msg[chunk + j * 4 + 2] << 8) | msg[chunk + j * 4 + 3];
+      }
+      for (j = 16; j < 64; j++) {
+        s0 = rr(w[j - 15], 7) ^ rr(w[j - 15], 18) ^ (w[j - 15] >>> 3);
+        s1 = rr(w[j - 2], 17) ^ rr(w[j - 2], 19) ^ (w[j - 2] >>> 10);
+        w[j] = (w[j - 16] + s0 + w[j - 7] + s1) | 0;
+      }
+      a = H[0]; b = H[1]; c = H[2]; d = H[3]; e = H[4]; g = H[5]; h = H[6]; hh = H[7];
+      for (j = 0; j < 64; j++) {
+        s1 = rr(e, 6) ^ rr(e, 11) ^ rr(e, 25);
+        ch = (e & g) ^ (~e & h);
+        t1 = (hh + s1 + ch + K[j] + w[j]) | 0;
+        s0 = rr(a, 2) ^ rr(a, 13) ^ rr(a, 22);
+        maj = (a & b) ^ (a & c) ^ (b & c);
+        t2 = (s0 + maj) | 0;
+        hh = h; h = g; g = e; e = (d + t1) | 0; d = c; c = b; b = a; a = (t1 + t2) | 0;
+      }
+      H[0] = (H[0] + a) | 0; H[1] = (H[1] + b) | 0; H[2] = (H[2] + c) | 0; H[3] = (H[3] + d) | 0;
+      H[4] = (H[4] + e) | 0; H[5] = (H[5] + g) | 0; H[6] = (H[6] + h) | 0; H[7] = (H[7] + hh) | 0;
+    }
+    return H.map(function (v) { return ("00000000" + (v >>> 0).toString(16)).slice(-8); }).join("");
+  }
+
+  function sha256Hex(text) {
+    var bytes = utf8Bytes(text);
+    if (window.crypto && window.crypto.subtle && window.crypto.subtle.digest) {
+      return window.crypto.subtle.digest("SHA-256", new Uint8Array(bytes)).then(function (buf) {
+        return Array.prototype.map.call(new Uint8Array(buf), function (b) {
+          return ("0" + b.toString(16)).slice(-2);
+        }).join("");
+      }).catch(function () { return sha256Bytes(bytes); });
+    }
+    return Promise.resolve(sha256Bytes(bytes));
+  }
+
+  function accessHash() { return (S.meta.access && S.meta.access.hash) || ""; }
+  function isUnlocked() { return !accessHash() || localStorage.getItem(AUTH_KEY) === accessHash(); }
+  function unlock() { localStorage.setItem(AUTH_KEY, accessHash()); }
+  function lock() { localStorage.removeItem(AUTH_KEY); }
+
   /* --- Språk og tema ------------------------------------------------ */
 
   var LANG_KEY = "vc-lang";
@@ -160,8 +250,8 @@
   }
 
   // Toppbildet: mangler filen, faller vi tilbake på fjellgradienten i CSS
-  function heroImage() {
-    var img = el("img", { src: S.media.hero, alt: "" });
+  function heroImage(src) {
+    var img = el("img", { src: src || S.media.hero, alt: "" });
     img.addEventListener("error", function () {
       if (img.parentNode) img.parentNode.removeChild(img);
     });
@@ -171,7 +261,7 @@
   /* --- Toppmeny og bunntekst ---------------------------------------- */
 
   var PAGES = [
-    { key: "home", href: "index.html", label: function () { return T.nav.home; } },
+    { key: "home", href: "hytta.html", label: function () { return T.nav.home; } },
     { key: "manual", href: "husmanual.html", label: function () { return T.nav.manual; } },
     { key: "rules", href: "husregler.html", label: function () { return T.nav.rules; } },
     { key: "area", href: "omradet.html", label: function () { return T.nav.area; } }
@@ -214,7 +304,7 @@
 
     var header = el("header", { class: "site-header" }, [
       el("div", { class: "wrap" }, [
-        el("a", { class: "brand", href: "index.html" }, [
+        el("a", { class: "brand", href: "hytta.html" }, [
           icon("logo"),
           el("span", {}, [
             document.createTextNode(S.meta.siteName),
@@ -243,7 +333,7 @@
       el("div", { class: "wrap" }, [
         el("div", { class: "footer-grid" }, [
           el("div", {}, [
-            el("a", { class: "brand", href: "index.html", style: "margin-bottom:14px" }, [
+            el("a", { class: "brand", href: "hytta.html", style: "margin-bottom:14px" }, [
               icon("logo"), el("span", { text: S.meta.siteName })
             ]),
             el("p", { text: T.footer.about })
@@ -266,7 +356,14 @@
         ]),
         el("div", { class: "footer-bottom" }, [
           el("span", { text: "© " + new Date().getFullYear() + " " + S.meta.siteName + ". " + T.footer.rights }),
-          el("span", { text: (T.host && T.host.name) || S.meta.hostName })
+          el("span", {}, [
+            document.createTextNode((T.host && T.host.name) || S.meta.hostName),
+            accessHash() ? document.createTextNode(" · ") : null,
+            accessHash() ? el("a", {
+              href: "index.html", text: T.common.logout,
+              onclick: function (e) { e.preventDefault(); lock(); location.href = "index.html"; }
+            }) : null
+          ])
         ])
       ])
     ]);
@@ -439,7 +536,7 @@
           el("div", { class: "map-frame" }, [
             S.meta.mapEmbed
               ? el("iframe", { src: S.meta.mapEmbed, loading: "lazy", title: T.location.title, referrerpolicy: "no-referrer-when-downgrade", allowfullscreen: "" })
-              : placeholder()
+              : (S.media.locationMap ? picture(S.media.locationMap, T.location.title) : placeholder())
           ])
         ])
       ])
@@ -529,26 +626,42 @@
 
   /* --- Husmanual ----------------------------------------------------- */
 
-  function mediaBlock(section) {
-    if (section.video) {
-      var v = section.video;
-      var isEmbed = /youtube|youtu\.be|vimeo/.test(v);
-      if (isEmbed) {
-        var src = v;
-        var yt = v.match(/(?:youtu\.be\/|v=)([\w-]{6,})/);
-        if (yt) src = "https://www.youtube-nocookie.com/embed/" + yt[1];
-        var vi = v.match(/vimeo\.com\/(\d+)/);
-        if (vi) src = "https://player.vimeo.com/video/" + vi[1];
-        return el("div", { class: "acc-media" }, [
-          el("iframe", { src: src, title: section.title, loading: "lazy", allowfullscreen: "" })
-        ]);
-      }
-      return el("div", { class: "acc-media" }, [
-        el("video", { src: v, controls: "", preload: "metadata", playsinline: "" })
-      ]);
+  // Ett medieelement: video, innebygd YouTube/Vimeo, eller bilde
+  function mediaItem(src, title) {
+    if (/youtube|youtu\.be|vimeo/.test(src)) {
+      var embed = src;
+      var yt = src.match(/(?:youtu\.be\/|v=)([\w-]{6,})/);
+      if (yt) embed = "https://www.youtube-nocookie.com/embed/" + yt[1];
+      var vi = src.match(/vimeo\.com\/(\d+)/);
+      if (vi) embed = "https://player.vimeo.com/video/" + vi[1];
+      return el("iframe", { src: embed, title: title || "", loading: "lazy", allowfullscreen: "" });
     }
-    if (section.image) return el("div", { class: "acc-media" }, [picture(section.image, section.title)]);
-    return null;
+    if (/\.(mp4|mov|m4v|webm)$/i.test(src)) {
+      return el("video", { src: src, controls: "", preload: "metadata", playsinline: "" });
+    }
+    return picture(src, title);
+  }
+
+  function mediaBlock(section) {
+    // Nytt format: media.manual[<seksjons-id>] = [{ src, capNo, capEn }, …]
+    var list = (S.media.manual && S.media.manual[section.id]) || [];
+
+    // Gammelt format i content.js støttes fortsatt
+    if (!list.length) {
+      if (section.video) list = [{ src: section.video }];
+      else if (section.image) list = [{ src: section.image }];
+    }
+    if (!list.length) return null;
+
+    return el("div", { class: "media-grid" + (list.length === 1 ? " is-single" : "") },
+      list.map(function (m) {
+        var caption = lang === "no" ? m.capNo : m.capEn;
+        return el("figure", { class: "media-item" }, [
+          el("div", { class: "acc-media" }, [mediaItem(m.src, caption || section.title)]),
+          caption ? el("figcaption", { text: caption }) : null
+        ]);
+      })
+    );
   }
 
   function copyRow(label, value) {
@@ -683,12 +796,15 @@
         return el("div", { class: "area-block" }, [
           el("h2", { text: cat.title }),
           el("div", { class: "area-list" }, cat.items.map(function (item) {
-            return el("article", { class: "area-item reveal" }, [
-              el("div", { class: "area-item-head" }, [
-                el("h3", { text: item.name }),
-                item.meta ? el("span", { class: "meta", text: item.meta }) : null
-              ]),
-              el("p", { text: item.desc })
+            return el("article", { class: "area-item reveal" + (item.img ? " has-img" : "") }, [
+              item.img ? el("div", { class: "area-img" }, [picture(item.img, item.name)]) : null,
+              el("div", { class: "area-body" }, [
+                el("div", { class: "area-item-head" }, [
+                  el("h3", { text: item.name }),
+                  item.meta ? el("span", { class: "meta", text: item.meta }) : null
+                ]),
+                el("p", { text: item.desc })
+              ])
             ]);
           }))
         ]);
@@ -696,6 +812,97 @@
     ]);
 
     main.appendChild(frag([pageHead(a.title, a.intro), body, ctaBand()]));
+  }
+
+  /* --- Landingsside (index.html) --------------------------------------- */
+
+  function renderLanding(main) {
+    var L = T.landing;
+    var r = S.meta.rating;
+    var next = new URLSearchParams(location.search).get("next") || "hytta.html";
+    // Bare interne sider er lov som viderekobling
+    if (!/^[\w.-]+\.html(#[\w-]*)?$/.test(next)) next = "hytta.html";
+
+    var pw = el("input", {
+      class: "field-input", type: "password", id: "vc-pw",
+      autocomplete: "current-password", required: "", "aria-describedby": "vc-pw-help"
+    });
+    var error = el("p", { class: "form-error", role: "alert", hidden: "" });
+    var submit = el("button", { class: "btn btn-primary", type: "submit", text: L.submit });
+
+    var form = el("form", { class: "landing-form" }, [
+      el("label", { class: "field" }, [
+        el("span", { text: L.passwordLabel }),
+        pw
+      ]),
+      submit,
+      error,
+      (S.meta.access && (lang === "no" ? S.meta.access.hintNo : S.meta.access.hintEn))
+        ? el("p", { class: "field-help", id: "vc-pw-help", text: lang === "no" ? S.meta.access.hintNo : S.meta.access.hintEn })
+        : null
+    ]);
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      error.hidden = true;
+      submit.disabled = true;
+      sha256Hex(pw.value).then(function (hex) {
+        if (hex === accessHash()) {
+          unlock();
+          location.href = next;
+        } else {
+          submit.disabled = false;
+          error.textContent = L.error;
+          error.hidden = false;
+          pw.select();
+        }
+      }).catch(function () {
+        submit.disabled = false;
+        error.textContent = L.unsupported;
+        error.hidden = false;
+      });
+    });
+
+    var guestBlock = isUnlocked()
+      ? el("div", { class: "landing-guest" }, [
+          el("h2", { text: L.guestTitle }),
+          el("a", { class: "btn btn-primary", href: next, text: T.nav.home })
+        ])
+      : el("div", { class: "landing-guest" }, [
+          el("h2", { text: L.guestTitle }),
+          el("p", { text: L.guestText }),
+          form
+        ]);
+
+    var card = el("div", { class: "landing-card" }, [
+      el("div", { class: "landing-brand" }, [icon("logo"), el("span", { text: S.meta.siteName })]),
+      el("span", { class: "eyebrow", text: L.eyebrow }),
+      el("h1", { text: L.title }),
+      el("p", { class: "landing-tagline", text: L.tagline }),
+      r ? el("div", { class: "rating-badge" }, [
+        icon("star", { fill: true }),
+        document.createTextNode((lang === "no" ? r.score : (r.scoreEn || r.score)) + " "),
+        el("span", { text: "· " + r.count + " " + (lang === "no" ? "anmeldelser" : "reviews") + " · " + (lang === "no" ? r.badgeNo : r.badgeEn) })
+      ]) : null,
+      el("a", { class: "btn btn-primary btn-lg", href: S.meta.airbnbUrl, target: "_blank", rel: "noopener", text: L.bookCta }),
+      el("hr", { class: "landing-divider" }),
+      guestBlock
+    ]);
+
+    var tools = el("div", { class: "landing-top" }, [
+      el("div", { class: "lang-switch", role: "group", "aria-label": T.common.langLabel }, [
+        el("button", { type: "button", text: "NO", "aria-pressed": String(lang === "no"), onclick: function () { setLang("no"); } }),
+        el("button", { type: "button", text: "EN", "aria-pressed": String(lang === "en"), onclick: function () { setLang("en"); } })
+      ]),
+      el("button", { class: "icon-btn theme-btn", type: "button", "aria-label": T.common.themeLabel, onclick: toggleTheme },
+        [icon("sun", { class: "icon-sun" }), icon("moon", { class: "icon-moon" })])
+    ]);
+
+    main.appendChild(el("section", { class: "landing" }, [
+      el("div", { class: "landing-media" }, [S.media.landing ? heroImage(S.media.landing) : null]),
+      tools,
+      el("div", { class: "wrap" }, [card])
+    ]));
   }
 
   /* --- Oppstart -------------------------------------------------------- */
@@ -725,9 +932,26 @@
   }
 
   function init() {
+    var main = document.getElementById("main");
+
+    // Landingssiden er åpen for alle
+    if (page === "landing") {
+      document.title = T.landing.title + " · " + T.landing.eyebrow;
+      document.body.classList.add("is-landing");
+      renderLanding(main);
+      reveal();
+      return;
+    }
+
+    // Alle andre sider krever passord
+    if (!isUnlocked()) {
+      location.replace("index.html?next=" +
+        encodeURIComponent(location.pathname.split("/").pop() + location.hash));
+      return;
+    }
+
     document.title = (page === "home" ? T.hero.title : T[pageTitleKey()].title) + " · " + S.meta.siteName;
 
-    var main = document.getElementById("main");
     document.body.insertBefore(buildHeader(), main);
 
     if (page === "manual") renderManual(main);

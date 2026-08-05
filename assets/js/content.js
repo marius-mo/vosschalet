@@ -59,31 +59,103 @@ window.SITE = {
     mapEmbed: "",
 
     // Kartlenke som åpnes i ny fane (fungerer selv uten innebygd kart)
-    mapLink: "https://www.google.com/maps/search/?api=1&query=Tr%C3%A5st%C3%B8len+Voss"
+    mapLink: "https://www.google.com/maps/search/?api=1&query=Tr%C3%A5st%C3%B8len+Voss",
+
+    /* -----------------------------------------------------------------
+       PASSORD TIL GJESTESIDENE
+       -----------------------------------------------------------------
+       Forsiden (index.html) er åpen for alle. Hytteside, husmanual,
+       husregler og områdeguide krever passordet under.
+
+       Passordet lagres ikke her — bare et sha256-avtrykk av det.
+       Slik bytter du passord:
+         1. Åpne admin/passord.html i nettleseren
+         2. Skriv inn ønsket passord
+         3. Kopier linjen du får, og lim den inn som `hash:` under
+
+       Nåværende passord: trastolen   ← BYTT DETTE
+       ----------------------------------------------------------------- */
+    access: {
+      hash: "5de2ea7585148aed4aa913c4d304cdfae2e751c5c7485ea2c4bd7bd13d4e605c",
+      // Liten hjelpetekst under passordfeltet. La stå tom for å skjule.
+      hintNo: "Passordet står i meldingen dere fikk på Airbnb.",
+      hintEn: "The password is in the message we sent you on Airbnb."
+    }
   },
 
   /* -------------------------------------------------------------------
      2. BILDER OG VIDEO
      ---------------------------------------------------------------------
-     Last ned bildene dere allerede har på Airbnb, legg dem i mappen
-     assets/img/ og skriv filnavnet her, f.eks. "assets/img/stue.jpg".
+     Bildene ligger i assets/img/ og videoene i assets/video/.
      Filer som ikke finnes vises som en pen plassholder, så siden ser
-     aldri ødelagt ut.
-     Anbefalt: bredde ca. 1600 px, .jpg eller .webp, under 400 kB.
+     aldri ødelagt ut. Anbefalt for nye bilder: ca. 1600–2000 px bredde,
+     .jpg eller .webp, under 400 kB.
      ------------------------------------------------------------------- */
   media: {
-    hero: "assets/img/hero.jpg",
-    // Galleriet på forsiden. Legg til/fjern linjer etter behov.
+    // Toppbildet på landingssiden (index.html)
+    landing: "assets/img/jacuzzi-kveld.avif",
+    // Toppbildet på hyttesiden (hytta.html)
+    hero: "assets/img/terrasse-jacuzzi.jpg",
+
+    // Vises i «Beliggenhet» så lenge meta.mapEmbed står tom
+    locationMap: "assets/img/omrade-loypekart.avif",
+
+    // Galleriet på hyttesiden. Første bilde vises bredt.
     gallery: [
-      { src: "assets/img/gallery-1.jpg", captionNo: "Stue med gulv-til-tak-vinduer mot Lønavatnet", captionEn: "Living room with floor-to-ceiling windows facing Lønavatnet" },
-      { src: "assets/img/gallery-2.jpg", captionNo: "Åpen kjøkken- og spiseløsning", captionEn: "Open-plan kitchen and dining" },
-      { src: "assets/img/gallery-3.jpg", captionNo: "Saltvannsjacuzzi på terrassen", captionEn: "Salt-water hot tub on the terrace" },
-      { src: "assets/img/gallery-4.jpg", captionNo: "Badstue", captionEn: "Sauna" },
-      { src: "assets/img/gallery-5.jpg", captionNo: "Terrassen med panoramautsikt", captionEn: "Terrace with panoramic views" },
-      { src: "assets/img/gallery-6.jpg", captionNo: "Soverom", captionEn: "Bedroom" },
-      { src: "assets/img/gallery-7.jpg", captionNo: "TV-stue og lekerom", captionEn: "TV lounge and playroom" },
-      { src: "assets/img/gallery-8.jpg", captionNo: "Hytta om vinteren – ski in/ski out", captionEn: "The chalet in winter – ski in/ski out" }
-    ]
+      { src: "assets/img/stue-spiseplass.avif", captionNo: "Stue og spiseplass med panoramautsikt", captionEn: "Living and dining area with panoramic views" },
+      { src: "assets/img/stue-kjokken.jpg", captionNo: "Åpen stue- og kjøkkenløsning med peis", captionEn: "Open-plan living room and kitchen with fireplace" },
+      { src: "assets/img/jacuzzi-kveld.avif", captionNo: "Saltvannsjacuzzien en kveld", captionEn: "The salt-water hot tub in the evening" },
+      { src: "assets/img/bad-badstue.avif", captionNo: "Bad med badstue", captionEn: "Bathroom with sauna" },
+      { src: "assets/img/stue-terrasse.jpg", captionNo: "Stuen med utgang til terrassen", captionEn: "Living room opening onto the terrace" },
+      { src: "assets/img/soverom-dobbeltseng-1.avif", captionNo: "Soverom med dobbeltseng", captionEn: "Bedroom with a double bed" },
+      { src: "assets/img/hems-tv-stue.jpg", captionNo: "Hems og TV-stue", captionEn: "Mezzanine and TV lounge" },
+      { src: "assets/img/nordlys.avif", captionNo: "Nordlys over terrassen", captionEn: "Northern lights above the terrace" },
+      { src: "assets/img/soverom-koyeseng-1.avif", captionNo: "Soverom med køyeseng", captionEn: "Bedroom with bunk beds" },
+      { src: "assets/img/kjokken-peis.avif", captionNo: "Kjøkkenet med peisen i stuen", captionEn: "The kitchen, with the fireplace in the living room" },
+      { src: "assets/img/soverom-dobbeltseng-2.avif", captionNo: "Soverom under skråtaket", captionEn: "Bedroom under the sloping roof" },
+      { src: "assets/img/bad-1.avif", captionNo: "Bad", captionEn: "Bathroom" },
+      { src: "assets/img/lekerom.avif", captionNo: "Lekerom og bod", captionEn: "Playroom and storage" },
+      { src: "assets/img/jacuzzi-dag.jpg", captionNo: "Jacuzzi med utsikt over dalen", captionEn: "Hot tub overlooking the valley" },
+      { src: "assets/img/utside-garasje.jpg", captionNo: "Hytta utenfra, med garasje og parkering", captionEn: "The chalet from outside, with garage and parking" },
+      { src: "assets/img/kjokken-utsikt.avif", captionNo: "Kjøkkenøya mot utsikten", captionEn: "The kitchen island facing the view" }
+    ],
+
+    /* ---------------------------------------------------------------
+       BILDER OG VIDEO I HUSMANUALEN
+       Nøkkelen (ankomst, jacuzzi …) må stemme med `id` på seksjonen
+       lenger nede. Video kjennes igjen på .mp4/.mov, eller lim inn en
+       YouTube-/Vimeo-lenke. Rekkefølgen her er rekkefølgen på siden.
+       --------------------------------------------------------------- */
+    manual: {
+      ankomst: [
+        { src: "assets/video/ankomst-kjorevei.mp4", capNo: "Veien opp til hytta", capEn: "The drive up to the chalet" },
+        { src: "assets/img/manual-kodelas.jpg", capNo: "Kodelåsen ved ytterdøren", capEn: "The keypad lock at the front door" },
+        { src: "assets/img/manual-nokler.jpg", capNo: "Nøkler til garasje og port", capEn: "Keys for the garage and the gate" },
+        { src: "assets/img/manual-nokkelkort.jpg", capNo: "Nøkkelkort til porten", capEn: "Key cards for the gate" }
+      ],
+      jacuzzi: [
+        { src: "assets/video/jacuzzi.mp4", capNo: "Slik tar du av og på lokket", capEn: "How to take the cover off and put it back" },
+        { src: "assets/img/manual-jacuzzi-temp.jpg", capNo: "Temperatur og bobler styres i Arctic Spa-appen", capEn: "Temperature and jets are controlled in the Arctic Spa app" },
+        { src: "assets/img/manual-jacuzzi-ph.jpg", capNo: "Spa Boy viser vannkvaliteten — den passer seg selv", capEn: "Spa Boy shows the water quality — it looks after itself" }
+      ],
+      badstue: [
+        { src: "assets/video/badstue.mp4", capNo: "Slik skrur du på badstuen", capEn: "How to switch the sauna on" },
+        { src: "assets/img/bad-badstue.avif", capNo: "Badstuen ligger på badet", capEn: "The sauna is in the bathroom" }
+      ],
+      peis: [
+        { src: "assets/img/kjokken-peis.avif", capNo: "Peisen i stuen", capEn: "The fireplace in the living room" }
+      ],
+      kjokken: [
+        { src: "assets/video/kjokken-kokende-vann.mp4", capNo: "Kranen med kokende vann", capEn: "The boiling-water tap" },
+        { src: "assets/img/kjokken-utsikt.avif", capNo: "Kjøkkenøya", capEn: "The kitchen island" }
+      ],
+      lading: [
+        { src: "assets/img/utside-garasje.jpg", capNo: "Garasje og parkering utenfor hytta", capEn: "Garage and parking outside the chalet" }
+      ],
+      soppel: [
+        { src: "assets/img/manual-soppelstasjon.jpg", capNo: "Søppelstasjonen", capEn: "The waste station" }
+      ]
+    }
   },
 
   /* ===================================================================
@@ -91,11 +163,25 @@ window.SITE = {
      =================================================================== */
   no: {
     nav: {
-      home: "Hjem",
+      home: "Hytta",
       manual: "Husmanual",
       rules: "Husregler",
       area: "Området",
       book: "Book på Airbnb"
+    },
+
+    // Landingssiden (index.html) – den eneste siden som er åpen for alle
+    landing: {
+      eyebrow: "Tråstølen · Voss",
+      title: "Voss Chalet",
+      tagline: "Moderne hytte med ski in/ski out, badstue og saltvannsjacuzzi, med panoramautsikt over Lønavatnet.",
+      bookCta: "Book på Airbnb",
+      guestTitle: "Er du gjest hos oss?",
+      guestText: "Logg inn for hytteside, husmanual, husregler og tips til området.",
+      passwordLabel: "Passord",
+      submit: "Logg inn",
+      error: "Feil passord. Prøv igjen, eller send oss en melding på Airbnb.",
+      unsupported: "Innlogging krever at siden åpnes over https. Bruk lenken vi sendte på Airbnb."
     },
 
     facts: {
@@ -291,9 +377,7 @@ window.SITE = {
             "TODO: Beskriv hvor reservenøkkel eventuelt ligger.",
             "Innkjørselen ned til garasjen er bratt. Kjør rolig, spesielt når det er snø og is — det er også god parkering på andre siden av veien."
           ],
-          tip: "Trenger dere tidlig innsjekk eller sen utsjekk, send en melding i god tid. Vi er fleksible når hytta er ledig.",
-          image: "assets/img/manual-ankomst.jpg",
-          video: ""
+          tip: "Trenger dere tidlig innsjekk eller sen utsjekk, send en melding i god tid. Vi er fleksible når hytta er ledig."
         },
         {
           id: "jacuzzi",
@@ -309,9 +393,7 @@ window.SITE = {
             "Legg lokket på igjen med én gang dere er ferdige, ellers faller temperaturen og strømforbruket øker.",
             "Ikke bruk glass i eller ved jacuzzien."
           ],
-          tip: "Saltvannet er skånsomt mot hud og hår, men badetøy kan bleknes over tid — akkurat som i et vanlig spa.",
-          image: "assets/img/manual-jacuzzi.jpg",
-          video: ""
+          tip: "Saltvannet er skånsomt mot hud og hår, men badetøy kan bleknes over tid — akkurat som i et vanlig spa."
         },
         {
           id: "badstue",
@@ -327,9 +409,7 @@ window.SITE = {
             "Vann på steinene: bruk øsekaret, litt om gangen.",
             "Ikke tørk klær eller sko inne i badstuen — det er brannfarlig."
           ],
-          tip: "Badstue først, så jacuzzi, så utedusj — den rekkefølgen anbefaler gjestene våre.",
-          image: "assets/img/manual-badstue.jpg",
-          video: ""
+          tip: "Badstue først, så jacuzzi, så utedusj — den rekkefølgen anbefaler gjestene våre."
         },
         {
           id: "peis",
@@ -346,11 +426,7 @@ window.SITE = {
             "Legg aldri i mer enn tre kubber om gangen, og la aldri peisen stå ubevoktet.",
             "TODO: Hvor finnes ved og opptenning, og hvor tømmes asken (kun når den er helt kald)?"
           ],
-          tip: "Hytta har røykvarslere, men foreløpig ikke karbonmonoksidvarsler. Luft godt hvis det ryker inn, og la aldri peisen brenne mens dere sover.",
-          image: "assets/img/manual-peis.jpg",
-          // Legg en film i assets/video/ og skriv filnavnet her,
-          // eller lim inn en YouTube-/Vimeo-lenke.
-          video: ""
+          tip: "Hytta har røykvarslere, men foreløpig ikke karbonmonoksidvarsler. Luft godt hvis det ryker inn, og la aldri peisen brenne mens dere sover."
         },
         {
           id: "varme",
@@ -365,9 +441,7 @@ window.SITE = {
             "TODO: Har soverommene egen varmestyring?",
             "Hold vinduer og terrassedør lukket når varmen eller kjølingen står på."
           ],
-          tip: "Skru ned til normal temperatur i stedet for å skru helt av når dere er ute på dagstur — det bruker mindre strøm enn å varme opp igjen fra kaldt.",
-          image: "",
-          video: ""
+          tip: "Skru ned til normal temperatur i stedet for å skru helt av når dere er ute på dagstur — det bruker mindre strøm enn å varme opp igjen fra kaldt."
         },
         {
           id: "kjokken",
@@ -382,9 +456,7 @@ window.SITE = {
             "TODO: Kaffetrakter/kaffemaskin — hva slags, og hvor er filtre/kapsler?",
             "La kjøleskapet stå på når dere reiser."
           ],
-          tip: "Grillen på terrassen er fin til middag ute. TODO: skriv hvor gass/kull står, og hvordan den tennes.",
-          image: "assets/img/manual-kjokken.jpg",
-          video: ""
+          tip: "Grillen på terrassen er fin til middag ute. TODO: skriv hvor gass/kull står, og hvordan den tennes."
         },
         {
           id: "tv",
@@ -399,9 +471,7 @@ window.SITE = {
             "TODO: Bluetooth-høyttaler eller lydanlegg — hva heter enheten?",
             "Er nettet borte: TODO — hvor står ruteren, og kan den restartes?"
           ],
-          tip: "",
-          image: "",
-          video: ""
+          tip: ""
         },
         {
           id: "ski",
@@ -416,9 +486,7 @@ window.SITE = {
             "Vått yttertøy henger på knaggene, ikke over gulvet inne.",
             "Ta av skistøvlene før dere går inn i stua."
           ],
-          tip: "",
-          image: "assets/img/manual-ski.jpg",
-          video: ""
+          tip: ""
         },
         {
           id: "lading",
@@ -433,9 +501,7 @@ window.SITE = {
             "TODO: Hvordan brukes elbilladeren — egen kabel eller fast kabel? Er lading inkludert?",
             "Ved mye snø er det også god parkering på andre siden av veien."
           ],
-          tip: "",
-          image: "",
-          video: ""
+          tip: ""
         },
         {
           id: "soppel",
@@ -450,9 +516,7 @@ window.SITE = {
             "TODO: Glass og metall — nærmeste returpunkt.",
             "TODO: Panteflasker."
           ],
-          tip: "Ta gjerne med full restavfallspose ut ved avreise, selv om dunken er full.",
-          image: "",
-          video: ""
+          tip: "Ta gjerne med full restavfallspose ut ved avreise, selv om dunken er full."
         },
         {
           id: "avreise",
@@ -469,9 +533,7 @@ window.SITE = {
             "Sett temperaturen tilbake til normal, lukk alle vinduer og terrassedøren.",
             "Skru av lys, logg ut av strømmetjenester, og lukk ytterdøren godt."
           ],
-          tip: "Glemt noe igjen? Send en melding, så finner vi en løsning med å sende det etter.",
-          image: "",
-          video: ""
+          tip: "Glemt noe igjen? Send en melding, så finner vi en løsning med å sende det etter."
         }
       ]
     },
@@ -516,21 +578,21 @@ window.SITE = {
         {
           title: "Vinter",
           items: [
-            { name: "Voss Resort", desc: "Over 40 km preparerte løyper, og skiheisene ligger rett utenfor døren.", meta: "Ski in / ski out" },
+            { name: "Voss Resort", desc: "Over 40 km preparerte løyper, og skiheisene ligger rett utenfor døren.", meta: "Ski in / ski out", img: "assets/img/omrade-loypekart.avif" },
             { name: "Myrkdalen", desc: "Snøsikkert alpinanlegg med god variasjon hvis dere vil bytte bakke for en dag.", meta: "ca. 30 min" },
-            { name: "Hanguren", desc: "Ta gondolen fra Voss sentrum opp for spektakulær utsikt og lett tilgjengelige løyper.", meta: "ca. 15 min" },
-            { name: "Nordlys", desc: "På klare vinterkvelder har gjester sett nordlyset rett fra terrassen.", meta: "Fra hytta" }
+            { name: "Hanguren", desc: "Ta gondolen fra Voss sentrum opp for spektakulær utsikt og lett tilgjengelige løyper.", meta: "ca. 15 min", img: "assets/img/omrade-hangurstoppen.avif" },
+            { name: "Nordlys", desc: "På klare vinterkvelder har gjester sett nordlyset rett fra terrassen.", meta: "Fra hytta", img: "assets/img/nordlys.avif" }
           ]
         },
         {
           title: "Sommer og fjelltur",
           items: [
-            { name: "Lønahorgi", desc: "Kjent topptur — dere kan gå rett fra hytta.", meta: "Fra døren" },
+            { name: "Lønahorgi", desc: "Kjent topptur — dere kan gå rett fra hytta.", meta: "Fra døren", img: "assets/img/omrade-lonahorgi.avif" },
             { name: "Sykling og terrengsykling", desc: "Familievennlige sykkelstier rundt Vangsvatnet, og krevende stier i fjellet. Gondolen tar deg og sykkelen opp.", meta: "ca. 15 min" },
-            { name: "Rafting og elvesport", desc: "Rafting, juving og elvepadling med erfarne guider i Voss sentrum.", meta: "ca. 15 min" },
+            { name: "Rafting og elvesport", desc: "Rafting, juving og elvepadling med erfarne guider i Voss sentrum.", meta: "ca. 15 min", img: "assets/img/omrade-gjel.avif" },
             { name: "Paragliding og fallskjermhopp", desc: "Tandemhopp fra fjellet, eller fallskjermhopp fra hoppfeltet på Bømoen.", meta: "ca. 20 min" },
-            { name: "Voss Golfklubb", desc: "9-hulls bane i naturskjønne omgivelser, for både nybegynnere og erfarne.", meta: "ca. 20 min" },
-            { name: "Bading i Vangsvatnet", desc: "Fin strand som er populær blant både lokale og besøkende.", meta: "ca. 15 min" }
+            { name: "Voss Golfklubb", desc: "9-hulls bane i naturskjønne omgivelser, for både nybegynnere og erfarne.", meta: "ca. 20 min", img: "assets/img/omrade-golf-vangsvatnet.avif" },
+            { name: "Bading i Vangsvatnet", desc: "Fin strand som er populær blant både lokale og besøkende.", meta: "ca. 15 min", img: "assets/img/omrade-bjorkemoen.jpg" }
           ]
         },
         {
@@ -578,7 +640,8 @@ window.SITE = {
       openMenu: "Meny",
       langLabel: "Språk",
       themeLabel: "Bytt mellom lyst og mørkt tema",
-      imagePlaceholder: "Bilde kommer"
+      imagePlaceholder: "Bilde kommer",
+      logout: "Logg ut"
     }
   },
 
@@ -587,11 +650,24 @@ window.SITE = {
      =================================================================== */
   en: {
     nav: {
-      home: "Home",
+      home: "The chalet",
       manual: "House manual",
       rules: "House rules",
       area: "The area",
       book: "Book on Airbnb"
+    },
+
+    landing: {
+      eyebrow: "Tråstølen · Voss, Norway",
+      title: "Voss Chalet",
+      tagline: "A modern chalet with ski-in/ski-out, a sauna and a salt-water hot tub, with panoramic views over Lønavatnet.",
+      bookCta: "Book on Airbnb",
+      guestTitle: "Staying with us?",
+      guestText: "Sign in for the chalet page, house manual, house rules and local tips.",
+      passwordLabel: "Password",
+      submit: "Sign in",
+      error: "Wrong password. Please try again, or send us a message on Airbnb.",
+      unsupported: "Signing in requires the page to be opened over https. Please use the link we sent on Airbnb."
     },
 
     facts: {
@@ -780,9 +856,7 @@ window.SITE = {
             "TODO: Describe where the spare key is, if there is one.",
             "The driveway down to the garage is steep. Take it slowly, especially in snow and ice — there is also good parking across the road."
           ],
-          tip: "If you need an early check-in or late check-out, send us a message in good time. We are flexible when the chalet is free.",
-          image: "assets/img/manual-ankomst.jpg",
-          video: ""
+          tip: "If you need an early check-in or late check-out, send us a message in good time. We are flexible when the chalet is free."
         },
         {
           id: "jacuzzi",
@@ -798,9 +872,7 @@ window.SITE = {
             "Put the cover back on as soon as you are done, otherwise the temperature drops and power use rises.",
             "No glass in or near the hot tub."
           ],
-          tip: "The salt water is gentle on skin and hair, but swimwear may fade over time — just like in any spa.",
-          image: "assets/img/manual-jacuzzi.jpg",
-          video: ""
+          tip: "The salt water is gentle on skin and hair, but swimwear may fade over time — just like in any spa."
         },
         {
           id: "badstue",
@@ -816,9 +888,7 @@ window.SITE = {
             "Water on the stones: use the ladle, a little at a time.",
             "Never dry clothes or boots inside the sauna — it is a fire hazard."
           ],
-          tip: "Sauna first, then hot tub, then the outdoor shower — that is the order our guests recommend.",
-          image: "assets/img/manual-badstue.jpg",
-          video: ""
+          tip: "Sauna first, then hot tub, then the outdoor shower — that is the order our guests recommend."
         },
         {
           id: "peis",
@@ -835,9 +905,7 @@ window.SITE = {
             "Never add more than three logs at a time, and never leave the fire unattended.",
             "TODO: Where are firewood and firelighters kept, and where is ash emptied (only when completely cold)?"
           ],
-          tip: "The chalet has smoke alarms but no carbon monoxide alarm at present. Air the room well if smoke comes back in, and never leave the fire burning while you sleep.",
-          image: "assets/img/manual-peis.jpg",
-          video: ""
+          tip: "The chalet has smoke alarms but no carbon monoxide alarm at present. Air the room well if smoke comes back in, and never leave the fire burning while you sleep."
         },
         {
           id: "varme",
@@ -850,9 +918,7 @@ window.SITE = {
             "TODO: Do the bedrooms have their own controls?",
             "Keep windows and the terrace door closed while heating or cooling is running."
           ],
-          tip: "Turn it down rather than off when you head out for the day — that uses less power than heating up from cold.",
-          image: "",
-          video: ""
+          tip: "Turn it down rather than off when you head out for the day — that uses less power than heating up from cold."
         },
         {
           id: "kjokken",
@@ -865,9 +931,7 @@ window.SITE = {
             "TODO: Coffee maker — what type, and where are filters or capsules?",
             "Please leave the fridge switched on when you go."
           ],
-          tip: "The barbecue on the terrace is great for dinner outside. TODO: note where the gas or charcoal is kept and how to light it.",
-          image: "assets/img/manual-kjokken.jpg",
-          video: ""
+          tip: "The barbecue on the terrace is great for dinner outside. TODO: note where the gas or charcoal is kept and how to light it."
         },
         {
           id: "tv",
@@ -882,9 +946,7 @@ window.SITE = {
             "TODO: Bluetooth speaker or sound system — what is the device called?",
             "If the internet drops: TODO — where is the router, and can it be restarted?"
           ],
-          tip: "",
-          image: "",
-          video: ""
+          tip: ""
         },
         {
           id: "ski",
@@ -899,9 +961,7 @@ window.SITE = {
             "Hang wet outerwear on the hooks, not over the floor indoors.",
             "Please take ski boots off before going into the living room."
           ],
-          tip: "",
-          image: "assets/img/manual-ski.jpg",
-          video: ""
+          tip: ""
         },
         {
           id: "lading",
@@ -916,9 +976,7 @@ window.SITE = {
             "TODO: How is the EV charger used — own cable or fixed cable? Is charging included?",
             "In heavy snow there is also good parking across the road."
           ],
-          tip: "",
-          image: "",
-          video: ""
+          tip: ""
         },
         {
           id: "soppel",
@@ -931,9 +989,7 @@ window.SITE = {
             "TODO: Glass and metal — nearest collection point.",
             "TODO: Deposit bottles."
           ],
-          tip: "Please take the full waste bag out when you leave, even if the bin is full.",
-          image: "",
-          video: ""
+          tip: "Please take the full waste bag out when you leave, even if the bin is full."
         },
         {
           id: "avreise",
@@ -950,9 +1006,7 @@ window.SITE = {
             "Set the temperature back to normal and close all windows and the terrace door.",
             "Turn off the lights, sign out of streaming services and pull the front door shut."
           ],
-          tip: "Left something behind? Send us a message and we will work out how to get it back to you.",
-          image: "",
-          video: ""
+          tip: "Left something behind? Send us a message and we will work out how to get it back to you."
         }
       ]
     },
@@ -995,21 +1049,21 @@ window.SITE = {
         {
           title: "Winter",
           items: [
-            { name: "Voss Resort", desc: "Over 40 km of groomed slopes, with the lifts right outside the door.", meta: "Ski-in / ski-out" },
+            { name: "Voss Resort", desc: "Over 40 km of groomed slopes, with the lifts right outside the door.", meta: "Ski-in / ski-out", img: "assets/img/omrade-loypekart.avif" },
             { name: "Myrkdalen", desc: "Snow-sure ski resort with plenty of variety if you fancy a change for a day.", meta: "approx. 30 min" },
-            { name: "Hanguren", desc: "Take the gondola up from Voss centre for spectacular views and easily accessible trails.", meta: "approx. 15 min" },
-            { name: "Northern lights", desc: "On clear winter evenings guests have watched the aurora straight from the terrace.", meta: "From the chalet" }
+            { name: "Hanguren", desc: "Take the gondola up from Voss centre for spectacular views and easily accessible trails.", meta: "approx. 15 min", img: "assets/img/omrade-hangurstoppen.avif" },
+            { name: "Northern lights", desc: "On clear winter evenings guests have watched the aurora straight from the terrace.", meta: "From the chalet", img: "assets/img/nordlys.avif" }
           ]
         },
         {
           title: "Summer and hiking",
           items: [
-            { name: "Lønahorgi", desc: "A well-known summit hike — you can walk straight from the chalet.", meta: "From the door" },
+            { name: "Lønahorgi", desc: "A well-known summit hike — you can walk straight from the chalet.", meta: "From the door", img: "assets/img/omrade-lonahorgi.avif" },
             { name: "Cycling and mountain biking", desc: "Family-friendly paths around Vangsvatnet and demanding trails in the mountains. The gondola takes you and your bike up.", meta: "approx. 15 min" },
-            { name: "Rafting and river sports", desc: "Rafting, canyoning and river kayaking with experienced guides in Voss centre.", meta: "approx. 15 min" },
+            { name: "Rafting and river sports", desc: "Rafting, canyoning and river kayaking with experienced guides in Voss centre.", meta: "approx. 15 min", img: "assets/img/omrade-gjel.avif" },
             { name: "Paragliding and skydiving", desc: "Tandem flights from the mountain, or skydiving from the airfield at Bømoen.", meta: "approx. 20 min" },
-            { name: "Voss Golf Club", desc: "A scenic 9-hole course for beginners and experienced players alike.", meta: "approx. 20 min" },
-            { name: "Swimming in Vangsvatnet", desc: "A nice beach popular with locals and visitors alike.", meta: "approx. 15 min" }
+            { name: "Voss Golf Club", desc: "A scenic 9-hole course for beginners and experienced players alike.", meta: "approx. 20 min", img: "assets/img/omrade-golf-vangsvatnet.avif" },
+            { name: "Swimming in Vangsvatnet", desc: "A nice beach popular with locals and visitors alike.", meta: "approx. 15 min", img: "assets/img/omrade-bjorkemoen.jpg" }
           ]
         },
         {
@@ -1057,7 +1111,8 @@ window.SITE = {
       openMenu: "Menu",
       langLabel: "Language",
       themeLabel: "Switch between light and dark theme",
-      imagePlaceholder: "Photo coming"
+      imagePlaceholder: "Photo coming",
+      logout: "Sign out"
     }
   }
 };

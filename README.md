@@ -8,7 +8,8 @@ GitHub Pages, Netlify, eller hvilken som helst webhotell-mappe.
 
 | Fil | Hva det er |
 | --- | --- |
-| `index.html` | Forside: hero, om hytta, høydepunkter, soverom, fasiliteter, galleri, anmeldelser, beliggenhet, vertskap |
+| `index.html` | **Landingsside** – åpen for alle. Bilde, kort presentasjon, «Book på Airbnb» og passordfelt |
+| `hytta.html` | Hyttesiden: hero, om hytta, høydepunkter, soverom, fasiliteter, galleri, anmeldelser, beliggenhet, vertskap |
 | `husmanual.html` | Husmanual med wifi, viktige numre og trekkspill-seksjoner (ankomst, jacuzzi, badstue, peis …) |
 | `husregler.html` | Husregler |
 | `omradet.html` | Guide til Voss og omegn |
@@ -16,7 +17,8 @@ GitHub Pages, Netlify, eller hvilken som helst webhotell-mappe.
 | `assets/js/app.js` | Bygger sidene ut fra `content.js`. Trenger normalt ingen endringer. |
 | `assets/css/styles.css` | Design, farger og mørkt tema |
 | `assets/img/` | Bilder |
-| `assets/video/` | Eventuelle videoer til husmanualen |
+| `assets/video/` | Videoer til husmanualen |
+| `admin/passord.html` | Verktøy for å bytte passord (ikke lenket fra siden) |
 
 ## Slik endrer du tekst
 
@@ -31,6 +33,36 @@ jacuzzi styres, søppelsortering osv.). Søk etter `TODO` i filen for å finne d
 
 Nøkkelinfo som gjelder begge språk (adresse, innsjekkstider, wifi, Airbnb-lenke, nødnumre,
 kart) ligger øverst i `meta:`.
+
+## Passord
+
+Landingssiden (`index.html`) er åpen for alle. Hytteside, husmanual, husregler og områdeguide
+krever passord. Passordet ligger **ikke** i klartekst i koden — bare et sha256-avtrykk.
+
+**Passordet er nå `trastolen`. Bytt det før dere deler siden.**
+
+Slik bytter du:
+
+1. Åpne `admin/passord.html` i nettleseren (f.eks. `https://…/admin/passord.html`)
+2. Skriv inn det nye passordet
+3. Kopier linjen du får, og lim den inn i `content.js` der det står `hash:` under `access`
+4. Send det nye passordet til gjestene i Airbnb-meldingen
+
+Gjesten forblir innlogget i nettleseren sin til hen trykker «Logg ut» nederst på siden,
+eller til passordet byttes.
+
+### Hva passordet faktisk beskytter
+
+Dette holder sidene unna søkemotorer og tilfeldige besøkende, men det er **ikke ekte
+sikkerhet**: hele siden ligger som filer på GitHub Pages, og den som kan lese kildekoden
+kan også lese innholdet i husmanualen. Derfor:
+
+* **Ikke legg dørkoden i husmanualen.** Den bør sendes i Airbnb-meldingen, slik teksten
+  legger opp til i dag.
+* Wifi-passord og lignende er greit — der er risikoen at noen må stå i innkjørselen for
+  å ha nytte av det.
+* Skal noe være virkelig hemmelig, trengs ekte innlogging med en server bak. Si fra hvis
+  det blir aktuelt.
 
 ## Slik legger du inn bilder
 
@@ -47,10 +79,26 @@ Bilder som ikke finnes ennå vises som en pen plassholder — siden ser aldri ø
 
 I `content.js`, feltet `video:` på en manual-seksjon:
 
+Bilder og video i husmanualen ligger samlet under `media.manual` i `content.js`, gruppert
+per seksjon:
+
+```js
+manual: {
+  ankomst: [
+    { src: "assets/video/ankomst-kjorevei.mp4", capNo: "Veien opp til hytta", capEn: "The drive up" },
+    { src: "assets/img/manual-kodelas.jpg",     capNo: "Kodelåsen",           capEn: "The keypad lock" }
+  ]
+}
+```
+
+Nøkkelen (`ankomst`, `jacuzzi`, `badstue`, `peis`, `kjokken`, `lading`, `soppel`) må stemme
+med `id` på seksjonen lenger nede i filen. Rekkefølgen i listen er rekkefølgen på siden.
+
 * **Egen film:** legg fila i `assets/video/` og skriv `"assets/video/peis.mp4"`.
 * **YouTube/Vimeo:** lim inn vanlig lenke, f.eks. `"https://youtu.be/xxxxxxxx"` — den bygges automatisk om til en innebygd spiller.
 
-Har en seksjon både `video` og `image`, vises videoen.
+Videoene som ligger inne nå er komprimert til 1–6 MB hver. Legger du inn nye filer rett fra
+telefonen (ofte 20–25 MB), bør de komprimeres først — ellers blir siden treg på mobilnett.
 
 ## Kart
 

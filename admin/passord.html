@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bytt passord · Voss Chalet</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/css/styles.css">
+<style>
+  .tool { max-width: 640px; margin: 0 auto; padding: 60px 20px; }
+  .tool ol { padding-left: 1.3em; color: var(--ink-soft); }
+  .tool li { margin-bottom: .5em; }
+  .out {
+    margin-top: 18px; padding: 16px 18px;
+    background: var(--surface-2); border: 1px solid var(--line);
+    border-radius: var(--radius-s);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: .86rem; word-break: break-all; line-height: 1.6;
+  }
+</style>
+</head>
+<body>
+<main class="tool" id="main">
+  <a href="../index.html" style="color:var(--muted);font-size:.9rem">← Tilbake til siden</a>
+  <h1 style="margin-top:.6em">Bytt passord</h1>
+  <p class="lead">Passordet gjestene bruker for å komme inn på hytteside, husmanual,
+     husregler og områdeguide.</p>
+
+  <ol>
+    <li>Skriv inn det nye passordet under.</li>
+    <li>Kopier linjen du får.</li>
+    <li>Lim den inn i <code>assets/js/content.js</code>, der det står <code>hash:</code> under <code>access</code>.</li>
+    <li>Send det nye passordet til gjestene i Airbnb-meldingen.</li>
+  </ol>
+
+  <form class="landing-form" id="form" style="max-width:420px">
+    <label class="field">
+      <span>Nytt passord</span>
+      <input class="field-input" id="pw" type="text" autocomplete="off" autofocus>
+    </label>
+    <button class="btn btn-primary" type="submit">Lag avtrykk</button>
+  </form>
+
+  <div class="out" id="out" hidden></div>
+
+  <p style="margin-top:28px;font-size:.92rem;color:var(--muted)">
+    Merk: passordet holder sidene skjult for søkemotorer og tilfeldige besøkende, men er ikke
+    ekte sikkerhet — den som leser kildekoden til siden kan finne innholdet. Ikke legg dørkoder
+    eller andre virkelige hemmeligheter i husmanualen.
+  </p>
+</main>
+
+<script>
+document.getElementById('form').addEventListener('submit', async function (e) {
+  e.preventDefault();
+  var pw = document.getElementById('pw').value;
+  var out = document.getElementById('out');
+  if (!pw) return;
+  var buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(pw));
+  var hex = Array.from(new Uint8Array(buf)).map(function (b) {
+    return b.toString(16).padStart(2, '0');
+  }).join('');
+  out.hidden = false;
+  out.textContent = 'hash: "' + hex + '",';
+});
+</script>
+</body>
+</html>
