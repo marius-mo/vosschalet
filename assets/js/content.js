@@ -43,15 +43,27 @@ window.SITE = {
     // Vurdering fra Airbnb – vises som et lite merke i toppen
     rating: { score: "5,0", scoreEn: "5.0", count: 37, badgeNo: "Gjestefavoritt", badgeEn: "Guest favourite" },
 
-    // Vises øverst i husmanualen, med kopier-knapp
-    wifi: { ssid: "Zyxel_4012", password: "8U84CXYX4H" },
+    // Vises øverst i husmanualen, med kopier-knapp og QR-kode.
+    // Endrer dere wifi: kjør `python3 tools/lag-wifi-qr.py` for ny QR.
+    wifi: {
+      ssid: "Zyxel_4012",
+      password: "8U84CXYX4H",
+      qr: "assets/img/wifi-qr.svg"
+    },
 
-    // Vertskapet nås via Airbnb-meldinger, ikke telefon
+    /* Viktige numre. `no`/`en` er teksten til venstre, `value` er det
+       som står til høyre. Er verdien ulik på de to språkene, bruk
+       valueNo og valueEn i stedet for value. */
     emergency: [
-      { label: "Nød (brann / politi / ambulanse)", value: "110 · 112 · 113" },
-      { label: "Legevakt", value: "116 117" },
-      { label: "Veihjelp (Viking)", value: "06000" },
-      { label: "Vert – Michelle og Marius", value: "Melding på Airbnb" }
+      { no: "Nød – brann", en: "Emergency – fire", value: "110" },
+      { no: "Nød – politi", en: "Emergency – police", value: "112" },
+      { no: "Nød – ambulanse", en: "Emergency – ambulance", value: "113" },
+      { no: "Legevakt", en: "Out-of-hours doctor", value: "116 117" },
+      { no: "Veihjelp (Viking)", en: "Roadside assistance (Viking)", value: "06000" },
+      { no: "Førstehjelpsskrin", en: "First aid kit",
+        valueNo: "På vaskerommet", valueEn: "In the utility room" },
+      { no: "Vert – Michelle og Marius", en: "Hosts – Michelle and Marius",
+        valueNo: "Meldinger i Airbnb-appen", valueEn: "Messages in the Airbnb app" }
     ],
 
     // Google Maps: åpne kartet, trykk Del → Bygg inn kart, og lim inn
@@ -361,6 +373,10 @@ window.SITE = {
       wifiPassword: "Passord",
       wifiCopy: "Kopier",
       wifiCopied: "Kopiert",
+      wifiConnect: "Koble til wifi",
+      wifiConnectDone: "Passordet er kopiert",
+      wifiConnectHint: "Åpne wifi-innstillingene på telefonen, velg «{ssid}» og lim inn passordet.",
+      wifiQrHelp: "Eller skann denne med kameraet på telefonen — da kobler den seg til av seg selv.",
       checkInLabel: "Innsjekk",
       checkOutLabel: "Utsjekk",
       printCta: "Skriv ut manualen",
@@ -490,6 +506,7 @@ window.SITE = {
           steps: [
             "Ski, staver og brett settes i garasjen, eller inntil husveggen ved parkeringen.",
             "Skisko og skiutstyr henges på vaskerommet — der er det godt egnet for å tørke klær.",
+            "Førstehjelpsskrinet står også på vaskerommet.",
             "Ta av skistøvlene før dere går inn i stua."
           ],
           tip: ""
@@ -583,49 +600,74 @@ window.SITE = {
         {
           title: "Vinter",
           items: [
-            { name: "Voss Resort", desc: "Over 40 km preparerte løyper, og skiheisene ligger rett utenfor døren.", meta: "Ski in / ski out", img: "assets/img/omrade-loypekart.avif" },
-            { name: "Myrkdalen", desc: "Snøsikkert alpinanlegg med god variasjon hvis dere vil bytte bakke for en dag.", meta: "ca. 30 min" },
-            { name: "Hanguren", desc: "Ta gondolen fra Voss sentrum opp for spektakulær utsikt og lett tilgjengelige løyper.", meta: "ca. 15 min", img: "assets/img/omrade-hangurstoppen.avif" },
+            { name: "Voss Resort", desc: "Over 40 km preparerte løyper for alle nivåer, og skiheisene ligger rett utenfor døren. Skikort kjøpes på vossresort.no, og hele løypekartet ligger til nedlasting nederst på siden.", meta: "Ski in / ski out", map: "Voss Resort, Voss", url: "https://vossresort.no", img: "assets/img/skikart-voss-resort.jpg" },
+            { name: "Myrkdalen", desc: "Snøsikkert alpinanlegg med god variasjon hvis dere vil bytte bakke for en dag.", meta: "ca. 30 min", map: "Myrkdalen Fjellandsby" },
+            { name: "Hanguren", desc: "Ta gondolen fra Voss sentrum opp for spektakulær utsikt og lett tilgjengelige løyper.", meta: "ca. 15 min", map: "Hangurstoppen, Voss", img: "assets/img/omrade-hangurstoppen.avif" },
             { name: "Nordlys", desc: "På klare vinterkvelder har gjester sett nordlyset rett fra terrassen.", meta: "Fra hytta", img: "assets/img/nordlys.avif" }
           ]
         },
         {
           title: "Sommer og fjelltur",
           items: [
-            { name: "Lønahorgi", desc: "Kjent topptur — dere kan gå rett fra hytta.", meta: "Fra døren", img: "assets/img/omrade-lonahorgi.avif" },
+            { name: "Lønahorgi", desc: "Kjent topptur — dere kan gå rett fra hytta.", meta: "Fra døren", map: "Lønahorgi, Voss", img: "assets/img/omrade-lonahorgi.avif" },
             { name: "Sykling og terrengsykling", desc: "Familievennlige sykkelstier rundt Vangsvatnet, og krevende stier i fjellet. Gondolen tar deg og sykkelen opp.", meta: "ca. 15 min" },
-            { name: "Rafting og elvesport", desc: "Rafting, juving og elvepadling med erfarne guider i Voss sentrum.", meta: "ca. 15 min", img: "assets/img/omrade-gjel.avif" },
-            { name: "Paragliding og fallskjermhopp", desc: "Tandemhopp fra fjellet, eller fallskjermhopp fra hoppfeltet på Bømoen.", meta: "ca. 20 min" },
-            { name: "Voss Golfklubb", desc: "9-hulls bane i naturskjønne omgivelser, for både nybegynnere og erfarne.", meta: "ca. 20 min", img: "assets/img/omrade-golf-vangsvatnet.avif" },
-            { name: "Bading i Vangsvatnet", desc: "Fin strand som er populær blant både lokale og besøkende.", meta: "ca. 15 min", img: "assets/img/omrade-bjorkemoen.jpg" }
+            { name: "Rafting og elvesport", desc: "Rafting, juving og elvepadling med erfarne guider i Voss sentrum.", meta: "ca. 15 min", map: "rafting Voss", img: "assets/img/omrade-gjel.avif" },
+            { name: "Paragliding og fallskjermhopp", desc: "Tandemhopp fra fjellet, eller fallskjermhopp fra hoppfeltet på Bømoen.", meta: "ca. 20 min", map: "Skydive Voss, Bømoen" },
+            { name: "Voss Golfklubb", desc: "9-hulls bane i naturskjønne omgivelser, for både nybegynnere og erfarne.", meta: "ca. 20 min", map: "Voss Golfklubb", img: "assets/img/omrade-golf-vangsvatnet.avif" },
+            { name: "Bading i Vangsvatnet", desc: "Fin strand som er populær blant både lokale og besøkende.", meta: "ca. 15 min", map: "Vangsvatnet, Voss", img: "assets/img/omrade-bjorkemoen.jpg" }
           ]
         },
         {
           title: "Mat, kultur og familie",
           items: [
-            { name: "Tre Brør", desc: "Hyggelig kafé og bar i sentrum — bra for lunsj eller en øl etter skiing.", meta: "ca. 15 min" },
-            { name: "Park Hotel Vossevangen", desc: "Lokal mat i sentrum, fint for en middag ute.", meta: "ca. 15 min" },
-            { name: "Voss Folkemuseum", desc: "Lokalhistorie i vakre omgivelser.", meta: "ca. 15 min" },
-            { name: "Vossabadet", desc: "Svømmehall, utendørsbasseng og egen barneavdeling — perfekt på regnværsdager.", meta: "ca. 15 min" },
-            { name: "Bømoen", desc: "Turstier, sykkelmuligheter og lekeplasser barna elsker.", meta: "ca. 20 min" }
+            { name: "Tre Brør", desc: "Hyggelig kafé og bar i sentrum — bra for lunsj eller en øl etter skiing.", meta: "ca. 15 min", map: "Tre Brør, Voss" },
+            { name: "Park Hotel Vossevangen", desc: "Lokal mat i sentrum, fint for en middag ute.", meta: "ca. 15 min", map: "Park Hotel Vossevangen" },
+            { name: "Voss Folkemuseum", desc: "Lokalhistorie i vakre omgivelser.", meta: "ca. 15 min", map: "Voss Folkemuseum" },
+            { name: "Voss Vind", desc: "Innendørs fallskjermhopp i vindtunnel — moro for både barn og voksne, og helt uavhengig av været.", meta: "ca. 15 min", map: "Voss Vind", video: "https://www.youtube.com/watch?v=Y6_gW-LJPik" },
+            { name: "Vossabadet", desc: "Svømmehall, utendørsbasseng og egen barneavdeling — perfekt på regnværsdager.", meta: "ca. 15 min", map: "Vossabadet" },
+            { name: "Bømoen", desc: "Turstier, sykkelmuligheter og lekeplasser barna elsker.", meta: "ca. 20 min", map: "Bømoen, Voss" }
           ]
         },
         {
           title: "Dagsturer",
           items: [
-            { name: "Flåmsbanen og Nærøyfjorden", desc: "En av verdens vakreste togturer, og en UNESCO-fjord i verdensklasse.", meta: "ca. 1–1,5 t" },
-            { name: "Hardangerfjorden", desc: "Fossefall, frukthager og fjord — flott på en dagstur.", meta: "ca. 1–1,5 t" },
-            { name: "Bergen", desc: "Bryggen, Fløyen og fisketorget. Fint som stopp på vei til eller fra flyplassen.", meta: "ca. 1,5 t" }
+            { name: "Flåmsbanen og Nærøyfjorden", desc: "En av verdens vakreste togturer, og en UNESCO-fjord i verdensklasse.", meta: "ca. 1–1,5 t", map: "Flåm, Norge" },
+            { name: "Hardangerfjorden", desc: "Fossefall, frukthager og fjord — flott på en dagstur.", meta: "ca. 1–1,5 t", map: "Hardangerfjorden" },
+            { name: "Bergen", desc: "Bryggen, Fløyen og fisketorget. Fint som stopp på vei til eller fra flyplassen.", meta: "ca. 1,5 t", map: "Bergen, Norge" }
           ]
         },
         {
           title: "Praktisk",
           items: [
-            { name: "Dagligvare", desc: "Flere butikker å velge mellom, alle en kort kjøretur unna.", meta: "ca. 10 min" },
-            { name: "Vinmonopolet Voss", desc: "I sentrum. Merk kortere åpningstid lørdag og stengt søndag.", meta: "ca. 15 min" },
-            { name: "Apotek og legevakt", desc: "Begge i sentrum. Legevakt: ring 116 117.", meta: "ca. 15 min" },
-            { name: "Voss stasjon", desc: "Tog til Bergen og Oslo — praktisk hvis noen kommer uten bil.", meta: "ca. 15 min" }
+            { name: "Dagligvare", desc: "Flere butikker å velge mellom, alle en kort kjøretur unna.", meta: "ca. 10 min", map: "dagligvare Voss" },
+            { name: "Vinmonopolet Voss", desc: "I sentrum. Merk kortere åpningstid lørdag og stengt søndag.", meta: "ca. 15 min", map: "Vinmonopolet Voss" },
+            { name: "Apotek og legevakt", desc: "Begge i sentrum. Legevakt: ring 116 117.", meta: "ca. 15 min", map: "Apotek Voss" },
+            { name: "Voss stasjon", desc: "Tog til Bergen og Oslo — praktisk hvis noen kommer uten bil.", meta: "ca. 15 min", map: "Voss stasjon" }
           ]
+        }
+      ]
+    },
+
+    // Kart og dokumenter til nedlasting, nederst på områdesiden
+    downloads: {
+      title: "Kart og guider",
+      subtitle: "Verdt å laste ned før dere drar ut — de virker også der mobildekningen er dårlig.",
+      items: [
+        {
+          name: "Skiløypekart – Voss Resort",
+          desc: "Alle heiser og nedfarter med symbolforklaring, oversatt til engelsk.",
+          meta: "JPG · 1,4 MB",
+          file: "assets/filer/skikart-voss-resort.jpg",
+          img: "assets/img/skikart-voss-resort.jpg",
+          cta: "Åpne kartet"
+        },
+        {
+          name: "Vandrekart – Voss Resort",
+          desc: "Tolv merkede turer med lengde, stigning og tidsbruk, på norsk og engelsk. Tur 8 går fra Hangurstoppen om Tråstølen.",
+          meta: "PDF · 8,6 MB · 2 sider",
+          file: "assets/filer/voss-resort-vandreguide.pdf",
+          img: "assets/img/vandreguide-forside.jpg",
+          cta: "Last ned PDF"
         }
       ]
     },
@@ -843,6 +885,10 @@ window.SITE = {
       wifiPassword: "Password",
       wifiCopy: "Copy",
       wifiCopied: "Copied",
+      wifiConnect: "Connect to Wi-Fi",
+      wifiConnectDone: "Password copied",
+      wifiConnectHint: "Open Wi-Fi settings on your phone, choose “{ssid}” and paste the password.",
+      wifiQrHelp: "Or scan this with your phone camera — it will connect by itself.",
       checkInLabel: "Check-in",
       checkOutLabel: "Check-out",
       printCta: "Print the manual",
@@ -968,6 +1014,7 @@ window.SITE = {
           steps: [
             "Skis, poles and boards go in the garage, or against the wall by the parking area.",
             "Ski boots and gear hang in the utility room — it is the best place in the house for drying clothes.",
+            "The first aid kit is in the utility room as well.",
             "Please take ski boots off before going into the living room."
           ],
           tip: ""
@@ -1057,49 +1104,73 @@ window.SITE = {
         {
           title: "Winter",
           items: [
-            { name: "Voss Resort", desc: "Over 40 km of groomed slopes, with the lifts right outside the door.", meta: "Ski-in / ski-out", img: "assets/img/omrade-loypekart.avif" },
-            { name: "Myrkdalen", desc: "Snow-sure ski resort with plenty of variety if you fancy a change for a day.", meta: "approx. 30 min" },
-            { name: "Hanguren", desc: "Take the gondola up from Voss centre for spectacular views and easily accessible trails.", meta: "approx. 15 min", img: "assets/img/omrade-hangurstoppen.avif" },
+            { name: "Voss Resort", desc: "Over 40 km of groomed slopes for every level, with the lifts right outside the door. Lift passes are sold at vossresort.no, and the full piste map is available to download at the bottom of this page.", meta: "Ski-in / ski-out", map: "Voss Resort, Voss", url: "https://vossresort.no", img: "assets/img/skikart-voss-resort.jpg" },
+            { name: "Myrkdalen", desc: "Snow-sure ski resort with plenty of variety if you fancy a change for a day.", meta: "approx. 30 min", map: "Myrkdalen Fjellandsby" },
+            { name: "Hanguren", desc: "Take the gondola up from Voss centre for spectacular views and easily accessible trails.", meta: "approx. 15 min", map: "Hangurstoppen, Voss", img: "assets/img/omrade-hangurstoppen.avif" },
             { name: "Northern lights", desc: "On clear winter evenings guests have watched the aurora straight from the terrace.", meta: "From the chalet", img: "assets/img/nordlys.avif" }
           ]
         },
         {
           title: "Summer and hiking",
           items: [
-            { name: "Lønahorgi", desc: "A well-known summit hike — you can walk straight from the chalet.", meta: "From the door", img: "assets/img/omrade-lonahorgi.avif" },
+            { name: "Lønahorgi", desc: "A well-known summit hike — you can walk straight from the chalet.", meta: "From the door", map: "Lønahorgi, Voss", img: "assets/img/omrade-lonahorgi.avif" },
             { name: "Cycling and mountain biking", desc: "Family-friendly paths around Vangsvatnet and demanding trails in the mountains. The gondola takes you and your bike up.", meta: "approx. 15 min" },
-            { name: "Rafting and river sports", desc: "Rafting, canyoning and river kayaking with experienced guides in Voss centre.", meta: "approx. 15 min", img: "assets/img/omrade-gjel.avif" },
-            { name: "Paragliding and skydiving", desc: "Tandem flights from the mountain, or skydiving from the airfield at Bømoen.", meta: "approx. 20 min" },
-            { name: "Voss Golf Club", desc: "A scenic 9-hole course for beginners and experienced players alike.", meta: "approx. 20 min", img: "assets/img/omrade-golf-vangsvatnet.avif" },
-            { name: "Swimming in Vangsvatnet", desc: "A nice beach popular with locals and visitors alike.", meta: "approx. 15 min", img: "assets/img/omrade-bjorkemoen.jpg" }
+            { name: "Rafting and river sports", desc: "Rafting, canyoning and river kayaking with experienced guides in Voss centre.", meta: "approx. 15 min", map: "rafting Voss", img: "assets/img/omrade-gjel.avif" },
+            { name: "Paragliding and skydiving", desc: "Tandem flights from the mountain, or skydiving from the airfield at Bømoen.", meta: "approx. 20 min", map: "Skydive Voss, Bømoen" },
+            { name: "Voss Golf Club", desc: "A scenic 9-hole course for beginners and experienced players alike.", meta: "approx. 20 min", map: "Voss Golfklubb", img: "assets/img/omrade-golf-vangsvatnet.avif" },
+            { name: "Swimming in Vangsvatnet", desc: "A nice beach popular with locals and visitors alike.", meta: "approx. 15 min", map: "Vangsvatnet, Voss", img: "assets/img/omrade-bjorkemoen.jpg" }
           ]
         },
         {
           title: "Food, culture and family",
           items: [
-            { name: "Tre Brør", desc: "A friendly café and bar in the centre — good for lunch or an après-ski beer.", meta: "approx. 15 min" },
-            { name: "Park Hotel Vossevangen", desc: "Local food in the centre, good for dinner out.", meta: "approx. 15 min" },
-            { name: "Voss Folk Museum", desc: "Local history in beautiful surroundings.", meta: "approx. 15 min" },
-            { name: "Vossabadet", desc: "Indoor pool, outdoor pool and a children's area — perfect on a rainy day.", meta: "approx. 15 min" },
-            { name: "Bømoen", desc: "Walking trails, cycling and playgrounds the children love.", meta: "approx. 20 min" }
+            { name: "Tre Brør", desc: "A friendly café and bar in the centre — good for lunch or an après-ski beer.", meta: "approx. 15 min", map: "Tre Brør, Voss" },
+            { name: "Park Hotel Vossevangen", desc: "Local food in the centre, good for dinner out.", meta: "approx. 15 min", map: "Park Hotel Vossevangen" },
+            { name: "Voss Folk Museum", desc: "Local history in beautiful surroundings.", meta: "approx. 15 min", map: "Voss Folkemuseum" },
+            { name: "Voss Vind", desc: "Indoor skydiving in a wind tunnel — great fun for children and adults alike, whatever the weather is doing.", meta: "approx. 15 min", map: "Voss Vind", video: "https://www.youtube.com/watch?v=Y6_gW-LJPik" },
+            { name: "Vossabadet", desc: "Indoor pool, outdoor pool and a children's area — perfect on a rainy day.", meta: "approx. 15 min", map: "Vossabadet" },
+            { name: "Bømoen", desc: "Walking trails, cycling and playgrounds the children love.", meta: "approx. 20 min", map: "Bømoen, Voss" }
           ]
         },
         {
           title: "Day trips",
           items: [
-            { name: "Flåm Railway and the Nærøyfjord", desc: "One of the world's most beautiful train journeys, and a UNESCO-listed fjord.", meta: "approx. 1–1.5 h" },
-            { name: "Hardangerfjord", desc: "Waterfalls, orchards and fjord — a great day out.", meta: "approx. 1–1.5 h" },
-            { name: "Bergen", desc: "Bryggen, Mount Fløyen and the fish market. A good stop on the way to or from the airport.", meta: "approx. 1.5 h" }
+            { name: "Flåm Railway and the Nærøyfjord", desc: "One of the world's most beautiful train journeys, and a UNESCO-listed fjord.", meta: "approx. 1–1.5 h", map: "Flåm, Norway" },
+            { name: "Hardangerfjord", desc: "Waterfalls, orchards and fjord — a great day out.", meta: "approx. 1–1.5 h", map: "Hardangerfjorden" },
+            { name: "Bergen", desc: "Bryggen, Mount Fløyen and the fish market. A good stop on the way to or from the airport.", meta: "approx. 1.5 h", map: "Bergen, Norge" }
           ]
         },
         {
           title: "Practical",
           items: [
-            { name: "Grocery stores", desc: "Several to choose from, all a short drive away.", meta: "approx. 10 min" },
-            { name: "Vinmonopolet Voss", desc: "The state alcohol shop in the centre. Short hours on Saturday, closed Sunday.", meta: "approx. 15 min" },
-            { name: "Pharmacy and out-of-hours clinic", desc: "Both in the centre. Medical helpline: 116 117.", meta: "approx. 15 min" },
-            { name: "Voss train station", desc: "Trains to Bergen and Oslo — handy if someone arrives without a car.", meta: "approx. 15 min" }
+            { name: "Grocery stores", desc: "Several to choose from, all a short drive away.", meta: "approx. 10 min", map: "grocery store Voss" },
+            { name: "Vinmonopolet Voss", desc: "The state alcohol shop in the centre. Short hours on Saturday, closed Sunday.", meta: "approx. 15 min", map: "Vinmonopolet Voss" },
+            { name: "Pharmacy and out-of-hours clinic", desc: "Both in the centre. Medical helpline: 116 117.", meta: "approx. 15 min", map: "Apotek Voss" },
+            { name: "Voss train station", desc: "Trains to Bergen and Oslo — handy if someone arrives without a car.", meta: "approx. 15 min", map: "Voss stasjon" }
           ]
+        }
+      ]
+    },
+
+    downloads: {
+      title: "Maps and guides",
+      subtitle: "Worth downloading before you head out — they work where mobile coverage does not.",
+      items: [
+        {
+          name: "Piste map – Voss Resort",
+          desc: "Every lift and slope with a full key, in Norwegian and English.",
+          meta: "JPG · 1.4 MB",
+          file: "assets/filer/skikart-voss-resort.jpg",
+          img: "assets/img/skikart-voss-resort.jpg",
+          cta: "Open the map"
+        },
+        {
+          name: "Hiking map – Voss Resort",
+          desc: "Twelve marked routes with distance, ascent and estimated time, in Norwegian and English. Route 8 runs from Hangurstoppen past Tråstølen.",
+          meta: "PDF · 8.6 MB · 2 pages",
+          file: "assets/filer/voss-resort-vandreguide.pdf",
+          img: "assets/img/vandreguide-forside.jpg",
+          cta: "Download PDF"
         }
       ]
     },

@@ -18,6 +18,8 @@ GitHub Pages, Netlify, eller hvilken som helst webhotell-mappe.
 | `assets/css/styles.css` | Design, farger og mørkt tema |
 | `assets/img/` | Bilder |
 | `assets/video/` | Videoer til husmanualen |
+| `assets/filer/` | Kart og PDF-er gjestene kan laste ned |
+| `tools/lag-wifi-qr.py` | Lager QR-koden gjestene skanner for å koble seg på wifi |
 | `admin/passord.html` | Verktøy for å bytte passord (ikke lenket fra siden) |
 
 ## Slik endrer du tekst
@@ -33,6 +35,35 @@ jacuzzi styres, søppelsortering osv.). Søk etter `TODO` i filen for å finne d
 
 Nøkkelinfo som gjelder begge språk (adresse, innsjekkstider, wifi, Airbnb-lenke, nødnumre,
 kart) ligger øverst i `meta:`.
+
+## Wifi-QR
+
+Husmanualen viser en QR-kode gjestene kan skanne for å koble telefonen på wifi automatisk.
+Koden er generert fra verdiene i `content.js`. **Endrer dere wifi-navn eller passord, må QR-en
+lages på nytt:**
+
+```bash
+pip install qrcode pillow opencv-python-headless
+python3 tools/lag-wifi-qr.py
+```
+
+Skriptet leser `content.js`, skriver `assets/img/wifi-qr.svg`, og kontrollerer til slutt at
+koden faktisk lar seg skanne. (Send meg beskjed hvis du heller vil at jeg gjør det.)
+
+Knappen «Koble til wifi» over QR-koden kopierer passordet til utklippstavla. En nettside kan
+ikke koble telefonen til et nettverk på egen hånd — den funksjonen finnes ikke i nettleseren —
+så QR-koden er den eneste helautomatiske veien.
+
+## Nedlastinger og kartlenker
+
+Nederst på områdesiden ligger kart og guider til nedlasting, satt opp under `downloads` i
+`content.js`. Legg filen i `assets/filer/`, og et forhåndsvisningsbilde i `assets/img/`.
+
+Hvert sted i områdeguiden kan ha:
+
+* `map: "Voss Resort, Voss"` – lager en Google Maps-lenke av søketeksten
+* `url: "https://vossresort.no"` – lenke til stedets egen nettside
+* `img:` eller `video:` – bilde, eller en YouTube-/Vimeo-lenke som spilles av i kortet
 
 ## Passord
 

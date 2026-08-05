@@ -658,6 +658,25 @@ p { margin: 0 0 1em; }
 .copy-btn:hover { border-color: var(--accent); color: var(--accent); }
 .copy-btn.is-done { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
 
+/* Wifi-snarvei: knapp som kopierer passordet, og QR-kode under */
+.wifi-connect { margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--line); }
+.wifi-btn { width: 100%; }
+.wifi-btn svg { width: 17px; height: 17px; }
+.wifi-hint {
+  margin: 10px 0 0; font-size: .87rem; line-height: 1.5;
+  color: var(--accent); background: var(--accent-soft);
+  border-radius: var(--radius-s); padding: .6em .8em;
+}
+.wifi-qr { margin: 14px 0 0; text-align: center; }
+.wifi-qr img {
+  width: 156px; height: 156px; margin: 0 auto;
+  background: #fff; border: 1px solid var(--line);
+  border-radius: var(--radius-s); padding: 8px;
+}
+.wifi-qr figcaption {
+  margin-top: 9px; font-size: .82rem; color: var(--muted); line-height: 1.45;
+}
+
 .accordion { display: grid; gap: 12px; }
 
 .acc-item {
@@ -772,7 +791,28 @@ p { margin: 0 0 1em; }
 }
 .area-item.has-img { padding: 0; display: flex; flex-direction: column; }
 .area-img { aspect-ratio: 16 / 10; background: var(--surface-2); }
-.area-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.area-img img,
+.area-img iframe,
+.area-img video { width: 100%; height: 100%; object-fit: cover; border: 0; display: block; }
+
+/* Kart og guider til nedlasting */
+.download-list { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
+.download-item {
+  display: flex; flex-direction: column;
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--radius); overflow: hidden;
+  box-shadow: var(--shadow-s);
+}
+.download-thumb { display: block; aspect-ratio: 16 / 10; background: var(--surface-2); }
+.download-thumb img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
+.download-body { padding: 22px 24px 24px; display: flex; flex-direction: column; flex: 1; }
+.download-body h3 { font-family: var(--font-body); font-size: 1.05rem; margin-bottom: .3em; }
+.download-body p { color: var(--muted); font-size: .94rem; margin: 0 0 18px; }
+.download-foot {
+  margin-top: auto; display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+}
+.download-foot svg { width: 16px; height: 16px; }
+.download-meta { font-size: .82rem; color: var(--muted); }
 .area-item.has-img .area-body { padding: 18px 22px 20px; }
 .area-item-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: .3em; }
 .area-item h3 { font-family: var(--font-body); font-size: 1.02rem; margin: 0; }
@@ -781,6 +821,14 @@ p { margin: 0 0 1em; }
   background: var(--accent-soft); border-radius: 999px; padding: .2em .7em; white-space: nowrap; flex: none;
 }
 .area-item p { margin: 0; color: var(--muted); font-size: .94rem; }
+.area-links { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 14px; }
+.area-link {
+  display: inline-flex; align-items: center; gap: .4em;
+  font-size: .87rem; font-weight: 600;
+  color: var(--accent); text-decoration: none;
+}
+.area-link svg { width: 15px; height: 15px; flex: none; }
+.area-link:hover { text-decoration: underline; }
 
 /* --- Bunntekst ------------------------------------------------------ */
 

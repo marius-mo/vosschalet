@@ -78,6 +78,8 @@
     bulb: "M9.5 18.5h5M10.5 21.5h3M12 3a6 6 0 0 1 3.8 10.6V16.5h-7.6v-2.9A6 6 0 0 1 12 3z",
     printer: "M7 8.5V4h10v4.5M7 16.5H5a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-2M7 14.5h10V21H7z",
     marker: "M12 21.5s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11zM12 8a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5z",
+    download: "M12 3.5v11M7.5 10.5l4.5 4.5 4.5-4.5M4.5 19.5h15",
+    link: "M10 13.5a3.5 3.5 0 0 0 5 0l3-3a3.5 3.5 0 0 0-5-5l-1 1M14 10.5a3.5 3.5 0 0 0-5 0l-3 3a3.5 3.5 0 0 0 5 5l1-1",
     logo: "M2.5 20l6.5-11.5 3.6 6.3 2.1-3.4L21.5 20zM9 8.5L12.5 3l3.7 6.3",
     quote: "M9 11H5.5V7.5H9zM18.5 11H15V7.5h3.5zM9 11c0 3.5-1.5 5-3.5 5.5M18.5 11c0 3.5-1.5 5-3.5 5.5"
   };
@@ -664,29 +666,71 @@
     );
   }
 
+  // Kopierer tekst til utklippstavla, og melder fra om det gikk bra
+  function copyText(value, onDone) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(value).then(onDone, function () {});
+      return;
+    }
+    var ta = el("textarea", { style: "position:fixed;opacity:0" });
+    ta.value = value;
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand("copy"); onDone(); } catch (err) {}
+    document.body.removeChild(ta);
+  }
+
   function copyRow(label, value) {
     var btn = el("button", { class: "copy-btn", type: "button", text: T.manual.wifiCopy });
     btn.addEventListener("click", function () {
-      var done = function () {
+      copyText(value, function () {
         btn.textContent = T.manual.wifiCopied;
         btn.classList.add("is-done");
-        setTimeout(function () { btn.textContent = T.manual.wifiCopy; btn.classList.remove("is-done"); }, 1800);
-      };
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(value).then(done, function () {});
-      } else {
-        var ta = el("textarea", { style: "position:fixed;opacity:0" });
-        ta.value = value;
-        document.body.appendChild(ta);
-        ta.select();
-        try { document.execCommand("copy"); done(); } catch (err) {}
-        document.body.removeChild(ta);
-      }
+        setTimeout(function () {
+          btn.textContent = T.manual.wifiCopy;
+          btn.classList.remove("is-done");
+        }, 1800);
+      });
     });
     return el("div", { class: "info-row" }, [
       el("span", { text: label }),
       el("strong", { text: value }),
       btn
+    ]);
+  }
+
+  /* Snarvei for telefoner: ett trykk kopierer passordet, og QR-koden
+     under kobler telefonen til av seg selv når den skannes.
+     (Nettsider kan ikke koble en telefon til wifi på egen hånd — det
+     finnes ingen slik funksjon i nettleseren. QR-koden er veien dit.) */
+  function wifiConnect() {
+    var m = T.manual;
+    var hint = el("p", { class: "wifi-hint", hidden: "" ,
+      text: (m.wifiConnectHint || "").replace("{ssid}", S.meta.wifi.ssid) });
+
+    var btn = el("button", { class: "btn btn-primary btn-sm wifi-btn", type: "button" }, [
+      icon("wifi"), el("span", { text: m.wifiConnect })
+    ]);
+
+    btn.addEventListener("click", function () {
+      copyText(S.meta.wifi.password, function () {
+        btn.classList.add("is-done");
+        btn.replaceChildren(icon("check"), el("span", { text: m.wifiConnectDone }));
+        hint.hidden = false;
+        setTimeout(function () {
+          btn.classList.remove("is-done");
+          btn.replaceChildren(icon("wifi"), el("span", { text: m.wifiConnect }));
+        }, 4000);
+      });
+    });
+
+    return el("div", { class: "wifi-connect" }, [
+      btn,
+      hint,
+      S.meta.wifi.qr ? el("figure", { class: "wifi-qr" }, [
+        picture(S.meta.wifi.qr, m.wifiTitle),
+        el("figcaption", { text: m.wifiQrHelp })
+      ]) : null
     ]);
   }
 
@@ -697,7 +741,8 @@
       el("div", { class: "info-card" }, [
         el("h3", { text: m.wifiTitle }),
         copyRow(m.wifiNetwork, S.meta.wifi.ssid),
-        copyRow(m.wifiPassword, S.meta.wifi.password)
+        copyRow(m.wifiPassword, S.meta.wifi.password),
+        wifiConnect()
       ]),
       el("div", { class: "info-card" }, [
         el("h3", { text: m.checkInLabel + " / " + m.checkOutLabel }),
@@ -707,7 +752,9 @@
       el("div", { class: "info-card" }, [
         el("h3", { text: m.emergencyTitle }),
         el("ul", { class: "emergency" }, S.meta.emergency.map(function (e) {
-          return el("li", {}, [el("span", { text: e.label }), el("strong", { text: e.value })]);
+          var label = (lang === "no" ? e.no : e.en) || e.label;
+          var value = (lang === "no" ? e.valueNo : e.valueEn) || e.value;
+          return el("li", {}, [el("span", { text: label }), el("strong", { text: value })]);
         }))
       ])
     ]);
@@ -796,14 +843,25 @@
         return el("div", { class: "area-block" }, [
           el("h2", { text: cat.title }),
           el("div", { class: "area-list" }, cat.items.map(function (item) {
-            return el("article", { class: "area-item reveal" + (item.img ? " has-img" : "") }, [
-              item.img ? el("div", { class: "area-img" }, [picture(item.img, item.name)]) : null,
+            var media = item.video || item.img;
+            return el("article", { class: "area-item reveal" + (media ? " has-img" : "") }, [
+              media ? el("div", { class: "area-img" }, [mediaItem(media, item.name)]) : null,
               el("div", { class: "area-body" }, [
                 el("div", { class: "area-item-head" }, [
                   el("h3", { text: item.name }),
                   item.meta ? el("span", { class: "meta", text: item.meta }) : null
                 ]),
-                el("p", { text: item.desc })
+                el("p", { text: item.desc }),
+                (item.map || item.url) ? el("div", { class: "area-links" }, [
+                  item.map ? el("a", {
+                    class: "area-link",
+                    href: "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(item.map),
+                    target: "_blank", rel: "noopener"
+                  }, [icon("marker"), el("span", { text: T.location.mapCta })]) : null,
+                  item.url ? el("a", {
+                    class: "area-link", href: item.url, target: "_blank", rel: "noopener"
+                  }, [icon("link"), el("span", { text: item.url.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "") })]) : null
+                ]) : null
               ])
             ]);
           }))
@@ -811,7 +869,33 @@
       }))
     ]);
 
-    main.appendChild(frag([pageHead(a.title, a.intro), body, ctaBand()]));
+    // Kart og dokumenter til nedlasting
+    var dl = T.downloads;
+    var downloads = null;
+    if (dl && dl.items && dl.items.length) {
+      downloads = el("section", { class: "section section-alt", id: "nedlasting" }, [
+        el("div", { class: "wrap" }, [
+          sectionHead(dl.title, dl.subtitle),
+          el("div", { class: "download-list" }, dl.items.map(function (d) {
+            return el("article", { class: "download-item reveal" }, [
+              el("a", { class: "download-thumb", href: d.file, target: "_blank", rel: "noopener", "aria-hidden": "true", tabindex: "-1" },
+                [picture(d.img, d.name)]),
+              el("div", { class: "download-body" }, [
+                el("h3", { text: d.name }),
+                el("p", { text: d.desc }),
+                el("div", { class: "download-foot" }, [
+                  el("a", { class: "btn btn-ghost btn-sm", href: d.file, download: "", target: "_blank", rel: "noopener" },
+                    [icon("download"), document.createTextNode(d.cta)]),
+                  el("span", { class: "download-meta", text: d.meta })
+                ])
+              ])
+            ]);
+          }))
+        ])
+      ]);
+    }
+
+    main.appendChild(frag([pageHead(a.title, a.intro), body, downloads, ctaBand()]));
   }
 
   /* --- Landingsside (index.html) --------------------------------------- */
