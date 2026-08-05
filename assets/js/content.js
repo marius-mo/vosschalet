@@ -43,8 +43,8 @@ window.SITE = {
     // Vurdering fra Airbnb – vises som et lite merke i toppen
     rating: { score: "5,0", scoreEn: "5.0", count: 37, badgeNo: "Gjestefavoritt", badgeEn: "Guest favourite" },
 
-    // TODO: ekte wifi-info. Vises i husmanualen med kopier-knapp.
-    wifi: { ssid: "TODO-nettverksnavn", password: "TODO-passord" },
+    // Vises øverst i husmanualen, med kopier-knapp
+    wifi: { ssid: "Zyxel_4012", password: "8U84CXYX4H" },
 
     // TODO: sjekk at numrene stemmer, og fyll inn eget telefonnummer
     emergency: [
