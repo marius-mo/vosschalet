@@ -31,7 +31,7 @@ window.SITE = {
     // opp i bunnteksten — la dem stå tomme for å holde dem skjult.
     email: "",
     phone: "",
-    address: "Tråstølen, Voss, Vestland",
+    address: "Tråstølsvegen 10, Voss",
 
     // Nøkkelfakta fra Airbnb-annonsen
     facts: { guests: 9, bedrooms: 4, beds: 6, baths: 2 },
@@ -59,7 +59,7 @@ window.SITE = {
     mapEmbed: "",
 
     // Kartlenke som åpnes i ny fane (fungerer selv uten innebygd kart)
-    mapLink: "https://www.google.com/maps/search/?api=1&query=Tr%C3%A5st%C3%B8len+Voss",
+    mapLink: "https://www.google.com/maps/search/?api=1&query=Tr%C3%A5st%C3%B8lsvegen+10%2C+Voss",
 
     /* -----------------------------------------------------------------
        PASSORD TIL GJESTESIDENE
