@@ -73,10 +73,10 @@ window.SITE = {
          2. Skriv inn ønsket passord
          3. Kopier linjen du får, og lim den inn som `hash:` under
 
-       Nåværende passord: trastolen   ← BYTT DETTE
+       Nåværende passord: modernchalet
        ----------------------------------------------------------------- */
     access: {
-      hash: "5de2ea7585148aed4aa913c4d304cdfae2e751c5c7485ea2c4bd7bd13d4e605c",
+      hash: "ec02c2867ba5833ec4203fd810cb821babe6c7461ac537e38599cb05f6580359",
       // Liten hjelpetekst under passordfeltet. La stå tom for å skjule.
       hintNo: "Passordet står i meldingen dere fikk på Airbnb.",
       hintEn: "The password is in the message we sent you on Airbnb."

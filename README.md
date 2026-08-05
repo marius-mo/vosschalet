@@ -39,7 +39,7 @@ kart) ligger øverst i `meta:`.
 Landingssiden (`index.html`) er åpen for alle. Hytteside, husmanual, husregler og områdeguide
 krever passord. Passordet ligger **ikke** i klartekst i koden — bare et sha256-avtrykk.
 
-**Passordet er nå `trastolen`. Bytt det før dere deler siden.**
+**Passordet er `modernchalet`.**
 
 Slik bytter du:
 
