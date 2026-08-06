@@ -33,12 +33,13 @@ const bilde = (sti) =>
     ? BILDEMAPPE + sti.slice("assets/img/".length)
     : sti;
 
-// Videofil -> QR-kode og bildetekst
+// Videofil (eller videolenke) -> QR-kode. Lages av tools/lag-video-qr.py.
 const QR = {
   "assets/video/ankomst-kjorevei.mp4": "assets/img/qr/video-ankomst-kjorevei.svg",
   "assets/video/jacuzzi.mp4": "assets/img/qr/video-jacuzzi.svg",
   "assets/video/badstue.mp4": "assets/img/qr/video-badstue.svg",
   "assets/video/kjokken-kokende-vann.mp4": "assets/img/qr/video-kjokken-kokende-vann.svg",
+  "https://www.youtube.com/watch?v=Y6_gW-LJPik": "assets/img/qr/video-voss-vind.svg",
 };
 
 // Setninger som bare gir mening på skjerm, lukes bort fra papirversjonen
@@ -65,6 +66,8 @@ const T_ = {
     nettside: "Hele guiden på nett",
     nettsideTekst: "Skann for å åpne nettsiden med bilder, video og tips til området. Passordet står i meldingen dere fikk på Airbnb.",
     tips: "Tips",
+    kartTittel: "Kart til hvert sted",
+    kartTekst: "Skann for å åpne områdeguiden på nett. Der ligger det en kartlenke til hvert av stedene på denne siden.",
   },
   en: {
     manualTittel: "House manual",
@@ -74,6 +77,8 @@ const T_ = {
     nettside: "The full guide online",
     nettsideTekst: "Scan to open the website with photos, video and local tips. The password is in the message we sent you on Airbnb.",
     tips: "Tip",
+    kartTittel: "Maps for every place",
+    kartTekst: "Scan to open the area guide online. Every place on this page has a map link there.",
   },
 };
 
@@ -150,18 +155,62 @@ function seksjon(s, T, L, nr) {
 }
 
 function husregler(T, L) {
+  const r = T.rules;
+  // Listen med praktiske punkter er valgfri, akkurat som på nettsiden
+  const mer = (r.more && r.more.length) ? `
+    <h3>${esc(papir(r.moreTitle))}</h3>
+    <ul>${r.more.map((x) => `<li>${esc(papir(x))}</li>`).join("")}</ul>` : "";
+
   return `
   <section class="del sideskift">
-    <h2>${esc(T_[L].reglerTittel)}</h2>
-    <p>${esc(T.rules.intro)}</p>
-    <dl class="regler">${T.rules.items.map((r) => `
-      <dt>${esc(r.title)}</dt><dd>${esc(r.text)}</dd>`).join("")}
-    </dl>
-    <h3>${esc(T.rules.moreTitle)}</h3>
-    <ul>${T.rules.more.map((x) => `<li>${esc(x)}</li>`).join("")}</ul>
-    <p class="tips"><strong>${esc(T.rules.contactTitle)}</strong> ${esc(T.rules.contactText)}</p>
-  </section>
+    <h2 class="deltittel">${esc(T_[L].reglerTittel)}</h2>
+    <p class="ingress">${esc(papir(r.intro))}</p>
+    <dl class="regler">${r.items.map((x) => `
+      <dt>${esc(papir(x.title))}</dt><dd>${esc(papir(x.text))}</dd>`).join("")}
+    </dl>${mer}
+    <p class="tips"><strong>${esc(papir(r.contactTitle))}</strong> ${esc(papir(r.contactText))}</p>
+  </section>`;
+}
 
+function omradet(T, L) {
+  const a = T.area;
+  if (!a || !a.categories) return "";
+
+  const grupper = a.categories.map((kat) => {
+    const steder = kat.items.map((p) => {
+      const meta = p.meta ? `<span class="avstand">${esc(p.meta)}</span>` : "";
+      const kode = p.video && QR[p.video] ? `
+        <div class="qr smal">
+          <img src="${esc(QR[p.video])}" alt="">
+          <p><strong>${esc(T_[L].skann)}</strong></p>
+        </div>` : "";
+      return `
+      <dt>${esc(papir(p.name))}${meta}</dt>
+      <dd>${esc(papir(p.desc))}</dd>${kode}`;
+    }).join("");
+
+    return `
+  <section class="del">
+    <h2>${esc(papir(kat.title))}</h2>
+    <dl class="steder">${steder}
+    </dl>
+  </section>`;
+  }).join("");
+
+  return `
+  <section class="del sideskift">
+    <h2 class="deltittel">${esc(papir(a.title))}</h2>
+    <p class="ingress">${esc(papir(a.intro))}</p>
+    <div class="qr">
+      <img src="assets/img/qr/omradet.svg" alt="">
+      <p><strong>${esc(T_[L].kartTittel)}</strong><br>${esc(T_[L].kartTekst)}</p>
+    </div>
+  </section>
+  ${grupper}`;
+}
+
+function nettsiden(T, L) {
+  return `
   <section class="del nettside">
     <div class="qr stor">
       <img src="assets/img/qr/nettsiden.svg" alt="">
@@ -253,9 +302,21 @@ const CSS = `
   .bilder figcaption { font-size: 8pt; color: #7a736a; margin-top: 1mm; line-height: 1.35; }
 
   .sideskift { break-before: page; }
-  dl.regler { margin: 0 0 .7em; }
-  dl.regler dt { font-weight: 700; margin-top: .6em; }
-  dl.regler dd { margin: 0; color: #4a463f; }
+  /* Overskriften som åpner en ny hoveddel: husregler, området */
+  h2.deltittel {
+    font-size: 21pt; display: block;
+    border-bottom: 2px solid #2f5d50; padding-bottom: 3mm; margin-bottom: 4mm;
+  }
+  dl.regler, dl.steder { margin: 0 0 .7em; }
+  dl.regler dt, dl.steder dt { font-weight: 700; margin-top: .6em; }
+  dl.regler dd, dl.steder dd { margin: 0; color: #4a463f; }
+  dl.steder dt { display: flex; align-items: baseline; gap: 3mm; }
+  .avstand {
+    font-size: 8pt; font-weight: 400; color: #7a736a;
+    white-space: nowrap; letter-spacing: .02em;
+  }
+  .qr.smal { margin-top: 2mm; }
+  .qr.smal img { width: 20mm; height: 20mm; }
 
   .nettside {
     display: flex; gap: 6mm; align-items: center;
@@ -274,13 +335,15 @@ function side(L) {
 <head>
 <meta charset="utf-8">
 <base href="${BASE}">
-<title>${esc(S.meta.siteName)} – ${esc(T_[L].manualTittel)}</title>
+<title>${esc(S.meta.siteName)} · ${esc(T_[L].manualTittel)}</title>
 <style>${CSS}</style>
 </head>
 <body>
 ${toppen(T, L)}
 ${deler}
 ${husregler(T, L)}
+${omradet(T, L)}
+${nettsiden(T, L)}
 </body>
 </html>
 `;
@@ -289,5 +352,8 @@ ${husregler(T, L)}
 ["no", "en"].forEach((L) => {
   const ut = `/tmp/utskrift-${L}.html`;
   fs.writeFileSync(ut, side(L), "utf8");
-  console.log(`${ut}  (${S[L].manual.sections.length} seksjoner, ${S[L].rules.items.length} husregler)`);
+  const T = S[L];
+  const steder = T.area.categories.reduce((n, k) => n + k.items.length, 0);
+  console.log(`${ut}  (${T.manual.sections.length} seksjoner, ` +
+    `${T.rules.items.length} husregler, ${steder} steder i området)`);
 });

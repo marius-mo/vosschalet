@@ -61,10 +61,10 @@ så QR-koden er den eneste helautomatiske veien.
 ## Husmanual på papir
 
 `assets/filer/husmanual-voss-chalet.pdf` (norsk) og `house-manual-voss-chalet.pdf` (engelsk)
-er ment å skrives ut og ligge fysisk på hytta. De inneholder det samme som husmanualen og
-husreglene på nett, med én forskjell: **der nettsiden har video, står det en QR-kode.**
-Gjesten skanner koden med telefonkameraet og ser filmen. Wifi-koden og en kode til hele
-nettsiden ligger også der.
+er ment å skrives ut og ligge fysisk på hytta. De inneholder det samme som husmanualen,
+husreglene og områdeguiden på nett, med én forskjell: **der nettsiden har video, står det en
+QR-kode.** Gjesten skanner koden med telefonkameraet og ser filmen. Wifi-koden ligger der
+også, sammen med en kode til områdesiden (der hvert sted har kartlenke) og en til nettsiden.
 
 Gjestene kan også laste ned PDF-en selv, fra knappen nederst i husmanualen på nett.
 
@@ -84,6 +84,10 @@ rm -rf .trykk
 PDF-en er satt opp slik at en seksjon som ikke får plass nederst på en side, flyttes hel til
 neste. Det gir noen luftige sider, men ingen punkter som blir delt midt i. Bildene beholder
 sitt eget størrelsesforhold og beskjæres ikke.
+
+Skal en video ha QR-kode i papirguiden, legg den inn i `KODER` i `tools/lag-video-qr.py`
+(en full `https://…`-adresse brukes som den er, ellers legges stien til nettadressen), kjør
+skriptet, og før den samme videoen inn i `QR`-tabellen øverst i `tools/lag-utskriftsguide.js`.
 
 Uten `PRINT_IMG` blir PDF-en rundt 14 MB i stedet for 1,5 — bildene legges da inn i full
 oppløsning, som er bortkastet når de vises små på papiret.

@@ -23,12 +23,16 @@ UT = ROT / "assets/img/qr"
 # og kjør skriptet på nytt.
 BASE = "https://marius-mo.github.io/vosschalet/"
 
-# Filnavn på QR-koden  ->  hva den peker til
+# Filnavn på QR-koden  ->  hva den peker til.
+# Står det en full adresse (http…), brukes den som den er.
+# Ellers legges den til etter BASE over.
 KODER = {
     "video-ankomst-kjorevei": "assets/video/ankomst-kjorevei.mp4",
     "video-jacuzzi": "assets/video/jacuzzi.mp4",
     "video-badstue": "assets/video/badstue.mp4",
     "video-kjokken-kokende-vann": "assets/video/kjokken-kokende-vann.mp4",
+    "video-voss-vind": "https://www.youtube.com/watch?v=Y6_gW-LJPik",
+    "omradet": "omradet.html",
     "nettsiden": "",
 }
 
@@ -47,7 +51,7 @@ def main():
 
     feil = 0
     for navn, sti in KODER.items():
-        adresse = BASE + sti
+        adresse = sti if sti.startswith("http") else BASE + sti
         qr = qrcode.QRCode(
             error_correction=qrcode.constants.ERROR_CORRECT_M,
             box_size=10,

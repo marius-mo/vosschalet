@@ -817,14 +817,16 @@
       ])
     ]);
 
-    var more = el("section", { class: "section section-alt" }, [
+    // Listen med praktiske punkter er valgfri. Legg `more` tilbake i
+    // content.js, så dukker seksjonen opp igjen av seg selv.
+    var more = (r.more && r.more.length) ? el("section", { class: "section section-alt" }, [
       el("div", { class: "wrap wrap-narrow" }, [
         sectionHead(r.moreTitle),
         el("ul", { class: "check-list" }, r.more.map(function (t) {
           return el("li", {}, [icon("check"), el("span", { text: t })]);
         }))
       ])
-    ]);
+    ]) : null;
 
     var contact = el("section", { class: "section" }, [
       el("div", { class: "wrap" }, [

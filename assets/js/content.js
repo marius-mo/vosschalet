@@ -100,7 +100,7 @@ window.SITE = {
      ---------------------------------------------------------------------
      Bildene ligger i assets/img/ og videoene i assets/video/.
      Filer som ikke finnes vises som en pen plassholder, så siden ser
-     aldri ødelagt ut. Anbefalt for nye bilder: ca. 1600–2000 px bredde,
+     aldri ødelagt ut. Anbefalt for nye bilder: ca. 1600-2000 px bredde,
      .jpg eller .webp, under 400 kB.
      ------------------------------------------------------------------- */
   media: {
@@ -149,7 +149,7 @@ window.SITE = {
         { src: "assets/video/jacuzzi.mp4", capNo: "Slik tar du av og på lokket", capEn: "How to take the cover off and put it back" },
         { src: "assets/img/manual-jacuzzi-temp.jpg", capNo: "Jacuzzien står klar på badetemperatur hele året", capEn: "The hot tub is kept at bathing temperature all year" },
         { src: "assets/img/manual-jacuzzi-ph.jpg", capNo: "Vannverdiene sjekkes før hver ankomst", capEn: "The water values are checked before every arrival" },
-        { src: "assets/img/manual-spashock.jpg", capNo: "Spa Shock-granulatet står i garasjen, ett lokk etter bruk", capEn: "The Spa Shock granulate is in the garage, one capful after use" }
+        { src: "assets/img/manual-spashock.jpg", capNo: "Spa Shock-granulatet står i garasjen, ett lokk etter siste bad", capEn: "The Spa Shock granulate is in the garage, one capful after your last soak" }
       ],
       badstue: [
         { src: "assets/video/badstue.mp4", capNo: "Slik skrur dere på badstuen i 1. etasje", capEn: "How to switch on the ground-floor sauna" },
@@ -333,8 +333,8 @@ window.SITE = {
         { label: "Nærmeste dagligvare", value: "ca. 10 min med bil" },
         { label: "Voss sentrum og togstasjon", value: "ca. 15 min med bil" },
         { label: "Myrkdalen", value: "ca. 30 min med bil" },
-        { label: "Nærøyfjorden / Flåm", value: "ca. 1–1,5 t med bil" },
-        { label: "Hardangerfjorden", value: "ca. 1–1,5 t med bil" },
+        { label: "Nærøyfjorden / Flåm", value: "ca. 1-1,5 t med bil" },
+        { label: "Hardangerfjorden", value: "ca. 1-1,5 t med bil" },
         { label: "Bergen", value: "ca. 1,5 t med bil" }
       ],
       mapCta: "Åpne i Google Maps"
@@ -416,7 +416,7 @@ window.SITE = {
             "Temperatur og bobler styrer dere på panelet på selve boblebadet.",
             "Legg lokket på igjen med én gang dere er ferdige, ellers faller temperaturen og strømforbruket øker.",
             "Ikke ta med glass, leker eller andre gjenstander i badet.",
-            "Har dere brukt spaet i løpet av oppholdet: ha i omtrent ett lokk med Spa Shock (står i garasjen), kjør alle pumpene på fullt til de stopper av seg selv, og lukk lokket. Det balanserer vannet til neste gjest."
+            "Etter siste badet i oppholdet: ha i omtrent ett lokk med Spa Shock, som står i garasjen. Kjør alle pumpene på fullt til de stopper av seg selv, og lukk lokket. Det balanserer vannet til neste gjest."
           ],
           tip: "Saltvannet er skånsomt mot hud og hår."
         },
@@ -463,7 +463,7 @@ window.SITE = {
             "Tilluft og ventilasjon styres med panelet nede i trappen i gangen.",
             "Varmepumpen i stuen, som både varmer og kjøler, styres med egen fjernkontroll.",
             "Termostatene på soverommene styrer gulvvarmen på det rommet.",
-            "20–22 °C i stuen er behagelig.",
+            "20-22 °C i stuen er behagelig.",
             "Hold vinduer og terrassedør lukket når varmen eller kjølingen står på."
           ],
           tip: "Skru ned til normal temperatur i stedet for å skru helt av når dere er ute på dagstur. Det bruker mindre strøm enn å varme opp igjen fra kaldt."
@@ -585,7 +585,7 @@ window.SITE = {
             "Sengetøy: ta gjerne av sengetøyet og sett på en maskin med det. Da bruker vi mindre tid på å gjøre klart til neste gjest.",
             "Legg brukte håndklær i dusjen eller i kurven på badet.",
             "Fyll tilbake vinen dere har drukket fra vinskapet.",
-            "Legg lokket på jacuzzien og skru av badstuen.",
+            "Har dere badet: ha i ett lokk Spa Shock fra garasjen, kjør pumpene på fullt til de stopper, legg på lokket og skru av badstuen.",
             "Sett temperaturen tilbake til normal, og lukk alle vinduer og terrassedøren.",
             "Slå på robotstøvsugeren.",
             "Heng portåpneren, nøkkelen til annekset og bomkortene tilbake i gangen.",
@@ -614,15 +614,6 @@ window.SITE = {
         { icon: "shoe", title: "Sko av innendørs", text: "Skiutstyr og sko settes igjen i gangen, ikke i stua." },
         { icon: "lock", title: "Privat bod", text: "Hele hytta kan brukes, og det samme kan annekset. Boden i 2. etasje er privat og skal ikke brukes av gjester." },
         { icon: "shield", title: "Skader og uhell", text: "Uhell skjer. Si fra med én gang, så ordner vi det sammen. Det er bedre enn at neste gjest oppdager det." }
-      ],
-      moreTitle: "Litt mer om praktiske ting",
-      more: [
-        "Det er gratis parkering på stedet til fem biler, og elbillader i garasjen. Lading er inkludert for gjester.",
-        "Innkjørselen til garasjen er bratt og kan være krevende ved mye snø. Det er også parkering på andre siden av veien.",
-        "Hytta har røykvarslere. Karbonmonoksidvarsler er foreløpig ikke installert.",
-        "Det finnes ikke videoovervåking inne eller ute på eiendommen.",
-        "Kjæledyr: send oss en melding før booking, så avklarer vi det.",
-        "Avbestillingsvilkår følger det som står i Airbnb-annonsen."
       ],
       contactTitle: "Spørsmål underveis?",
       contactText: "Send oss en melding på Airbnb, så svarer vi normalt innen en time."
@@ -679,8 +670,8 @@ window.SITE = {
         {
           title: "Dagsturer",
           items: [
-            { name: "Flåmsbanen og Nærøyfjorden", desc: "En av verdens vakreste togturer, og en UNESCO-fjord i verdensklasse.", meta: "ca. 1–1,5 t", map: "Flåm, Norge" },
-            { name: "Hardangerfjorden", desc: "Fossefall, frukthager og fjord, flott på en dagstur.", meta: "ca. 1–1,5 t", map: "Hardangerfjorden" },
+            { name: "Flåmsbanen og Nærøyfjorden", desc: "En av verdens vakreste togturer, og en UNESCO-fjord i verdensklasse.", meta: "ca. 1-1,5 t", map: "Flåm, Norge" },
+            { name: "Hardangerfjorden", desc: "Fossefall, frukthager og fjord, flott på en dagstur.", meta: "ca. 1-1,5 t", map: "Hardangerfjorden" },
             { name: "Bergen", desc: "Bryggen, Fløyen og fisketorget. Fint som stopp på vei til eller fra flyplassen.", meta: "ca. 1,5 t", map: "Bergen, Norge" }
           ]
         },
@@ -898,8 +889,8 @@ window.SITE = {
         { label: "Nearest grocery store", value: "approx. 10 min by car" },
         { label: "Voss centre and train station", value: "approx. 15 min by car" },
         { label: "Myrkdalen", value: "approx. 30 min by car" },
-        { label: "Nærøyfjord / Flåm", value: "approx. 1–1.5 h by car" },
-        { label: "Hardangerfjord", value: "approx. 1–1.5 h by car" },
+        { label: "Nærøyfjord / Flåm", value: "approx. 1-1.5 h by car" },
+        { label: "Hardangerfjord", value: "approx. 1-1.5 h by car" },
         { label: "Bergen", value: "approx. 1.5 h by car" }
       ],
       mapCta: "Open in Google Maps"
@@ -976,7 +967,7 @@ window.SITE = {
             "Temperature and jets are set on the panel on the tub itself.",
             "Put the cover back on as soon as you are done, otherwise the temperature drops and power use rises.",
             "Please do not bring glass, toys or other objects into the tub.",
-            "If you have used the spa during your stay: add about one capful of Spa Shock (kept in the garage), run all the pumps at full until they stop by themselves, and close the cover. That rebalances the water for the next guest."
+            "After the last time you use the tub during your stay: add about one capful of Spa Shock, which is kept in the garage. Run all the pumps at full until they stop by themselves, and close the cover. That rebalances the water for the next guest."
           ],
           tip: "The salt water is gentle on skin and hair."
         },
@@ -1021,7 +1012,7 @@ window.SITE = {
             "Fresh air and ventilation are controlled from the panel at the bottom of the stairs in the hallway.",
             "The heat pump in the living room, which both heats and cools, has its own remote control.",
             "The thermostats in the bedrooms control the underfloor heating in that room.",
-            "20–22 °C in the living room is comfortable.",
+            "20-22 °C in the living room is comfortable.",
             "Keep windows and the terrace door closed while heating or cooling is running."
           ],
           tip: "Turn it down rather than off when you head out for the day. That uses less power than heating up from cold."
@@ -1139,7 +1130,7 @@ window.SITE = {
             "Bed linen: please strip the beds and put a load in the washing machine. It saves us time getting ready for the next guest.",
             "Leave used towels in the shower or the bathroom basket.",
             "Replace any wine you drank from the wine cabinet.",
-            "Put the cover back on the hot tub and switch off the sauna.",
+            "If you have used the tub: add one capful of Spa Shock from the garage, run the pumps at full until they stop, put the cover back on and switch off the sauna.",
             "Set the temperature back to normal and close all windows and the terrace door.",
             "Start the robot vacuum.",
             "Hang the garage remote, the annexe key and the barrier cards back in the hallway.",
@@ -1167,15 +1158,6 @@ window.SITE = {
         { icon: "shoe", title: "Shoes off indoors", text: "Leave ski gear and shoes in the hallway, not in the living room." },
         { icon: "lock", title: "Private storage", text: "The whole chalet is yours, and so is the annexe. The storage room on the second floor is private and not for guest use." },
         { icon: "shield", title: "Damage and accidents", text: "Accidents happen. Tell us straight away and we will sort it out together. That is much better than the next guest finding it." }
-      ],
-      moreTitle: "A few more practical things",
-      more: [
-        "There is free parking on the property for five cars, and an EV charger in the garage. Charging is included for guests.",
-        "The driveway to the garage is steep and can be demanding in heavy snow. There is also parking across the road.",
-        "The chalet has smoke alarms. A carbon monoxide alarm is not currently installed.",
-        "There is no video surveillance inside or outside the property.",
-        "Pets: send us a message before booking so we can confirm.",
-        "Cancellation terms follow the Airbnb listing."
       ],
       contactTitle: "Questions during your stay?",
       contactText: "Send us a message on Airbnb, and we normally reply within an hour."
@@ -1231,8 +1213,8 @@ window.SITE = {
         {
           title: "Day trips",
           items: [
-            { name: "Flåm Railway and the Nærøyfjord", desc: "One of the world's most beautiful train journeys, and a UNESCO-listed fjord.", meta: "approx. 1–1.5 h", map: "Flåm, Norway" },
-            { name: "Hardangerfjord", desc: "Waterfalls, orchards and fjord, a great day out.", meta: "approx. 1–1.5 h", map: "Hardangerfjorden" },
+            { name: "Flåm Railway and the Nærøyfjord", desc: "One of the world's most beautiful train journeys, and a UNESCO-listed fjord.", meta: "approx. 1-1.5 h", map: "Flåm, Norway" },
+            { name: "Hardangerfjord", desc: "Waterfalls, orchards and fjord, a great day out.", meta: "approx. 1-1.5 h", map: "Hardangerfjorden" },
             { name: "Bergen", desc: "Bryggen, Mount Fløyen and the fish market. A good stop on the way to or from the airport.", meta: "approx. 1.5 h", map: "Bergen, Norge" }
           ]
         },
