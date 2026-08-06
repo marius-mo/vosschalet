@@ -609,7 +609,7 @@ window.SITE = {
           items: [
             { name: "Voss Resort", desc: "Over 40 km preparerte løyper for alle nivåer, og skiheisene ligger rett utenfor døren. Skikort kjøpes på vossresort.no, og hele løypekartet ligger til nedlasting nederst på siden.", meta: "Ski in / ski out", map: "Voss Resort, Voss", url: "https://vossresort.no", img: "assets/img/skikart-voss-resort.jpg" },
             { name: "Myrkdalen", desc: "Snøsikkert alpinanlegg med god variasjon hvis dere vil bytte bakke for en dag.", meta: "ca. 30 min", map: "Myrkdalen Fjellandsby" },
-            { name: "Hanguren", desc: "Ta gondolen fra Voss sentrum opp for spektakulær utsikt og lett tilgjengelige løyper.", meta: "ca. 15 min", map: "Hangurstoppen, Voss", img: "assets/img/omrade-hangurstoppen.avif" },
+            { name: "Hanguren", desc: "Dere kan gå opp fra hytta, eller ta skiheisen rett opp herfra. Alternativt tar dere gondolen opp fra Voss sentrum, ca. 15 minutter med bil. Spektakulær utsikt og lett tilgjengelige løyper på toppen.", meta: "Fra hytta", map: "Hangurstoppen, Voss", img: "assets/img/omrade-hangurstoppen.avif" },
             { name: "Nordlys", desc: "På klare vinterkvelder har gjester sett nordlyset rett fra terrassen.", meta: "Fra hytta", img: "assets/img/nordlys.avif" }
           ]
         },
@@ -1113,7 +1113,7 @@ window.SITE = {
           items: [
             { name: "Voss Resort", desc: "Over 40 km of groomed slopes for every level, with the lifts right outside the door. Lift passes are sold at vossresort.no, and the full piste map is available to download at the bottom of this page.", meta: "Ski-in / ski-out", map: "Voss Resort, Voss", url: "https://vossresort.no", img: "assets/img/skikart-voss-resort.jpg" },
             { name: "Myrkdalen", desc: "Snow-sure ski resort with plenty of variety if you fancy a change for a day.", meta: "approx. 30 min", map: "Myrkdalen Fjellandsby" },
-            { name: "Hanguren", desc: "Take the gondola up from Voss centre for spectacular views and easily accessible trails.", meta: "approx. 15 min", map: "Hangurstoppen, Voss", img: "assets/img/omrade-hangurstoppen.avif" },
+            { name: "Hanguren", desc: "You can walk up from the chalet, or take the ski lift straight up from here. Alternatively, take the gondola up from Voss centre, about 15 minutes by car. Spectacular views and easily accessible trails at the top.", meta: "From the chalet", map: "Hangurstoppen, Voss", img: "assets/img/omrade-hangurstoppen.avif" },
             { name: "Northern lights", desc: "On clear winter evenings guests have watched the aurora straight from the terrace.", meta: "From the chalet", img: "assets/img/nordlys.avif" }
           ]
         },
