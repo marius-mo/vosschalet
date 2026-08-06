@@ -26,13 +26,6 @@ window.SITE = {
     // Lenken gjestene sendes til for å booke
     airbnbUrl: "https://www.airbnb.com/h/vosschalet",
 
-    /* Full adresse til nettstedet, med skråstrek på slutten.
-       Brukes til canonical-lenker, sitemap og delingsbilder — altså det
-       søkemotorene bruker for å vite hvilken adresse som er den ekte.
-       Får dere eget domene senere: endre denne linjen, kjør
-       `node tools/bygg-landingsside.js`, og alt følger med. */
-    siteUrl: "https://marius-mo.github.io/vosschalet/",
-
     hostName: "Michelle og Marius",
     // All kontakt går via Airbnb-meldinger. Fylles disse ut, dukker de
     // opp i bunnteksten — la dem stå tomme for å holde dem skjult.

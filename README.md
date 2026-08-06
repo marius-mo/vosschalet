@@ -8,9 +8,7 @@ GitHub Pages, Netlify, eller hvilken som helst webhotell-mappe.
 
 | Fil | Hva det er |
 | --- | --- |
-| `index.html` | **Landingsside (norsk)** – åpen for alle og den eneste siden søkemotorer skal finne. **Genereres** — rediger ikke direkte |
-| `en.html` | Samme landingsside på engelsk. Genereres |
-| `tools/bygg-landingsside.js` | Bygger `index.html`, `en.html`, `sitemap.xml`, `robots.txt` og `404.html` fra `content.js` |
+| `index.html` | **Landingsside** – åpen for alle. Bilde, kort presentasjon, «Book på Airbnb» og passordfelt |
 | `hytta.html` | Hyttesiden: hero, om hytta, høydepunkter, soverom, fasiliteter, galleri, anmeldelser, beliggenhet, vertskap |
 | `husmanual.html` | Husmanual med wifi, viktige numre og trekkspill-seksjoner (ankomst, jacuzzi, badstue, peis …) |
 | `husregler.html` | Husregler |
@@ -24,38 +22,7 @@ GitHub Pages, Netlify, eller hvilken som helst webhotell-mappe.
 | `tools/lag-wifi-qr.py` | Lager QR-koden gjestene skanner for å koble seg på wifi |
 | `admin/passord.html` | Verktøy for å bytte passord (ikke lenket fra siden) |
 | `googlee34a42972e0cb2e8.html` | Google Search Console sin eierskapsfil. **Må ikke slettes eller endres** — da mister dere verifiseringen |
-
-## Viktig: landingssidene bygges
-
-`index.html` og `en.html` skrives ut av et skript. Endrer du dem for hånd, blir endringen
-borte neste gang skriptet kjører. Endre teksten i `content.js`, og kjør:
-
-```bash
-node tools/bygg-landingsside.js
-```
-
-Det oppdaterer begge landingssidene, `sitemap.xml`, `robots.txt` og `404.html`.
-
-Grunnen er søkemotorene: resten av nettstedet bygges av JavaScript i nettleseren, og da ser
-Google nesten ingen tekst. Landingssidene skrives derfor ut som ferdig HTML, med tittel,
-beskrivelse, strukturerte data og delingsbilder på plass. Teksten hentes fra `content.js`,
-så det finnes fortsatt bare én kilde.
-
-### Kort eller full landingsside
-
-Øverst i `tools/bygg-landingsside.js` står:
-
-```js
-const VIS_PRESENTASJON = false;
-```
-
-* `false` (nå): landingssiden er kortet alene — bilde, kort presentasjon, «Book på Airbnb»
-  og innlogging. Ingenting å scrolle forbi.
-* `true`: en full presentasjon legges under kortet (om hytta, fasiliteter, galleri,
-  anmeldelser, beliggenhet, smakebit fra områdeguiden). Det gir Google rundt 6 300 tegn å
-  lese i stedet for 400 — men gjesten møter da en lang side i stedet for et rent kort.
-
-Endre verdien og kjør skriptet på nytt. Alt av usynlig søkemotor-arbeid gjelder uansett.
+| `.nojekyll` | Tom fil som sier til GitHub Pages at filene skal serveres som de er. **Ikke slett den** — uten den kjøres siden gjennom Jekyll, og det steget har feilet og stoppet publiseringen |
 
 ## Slik endrer du tekst
 
@@ -189,40 +156,16 @@ fjernes). Fint å henge opp i hytta sammen med en QR-kode som peker til `husmanu
 **GitHub Pages:** legg filene i roten av et repo, gå til Settings → Pages, velg `main` og `/ (root)`.
 Siden blir liggende på `https://BRUKERNAVN.github.io/REPONAVN/`.
 
-Den tomme filen `.nojekyll` i roten sier til GitHub Pages at filene skal serveres som de er,
-uten å kjøres gjennom Jekyll først. Siden er ren HTML og trenger ingen behandling, og uten
-`.nojekyll` kan et Jekyll-steg feile og stoppe hele publiseringen. **Ikke slett den.**
+Husk `.nojekyll` i roten (se tabellen over). Endrer du noe i `assets/`, bump `?v=`-tallet
+bakerst på js- og css-lenkene i alle html-filene, ellers kan gjestene bli sittende med den
+gamle versjonen i inntil ti minutter.
 
 **Eget domene (f.eks. vosschalet.no):** legg en fil `CNAME` i roten med domenet som eneste
 innhold, og pek domenets DNS mot GitHub Pages. Alternativt kan mappa slippes rett inn i Netlify.
 
-## Synlighet i søk
+## Merk
 
-Landingssidene er laget for å kunne rangere:
-
-* Egen tittel og beskrivelse per språk, skrevet i ferdig HTML (ikke av JavaScript)
-* `canonical` og `hreflang` mellom norsk og engelsk, så Google vet at det er samme side
-* Strukturerte data (`VacationRental`) med adresse, fasiliteter, inn-/utsjekk og vurdering
-* Open Graph og Twitter-kort, så lenken ser riktig ut når den deles
-* `sitemap.xml` med kun de to landingssidene
-* Alt-tekst på alle bilder
-
-Merk at landingssiden bevisst er holdt kort (se over). Det koster synlighet i søk: Google
-har lite tekst å gå på, og siden vil sjelden rangere på annet enn navnet «Voss Chalet».
-De strukturerte dataene gir likevel Google adresse, fasiliteter, kapasitet og vurdering.
-
-Gjestesidene er merket `noindex` og ligger ikke i sitemap. De er **bevisst ikke** sperret i
-`robots.txt`: en sperre ville hindret Google i å hente siden, og da ville den aldri lest
-`noindex`-merket — adressen kunne blitt liggende i søkeresultatet uten innhold.
-
-**Eget domene:** adressen `marius-mo.github.io/vosschalet/` rangerer svakere enn et eget
-domene. Får dere `vosschalet.no`, endre `meta.siteUrl` i `content.js`, kjør
-`node tools/bygg-landingsside.js`, legg en `CNAME`-fil i roten og pek DNS mot GitHub Pages.
-
-**Google Search Console:** eierskapet er bekreftet med filen `googlee34a42972e0cb2e8.html`
-i roten. Den må bli liggende — Google sjekker den med jevne mellomrom, og forsvinner den,
-mister dere tilgangen til statistikken. Merk at eierskapsfilen bare gjelder for en
-egenskap av typen «URL-prefiks» med nøyaktig adressen `https://marius-mo.github.io/vosschalet/`.
-
-Husk å sende inn `sitemap.xml` under Sitemaps i Search Console. Uten det kan det ta lang tid
-før siden dukker opp i søk.
+Innholdet bygges av JavaScript i nettleseren. Det gjør at all tekst kan bo i én fil på to språk,
+men det betyr også at søkemotorer ser mindre av teksten enn på en tradisjonell statisk side.
+For en side som først og fremst deles som lenke til gjester er det en grei avveining — skal siden
+rangeres i Google på egen hånd, bør forsideteksten legges direkte i `index.html` i tillegg.
