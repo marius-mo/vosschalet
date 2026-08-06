@@ -23,6 +23,7 @@ GitHub Pages, Netlify, eller hvilken som helst webhotell-mappe.
 | `assets/filer/` | Kart og PDF-er gjestene kan laste ned |
 | `tools/lag-wifi-qr.py` | Lager QR-koden gjestene skanner for å koble seg på wifi |
 | `admin/passord.html` | Verktøy for å bytte passord (ikke lenket fra siden) |
+| `googlee34a42972e0cb2e8.html` | Google Search Console sin eierskapsfil. **Må ikke slettes eller endres** — da mister dere verifiseringen |
 
 ## Viktig: landingssidene bygges
 
@@ -193,5 +194,10 @@ Gjestesidene er merket `noindex` og ligger ikke i sitemap. De er **bevisst ikke*
 domene. Får dere `vosschalet.no`, endre `meta.siteUrl` i `content.js`, kjør
 `node tools/bygg-landingsside.js`, legg en `CNAME`-fil i roten og pek DNS mot GitHub Pages.
 
-**Meld siden inn:** legg den til i [Google Search Console](https://search.google.com/search-console)
-og send inn `sitemap.xml`. Uten det kan det ta lang tid før siden dukker opp.
+**Google Search Console:** eierskapet er bekreftet med filen `googlee34a42972e0cb2e8.html`
+i roten. Den må bli liggende — Google sjekker den med jevne mellomrom, og forsvinner den,
+mister dere tilgangen til statistikken. Merk at eierskapsfilen bare gjelder for en
+egenskap av typen «URL-prefiks» med nøyaktig adressen `https://marius-mo.github.io/vosschalet/`.
+
+Husk å sende inn `sitemap.xml` under Sitemaps i Search Console. Uten det kan det ta lang tid
+før siden dukker opp i søk.
