@@ -380,6 +380,8 @@ window.SITE = {
       checkInLabel: "Innsjekk",
       checkOutLabel: "Utsjekk",
       printCta: "Skriv ut manualen",
+      pdfCta: "Last ned som PDF",
+      pdfFile: "assets/filer/husmanual-voss-chalet.pdf",
       emergencyTitle: "Viktige numre",
       sections: [
         {
@@ -938,6 +940,8 @@ window.SITE = {
       checkInLabel: "Check-in",
       checkOutLabel: "Check-out",
       printCta: "Print the manual",
+      pdfCta: "Download as PDF",
+      pdfFile: "assets/filer/house-manual-voss-chalet.pdf",
       emergencyTitle: "Important numbers",
       sections: [
         {

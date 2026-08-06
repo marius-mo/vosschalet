@@ -789,6 +789,9 @@
           el("button", { class: "btn btn-ghost", type: "button", onclick: function () { window.print(); } }, [
             icon("printer"), document.createTextNode(m.printCta)
           ]),
+          m.pdfFile ? el("a", {
+            class: "btn btn-ghost", href: m.pdfFile, download: "", target: "_blank", rel: "noopener"
+          }, [icon("download"), document.createTextNode(m.pdfCta)]) : null,
           el("a", { class: "btn btn-ghost", href: "husregler.html", text: T.nav.rules })
         ])
       ])

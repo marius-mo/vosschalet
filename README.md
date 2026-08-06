@@ -20,6 +20,10 @@ GitHub Pages, Netlify, eller hvilken som helst webhotell-mappe.
 | `assets/video/` | Videoer til husmanualen |
 | `assets/filer/` | Kart og PDF-er gjestene kan laste ned |
 | `tools/lag-wifi-qr.py` | Lager QR-koden gjestene skanner for å koble seg på wifi |
+| `tools/lag-video-qr.py` | Lager QR-kodene til videoene, som brukes i den trykte guiden |
+| `tools/lag-utskriftsguide.js` | Bygger den trykte husmanualen som HTML |
+| `tools/lag-trykkbilder.py` | Skalerer ned bildene som skal i PDF-en |
+| `tools/lag-pdf.js` | Gjør utskriftsguiden om til ferdige PDF-er |
 | `admin/passord.html` | Verktøy for å bytte passord (ikke lenket fra siden) |
 | `googlee34a42972e0cb2e8.html` | Google Search Console sin eierskapsfil. **Må ikke slettes eller endres** — da mister dere verifiseringen |
 | `.nojekyll` | Tom fil som sier til GitHub Pages at filene skal serveres som de er. **Ikke slett den** — uten den kjøres siden gjennom Jekyll, og det steget har feilet og stoppet publiseringen |
@@ -53,6 +57,32 @@ koden faktisk lar seg skanne. (Send meg beskjed hvis du heller vil at jeg gjør 
 Knappen «Koble til wifi» over QR-koden kopierer passordet til utklippstavla. En nettside kan
 ikke koble telefonen til et nettverk på egen hånd — den funksjonen finnes ikke i nettleseren —
 så QR-koden er den eneste helautomatiske veien.
+
+## Husmanual på papir
+
+`assets/filer/husmanual-voss-chalet.pdf` (norsk) og `house-manual-voss-chalet.pdf` (engelsk)
+er ment å skrives ut og ligge fysisk på hytta. De inneholder det samme som husmanualen og
+husreglene på nett, med én forskjell: **der nettsiden har video, står det en QR-kode.**
+Gjesten skanner koden med telefonkameraet og ser filmen. Wifi-koden og en kode til hele
+nettsiden ligger også der.
+
+Gjestene kan også laste ned PDF-en selv, fra knappen nederst i husmanualen på nett.
+
+### Slik lager du dem på nytt
+
+Kjøres etter at du har endret tekst i `content.js`, eller lagt til nye videoer:
+
+```bash
+python3 tools/lag-video-qr.py        # QR-koder til videoene (bare ved nye videoer)
+python3 tools/lag-trykkbilder.py     # nedskalerte bilder til trykk
+python3 -m http.server 8899 &        # bildene hentes herfra mens PDF-en lages
+PRINT_IMG=".trykk/" node tools/lag-utskriftsguide.js
+node tools/lag-pdf.js                # krever Playwright
+rm -rf .trykk
+```
+
+Uten `PRINT_IMG` blir PDF-en rundt 14 MB i stedet for 1,5 — bildene legges da inn i full
+oppløsning, som er bortkastet når de vises små på papiret.
 
 ## Nedlastinger og kartlenker
 
