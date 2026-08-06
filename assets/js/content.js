@@ -367,7 +367,7 @@ window.SITE = {
     manual: {
       title: "Husmanual",
       intro:
-        "Alt dere trenger å vite mens dere er her — ankomst, hvordan tingene i hytta fungerer, og hva som skal gjøres før avreise. Klikk på et punkt for å åpne det.",
+        "Vi håper dere får et hyggelig og avslappende opphold. Her finner dere praktisk informasjon som gjør det enklere å bruke hytta og området rundt — ankomst, hvordan tingene fungerer, og hva som skal gjøres før avreise. Klikk på et punkt for å åpne det. Skulle noe gå i stykker, mangle eller ikke fungere, ta kontakt, så ordner vi det så raskt som mulig.",
       wifiTitle: "Wifi",
       wifiNetwork: "Nettverk",
       wifiPassword: "Passord",
@@ -394,7 +394,9 @@ window.SITE = {
             "Dra hånden over tastaturet for å vekke knappene.",
             "Tast koden, og trykk deretter på symbolet med åpen hengelås.",
             "Dere trenger ingen nøkkel til selve hytta — låsen går på kode.",
-            "I gangen henger fjernkontroll til garasjen, nøkkel til annekset og bomkort til vegbommen. Bruk dem gjerne så lenge dere bor her, og heng dem tilbake før avreise.",
+            "Døren låses ved å dra hånden over tastene. Husk koden, så kommer dere inn igjen.",
+            "De hvite nøkkelkortene i gangen åpner vegbommen.",
+            "I gangen henger også fjernkontrollen til garasjen og nøkkelen til annekset. Bruk dem gjerne så lenge dere bor her, og heng dem tilbake før avreise.",
             "Innkjørselen ned til garasjen er bratt. Kjør rolig, spesielt når det er snø og is — det er også god parkering på andre siden av veien."
           ],
           tip: "Trenger dere tidlig innsjekk eller sen utsjekk, send en melding i god tid. Vi er fleksible når hytta er ledig."
@@ -408,10 +410,10 @@ window.SITE = {
           ],
           steps: [
             "Skyv lokket forsiktig av og legg det på lokkholderen — ikke på bakken eller snøen.",
-            "Dusj før dere går uti. Såpe, sjampo og kremer ødelegger vannbalansen.",
+            "God hygiene er viktig: dusj og vask dere grundig før bading. Såpe, sjampo og kremer skylles av, ellers ødelegges vannbalansen.",
             "Temperatur og bobler styrer dere på panelet på selve boblebadet.",
             "Legg lokket på igjen med én gang dere er ferdige, ellers faller temperaturen og strømforbruket øker.",
-            "Ikke bruk glass i eller ved jacuzzien.",
+            "Ikke ta med glass, leker eller andre gjenstander i badet.",
             "Har dere brukt spaet i løpet av oppholdet: ha i omtrent ett lokk med Spa Shock (står i garasjen), kjør alle pumpene på fullt til de stopper av seg selv, og lukk lokket. Det balanserer vannet til neste gjest."
           ],
           tip: "Saltvannet er skånsomt mot hud og hår, men badetøy kan bleknes over tid — akkurat som i et vanlig spa."
@@ -476,9 +478,10 @@ window.SITE = {
             "Oppvaskmaskin: tablettene ligger under vasken, og programmet Auto fungerer fint til det meste.",
             "Kaffe: både filterkaffe og kaffemaskin. Kaffen står i skapet ved siden av kaffetrakteren.",
             "Kranen på kjøkkenet gir kokende vann — se videoen under.",
+            "Alt som står i tørrskapet og kjøleskapet kan dere bruke.",
             "La kjøleskapet stå på når dere reiser."
           ],
-          tip: "Grillen på terrassen er kullgrill. Kull ligger som regel i garasjen, men det kan være tomt — ta gjerne med en sekk."
+          tip: "I vinskapet står det to flasker vin som dere gjerne må nyte. Vi ber bare om at dere fyller tilbake tilsvarende antall flasker før avreise, så ordningen kan fortsette. Grillen på terrassen er kullgrill — kull ligger som regel i garasjen, men det kan være tomt, så ta gjerne med en sekk."
         },
         {
           id: "tv",
@@ -493,6 +496,34 @@ window.SITE = {
             "Hytta har Sonos lydanlegg, med høyttalere i stuen og ute ved grillplassen.",
             "Enkleste måte å spille musikk på: koble mobilen til wifi og send fra din egen strømmetjeneste.",
             "Er nettet borte, send oss en melding på Airbnb, så hjelper vi dere videre."
+          ],
+          tip: ""
+        },
+        {
+          id: "robot",
+          icon: "robot",
+          title: "Robotstøvsuger",
+          paragraphs: [
+            "Hytta har en Roborock som både støvsuger og vasker. Bruk den gjerne så mye dere vil under oppholdet."
+          ],
+          steps: [
+            "Trykk på PÅ-knappen på roboten, så starter den støvsuging og vask av seg selv.",
+            "Lyser ladestasjonen rødt: tøm tanken med skittent vann, og fyll rent vann på den andre tanken.",
+            "Roboten kan bæres opp i etasjen over. Sett den ned der dere vil at den skal jobbe, og trykk PÅ."
+          ],
+          tip: "Sett den gjerne i gang før dere reiser — da er hytta et godt stykke på vei til neste gjest."
+        },
+        {
+          id: "anneks",
+          icon: "house",
+          title: "Anneks og leker",
+          paragraphs: [
+            "Annekset kan brukes fritt, og lekene som står der er til låns for gjestene våre."
+          ],
+          steps: [
+            "Nøkkelen til annekset henger i gangen.",
+            "Boden i andre etasje er privat og skal ikke brukes.",
+            "Ladere som hører til hytta skal bli stående i rommet de tilhører."
           ],
           tip: ""
         },
@@ -520,9 +551,9 @@ window.SITE = {
           ],
           steps: [
             "Innkjørselen til garasjen er bratt — kjør rolig, særlig ved snø og is.",
-            "Garasjeporten åpnes med fjernkontrollen som henger i gangen.",
-            "Elbilladeren har fastmontert type 2-kabel på 5 kW, og lading er inkludert for gjester.",
-            "Ved mye snø er det også god parkering på andre siden av veien."
+            "Garasjeporten åpnes med «Harmonie»-fjernkontrollen som henger i gangen.",
+            "Elbilladeren har fastmontert type 2-kabel på 5 kW, og lading er kostnadsfri for gjester.",
+            "Hytta har egne ekstraplasser over veien, rett ovenfor innkjørselen. Bruk dem gjerne, særlig når det er mye snø."
           ],
           tip: ""
         },
@@ -534,7 +565,7 @@ window.SITE = {
             "Søppelet leveres på sorteringsstasjonen nede ved bommen — se bildet under."
           ],
           steps: [
-            "Sorter avfallet i beholderne som står der.",
+            "Sorter avfallet etter anvisningene på beholderne.",
             "Ta posene med ned, ikke sett dem igjen utenfor hytta.",
             "Ta med full restavfallspose ut ved avreise, selv etter et kort opphold."
           ],
@@ -548,12 +579,16 @@ window.SITE = {
             "Utsjekk er innen kl. 11:00. Dere trenger ikke vaske hytta, men denne listen hjelper oss mye."
           ],
           steps: [
-            "Kjør oppvaskmaskinen, eller sett oppvasken i den.",
-            "Kast mat som ikke skal være igjen, og ta ut søppelet.",
+            "Kjøkken: slå på oppvaskmaskinen, og tøm kjøleskapet for medbrakt mat.",
+            "Sengetøy: ta gjerne av sengetøyet og sett på en maskin med det. Da bruker vi mindre tid på å gjøre klart til neste gjest.",
             "Legg brukte håndklær i dusjen eller i kurven på badet.",
+            "Fyll tilbake vinen dere har drukket fra vinskapet.",
             "Legg lokket på jacuzzien og skru av badstuen.",
-            "Sett temperaturen tilbake til normal, lukk alle vinduer og terrassedøren.",
-            "Skru av lys, logg ut av strømmetjenester, og lukk ytterdøren godt."
+            "Sett temperaturen tilbake til normal, og lukk alle vinduer og terrassedøren.",
+            "Slå på robotstøvsugeren.",
+            "Heng portåpneren, nøkkelen til annekset og bomkortene tilbake i gangen.",
+            "Slukk lyset, logg ut av strømmetjenester, og sjekk at dere har fått med alle eiendelene deres.",
+            "Lukk ytterdøren ordentlig, og se etter at den er låst."
           ],
           tip: "Glemt noe igjen? Send en melding, så finner vi en løsning med å sende det etter."
         }
@@ -575,7 +610,7 @@ window.SITE = {
         { icon: "hottub", title: "Jacuzzi og badstue", text: "Dusj før bruk, ikke bruk glass i eller ved jacuzzien, og legg alltid på lokket etterpå. Barn skal ha tilsyn." },
         { icon: "fire", title: "Peis og levende lys", text: "Følg fyringsanvisningen i husmanualen. La aldri peis eller stearinlys stå ubevoktet, og slukk alt før dere legger dere." },
         { icon: "shoe", title: "Sko av innendørs", text: "Skiutstyr og sko settes igjen i gangen, ikke i stua." },
-        { icon: "lock", title: "Privat bod", text: "Hele hytten kan brukes. Boden i 2. etasje er låst og forbeholdt eier." },
+        { icon: "lock", title: "Privat bod", text: "Hele hytta kan brukes, og det samme kan annekset. Boden i 2. etasje er privat og skal ikke brukes av gjester." },
         { icon: "shield", title: "Skader og uhell", text: "Uhell skjer. Si fra med én gang, så ordner vi det sammen — det er bedre enn at neste gjest oppdager det." }
       ],
       moreTitle: "Litt mer om praktiske ting",
@@ -879,7 +914,7 @@ window.SITE = {
     manual: {
       title: "House manual",
       intro:
-        "Everything you need while you are here — arrival, how things work, and what to do before you leave. Click a section to open it.",
+        "We hope you have a relaxing and enjoyable stay. Here you will find the practical information that makes the chalet and the area easier to use — arrival, how things work, and what to do before you leave. Click a section to open it. If anything breaks, is missing or does not work, get in touch and we will sort it out as quickly as we can.",
       wifiTitle: "Wi-Fi",
       wifiNetwork: "Network",
       wifiPassword: "Password",
@@ -906,7 +941,9 @@ window.SITE = {
             "Wave your hand across the keypad to wake the buttons.",
             "Enter the code, then press the open-padlock symbol.",
             "You do not need a key for the chalet itself — the lock works on the code.",
-            "In the hallway you will find the garage remote, the key to the annexe and the card for the road barrier. Please use them during your stay and hang them back before you leave.",
+            "To lock the door, sweep your hand across the keypad. Remember the code so you can get back in.",
+            "The white key cards in the hallway open the road barrier.",
+            "The garage remote and the key to the annexe also hang in the hallway. Please use them during your stay and hang them back before you leave.",
             "The driveway down to the garage is steep. Take it slowly, especially in snow and ice — there is also good parking across the road."
           ],
           tip: "If you need an early check-in or late check-out, send us a message in good time. We are flexible when the chalet is free."
@@ -920,10 +957,10 @@ window.SITE = {
           ],
           steps: [
             "Slide the cover off carefully and place it on the cover lifter — not on the ground or in the snow.",
-            "Shower before getting in. Soap, shampoo and lotions upset the water balance.",
+            "Good hygiene matters: shower and wash thoroughly before getting in. Rinse off soap, shampoo and lotions — they upset the water balance.",
             "Temperature and jets are set on the panel on the tub itself.",
             "Put the cover back on as soon as you are done, otherwise the temperature drops and power use rises.",
-            "No glass in or near the hot tub.",
+            "Please do not bring glass, toys or other objects into the tub.",
             "If you have used the spa during your stay: add about one capful of Spa Shock (kept in the garage), run all the pumps at full until they stop by themselves, and close the cover. That rebalances the water for the next guest."
           ],
           tip: "The salt water is gentle on skin and hair, but swimwear may fade over time — just like in any spa."
@@ -984,9 +1021,10 @@ window.SITE = {
             "Dishwasher: tablets are under the sink, and the Auto programme handles most loads well.",
             "Coffee: both filter coffee and a coffee machine. The coffee is in the cupboard next to the coffee maker.",
             "The kitchen tap gives boiling water — see the video below.",
+            "Anything in the dry-goods cupboard and the fridge is yours to use.",
             "Please leave the fridge switched on when you go."
           ],
-          tip: "The barbecue on the terrace is a charcoal grill. Charcoal is usually kept in the garage, but it can run out — bring a bag if you can."
+          tip: "There are two bottles of wine in the wine cabinet, and you are welcome to enjoy them. We only ask that you replace them with the same number of bottles before you leave, so we can keep the arrangement going. The barbecue on the terrace is a charcoal grill — charcoal is usually in the garage, but it can run out, so bring a bag if you can."
         },
         {
           id: "tv",
@@ -1001,6 +1039,34 @@ window.SITE = {
             "The chalet has a Sonos sound system, with speakers in the living room and outside by the barbecue.",
             "Easiest way to play music: connect your phone to the Wi-Fi and cast from your own streaming service.",
             "If the internet drops, send us a message on Airbnb and we will help."
+          ],
+          tip: ""
+        },
+        {
+          id: "robot",
+          icon: "robot",
+          title: "Robot vacuum",
+          paragraphs: [
+            "The chalet has a Roborock that both vacuums and mops. Use it as much as you like during your stay."
+          ],
+          steps: [
+            "Press the ON button on the robot and it starts vacuuming and mopping by itself.",
+            "If the dock shows a red light: empty the dirty-water tank and refill the clean-water tank.",
+            "You can carry the robot upstairs. Put it down where you want it to work and press ON."
+          ],
+          tip: "Setting it going before you leave is a real help — the chalet is then well on its way for the next guest."
+        },
+        {
+          id: "anneks",
+          icon: "house",
+          title: "Annexe and toys",
+          paragraphs: [
+            "The annexe is yours to use, and the toys in there are there for our guests to borrow."
+          ],
+          steps: [
+            "The key to the annexe hangs in the hallway.",
+            "The storage room on the second floor is private and not for guest use.",
+            "Chargers that belong to the chalet should stay in the room they belong to."
           ],
           tip: ""
         },
@@ -1028,9 +1094,9 @@ window.SITE = {
           ],
           steps: [
             "The driveway to the garage is steep — take it slowly, especially in snow and ice.",
-            "The garage door opens with the remote control hanging in the hallway.",
-            "The EV charger has a fixed type 2 cable at 5 kW, and charging is included for guests.",
-            "In heavy snow there is also good parking across the road."
+            "The garage door opens with the “Harmonie” remote hanging in the hallway.",
+            "The EV charger has a fixed type 2 cable at 5 kW, and charging is free for guests.",
+            "The chalet has its own extra spaces across the road, just above the driveway. Do use them, especially when there is a lot of snow."
           ],
           tip: ""
         },
@@ -1040,7 +1106,7 @@ window.SITE = {
           title: "Waste and recycling",
           paragraphs: ["Waste goes to the sorting station down by the barrier — see the photo below."],
           steps: [
-            "Sort your waste into the containers there.",
+            "Sort your waste following the labels on the containers.",
             "Take the bags down with you; please do not leave them outside the chalet.",
             "Take the full waste bag out when you leave, even after a short stay."
           ],
@@ -1054,12 +1120,16 @@ window.SITE = {
             "Check-out is by 11:00. You do not need to clean, but this short list helps us a lot."
           ],
           steps: [
-            "Run the dishwasher, or at least load it.",
-            "Throw away food you are not leaving behind and take out the rubbish.",
+            "Kitchen: start the dishwasher, and clear the fridge of food you brought.",
+            "Bed linen: please strip the beds and put a load in the washing machine. It saves us time getting ready for the next guest.",
             "Leave used towels in the shower or the bathroom basket.",
+            "Replace any wine you drank from the wine cabinet.",
             "Put the cover back on the hot tub and switch off the sauna.",
             "Set the temperature back to normal and close all windows and the terrace door.",
-            "Turn off the lights, sign out of streaming services and pull the front door shut."
+            "Start the robot vacuum.",
+            "Hang the garage remote, the annexe key and the barrier cards back in the hallway.",
+            "Turn off the lights, sign out of streaming services, and check you have all your belongings.",
+            "Close the front door properly and check that it has locked."
           ],
           tip: "Left something behind? Send us a message and we will work out how to get it back to you."
         }
@@ -1080,7 +1150,7 @@ window.SITE = {
         { icon: "hottub", title: "Hot tub and sauna", text: "Shower before use, no glass in or near the hot tub, and always put the cover back on afterwards. Children must be supervised." },
         { icon: "fire", title: "Fireplace and candles", text: "Follow the instructions in the house manual. Never leave a fire or candle unattended, and put everything out before bed." },
         { icon: "shoe", title: "Shoes off indoors", text: "Leave ski gear and shoes in the hallway, not in the living room." },
-        { icon: "lock", title: "Private storage", text: "The whole chalet is yours. The storage room on the second floor is locked and reserved for the owners." },
+        { icon: "lock", title: "Private storage", text: "The whole chalet is yours, and so is the annexe. The storage room on the second floor is private and not for guest use." },
         { icon: "shield", title: "Damage and accidents", text: "Accidents happen. Tell us straight away and we will sort it out together — much better than the next guest finding it." }
       ],
       moreTitle: "A few more practical things",
