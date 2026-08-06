@@ -37,8 +37,25 @@ node tools/bygg-landingsside.js
 Det oppdaterer begge landingssidene, `sitemap.xml`, `robots.txt` og `404.html`.
 
 Grunnen er søkemotorene: resten av nettstedet bygges av JavaScript i nettleseren, og da ser
-Google nesten ingen tekst. Landingssiden skrives derfor ut som ferdig HTML — 6 300 tegn
-lesbar tekst mot 286 før. Teksten hentes fra `content.js`, så det finnes fortsatt bare én kilde.
+Google nesten ingen tekst. Landingssidene skrives derfor ut som ferdig HTML, med tittel,
+beskrivelse, strukturerte data og delingsbilder på plass. Teksten hentes fra `content.js`,
+så det finnes fortsatt bare én kilde.
+
+### Kort eller full landingsside
+
+Øverst i `tools/bygg-landingsside.js` står:
+
+```js
+const VIS_PRESENTASJON = false;
+```
+
+* `false` (nå): landingssiden er kortet alene — bilde, kort presentasjon, «Book på Airbnb»
+  og innlogging. Ingenting å scrolle forbi.
+* `true`: en full presentasjon legges under kortet (om hytta, fasiliteter, galleri,
+  anmeldelser, beliggenhet, smakebit fra områdeguiden). Det gir Google rundt 6 300 tegn å
+  lese i stedet for 400 — men gjesten møter da en lang side i stedet for et rent kort.
+
+Endre verdien og kjør skriptet på nytt. Alt av usynlig søkemotor-arbeid gjelder uansett.
 
 ## Slik endrer du tekst
 
@@ -179,12 +196,16 @@ innhold, og pek domenets DNS mot GitHub Pages. Alternativt kan mappa slippes ret
 
 Landingssidene er laget for å kunne rangere:
 
-* Ekte HTML-tekst (ikke bare JavaScript), egen tittel og beskrivelse per språk
+* Egen tittel og beskrivelse per språk, skrevet i ferdig HTML (ikke av JavaScript)
 * `canonical` og `hreflang` mellom norsk og engelsk, så Google vet at det er samme side
 * Strukturerte data (`VacationRental`) med adresse, fasiliteter, inn-/utsjekk og vurdering
 * Open Graph og Twitter-kort, så lenken ser riktig ut når den deles
 * `sitemap.xml` med kun de to landingssidene
 * Alt-tekst på alle bilder
+
+Merk at landingssiden bevisst er holdt kort (se over). Det koster synlighet i søk: Google
+har lite tekst å gå på, og siden vil sjelden rangere på annet enn navnet «Voss Chalet».
+De strukturerte dataene gir likevel Google adresse, fasiliteter, kapasitet og vurdering.
 
 Gjestesidene er merket `noindex` og ligger ikke i sitemap. De er **bevisst ikke** sperret i
 `robots.txt`: en sperre ville hindret Google i å hente siden, og da ville den aldri lest

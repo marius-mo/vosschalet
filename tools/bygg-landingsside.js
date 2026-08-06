@@ -23,7 +23,19 @@ require(path.join(ROT, "assets/js/content.js"));
 const S = global.window.SITE;
 
 const BASE = S.meta.siteUrl.replace(/\/?$/, "/");
-const VERSJON = "6"; // ?v= på js og css, så nettleseren ikke bruker gamle filer
+const VERSJON = "7"; // ?v= på js og css, så nettleseren ikke bruker gamle filer
+
+/* Landingssiden er kortet alene: bilde, kort presentasjon, «Book på
+   Airbnb» og innlogging — ingenting å scrolle forbi.
+
+   Settes denne til true, kommer en full presentasjon under kortet (om
+   hytta, fasiliteter, galleri, anmeldelser, beliggenhet, smakebit fra
+   områdeguiden). Det gir Google mye mer å lese — omtrent 6 300 tegn mot
+   400 — men gjesten møter da en lang side i stedet for et rent kort.
+
+   Alt av usynlig søkemotor-arbeid (tittel, beskrivelse, strukturerte
+   data, canonical, hreflang, sitemap) gjelder uansett hva som står her. */
+const VIS_PRESENTASJON = false;
 
 /* --- små hjelpere -------------------------------------------------- */
 
@@ -94,7 +106,7 @@ function hero(T, sider) {
             ${hint ? `<p class="field-help" id="vc-pw-help">${esc(hint)}</p>` : ""}
           </form>
         </div>
-        <p class="landing-scroll"><a href="#om">${esc(sider.lang === "no" ? "Les mer om hytta" : "Read more about the chalet")}</a></p>
+        ${VIS_PRESENTASJON ? `<p class="landing-scroll"><a href="#om">${esc(sider.lang === "no" ? "Les mer om hytta" : "Read more about the chalet")}</a></p>` : ""}
       </div>
     </div>
   </section>`;
@@ -431,17 +443,12 @@ ${jsonLd(T, lang)}
 
 <main id="main">
 ${hero(T, { lang })}
-${omHytta(T)}
-${hoydepunkter(T)}
-${soverom(T)}
-${fasiliteter(T)}
-${galleri(T, lang)}
-${anmeldelser(T)}
-${beliggenhet(T)}
-${omradet(T, lang)}
-${cta(T)}
+${VIS_PRESENTASJON ? [
+  omHytta(T), hoydepunkter(T), soverom(T), fasiliteter(T),
+  galleri(T, lang), anmeldelser(T), beliggenhet(T), omradet(T, lang), cta(T)
+].join("\n") : ""}
 </main>
-${bunn(T, lang)}
+${VIS_PRESENTASJON ? bunn(T, lang) : ""}
 
 <script src="assets/js/content.js?v=${VERSJON}"></script>
 <script src="assets/js/app.js?v=${VERSJON}"></script>
