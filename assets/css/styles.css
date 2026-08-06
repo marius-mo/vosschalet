@@ -356,6 +356,9 @@ p { margin: 0 0 1em; }
 
 .landing-divider { border: 0; border-top: 1px solid var(--line); margin: 30px 0 26px; }
 
+/* Bookingknappen står nederst, under innloggingen */
+.landing-book { margin: 0; }
+
 .landing-guest h2 {
   font-family: var(--font-body); font-size: 1.02rem; font-weight: 700;
   margin-bottom: .35em;

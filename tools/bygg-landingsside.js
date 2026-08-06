@@ -23,7 +23,7 @@ require(path.join(ROT, "assets/js/content.js"));
 const S = global.window.SITE;
 
 const BASE = S.meta.siteUrl.replace(/\/?$/, "/");
-const VERSJON = "8"; // ?v= på js og css, så nettleseren ikke bruker gamle filer
+const VERSJON = "9"; // ?v= på js og css, så nettleseren ikke bruker gamle filer
 
 /* Landingssiden er kortet alene: bilde, kort presentasjon, «Book på
    Airbnb» og innlogging — ingenting å scrolle forbi.
@@ -89,8 +89,6 @@ function hero(T, sider) {
         <p class="landing-tagline">${esc(L.tagline)}</p>
         <p class="rating-badge">${IKON_STJERNE}<strong>${esc(score)}</strong>
           <span>· ${r.count} ${anmeldelser} · ${esc(merke)}</span></p>
-        <p><a class="btn btn-primary btn-lg" href="${esc(S.meta.airbnbUrl)}" target="_blank" rel="noopener">${esc(L.bookCta)}</a></p>
-        <hr class="landing-divider">
         <div class="landing-guest" id="vc-guest">
           <h2>${esc(L.guestTitle)}</h2>
           <p>${esc(L.guestText)}</p>
@@ -106,6 +104,8 @@ function hero(T, sider) {
             ${hint ? `<p class="field-help" id="vc-pw-help">${esc(hint)}</p>` : ""}
           </form>
         </div>
+        <hr class="landing-divider">
+        <p class="landing-book"><a class="btn btn-primary btn-lg" href="${esc(S.meta.airbnbUrl)}" target="_blank" rel="noopener">${esc(L.bookCta)}</a></p>
         ${VIS_PRESENTASJON ? `<p class="landing-scroll"><a href="#om">${esc(sider.lang === "no" ? "Les mer om hytta" : "Read more about the chalet")}</a></p>` : ""}
       </div>
     </div>
