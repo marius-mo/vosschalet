@@ -653,10 +653,21 @@ window.SITE = {
           ]
         },
         {
-          title: "Mat, kultur og familie",
+          title: "Spisesteder",
           items: [
-            { name: "Tre Brør", desc: "Hyggelig kafé og bar i sentrum — bra for lunsj eller en øl etter skiing.", meta: "ca. 15 min", map: "Tre Brør, Voss" },
-            { name: "Park Hotel Vossevangen", desc: "Lokal mat i sentrum, fint for en middag ute.", meta: "ca. 15 min", map: "Park Hotel Vossevangen" },
+            { name: "Park Hotel Vossevangen", desc: "Fine dining, og en av verdens største vinkjellere. Vinsmaking er mulig — bestill gjerne i forkant.", meta: "ca. 15 min", map: "Park Hotel Vossevangen, Voss" },
+            { name: "Vossevangen Grill & Steakhouse", desc: "Burgere og biff i uformell setting. Sentralt og familievennlig.", meta: "ca. 15 min", map: "Vossevangen Grill & Steakhouse, Voss" },
+            { name: "Flor'n Restaurant", desc: "Lokalmat i sjarmerende omgivelser på Store Ringheim.", meta: "Litt utenfor sentrum", map: "Flor'n Restaurant Store Ringheim, Voss" },
+            { name: "Tre Brør Café & Bar", desc: "Kafé med lunsj, snacks og kveldskonserter. Sosialt og sentralt.", meta: "ca. 15 min", map: "Tre Brør, Voss" },
+            { name: "Malin Restaurant & Sushi Bar", desc: "Sushi og asiatisk mat i moderne lokaler.", meta: "ca. 15 min", map: "Malin Restaurant & Sushi Bar, Voss" },
+            { name: "Skrot Café & Bar", desc: "Trendy kafé med enkle retter og milkshakes.", meta: "ca. 15 min", map: "Skrot Café & Bar, Voss" },
+            { name: "Hangurstoppen Restaurant", desc: "Mat med utsikt, på toppen av gondolen.", meta: "Toppen av gondolen", map: "Hangurstoppen Restaurant, Voss", img: "assets/img/omrade-hangurstoppen.avif" },
+            { name: "Vangen Café", desc: "Enkel norsk lunsj i sentrum.", meta: "ca. 15 min", map: "Vangen Café, Voss" }
+          ]
+        },
+        {
+          title: "Kultur og familie",
+          items: [
             { name: "Voss Folkemuseum", desc: "Lokalhistorie i vakre omgivelser.", meta: "ca. 15 min", map: "Voss Folkemuseum" },
             { name: "Voss Vind", desc: "Innendørs fallskjermhopp i vindtunnel — moro for både barn og voksne, og helt uavhengig av været.", meta: "ca. 15 min", map: "Voss Vind", video: "https://www.youtube.com/watch?v=Y6_gW-LJPik" },
             { name: "Vossabadet", desc: "Svømmehall, utendørsbasseng og egen barneavdeling — perfekt på regnværsdager.", meta: "ca. 15 min", map: "Vossabadet" },
@@ -1192,10 +1203,21 @@ window.SITE = {
           ]
         },
         {
-          title: "Food, culture and family",
+          title: "Places to eat",
           items: [
-            { name: "Tre Brør", desc: "A friendly café and bar in the centre — good for lunch or an après-ski beer.", meta: "approx. 15 min", map: "Tre Brør, Voss" },
-            { name: "Park Hotel Vossevangen", desc: "Local food in the centre, good for dinner out.", meta: "approx. 15 min", map: "Park Hotel Vossevangen" },
+            { name: "Park Hotel Vossevangen", desc: "Fine dining, and one of the largest wine cellars in the world. Wine tasting is possible — worth booking ahead.", meta: "approx. 15 min", map: "Park Hotel Vossevangen, Voss" },
+            { name: "Vossevangen Grill & Steakhouse", desc: "Burgers and steak in a relaxed setting. Central and family friendly.", meta: "approx. 15 min", map: "Vossevangen Grill & Steakhouse, Voss" },
+            { name: "Flor'n Restaurant", desc: "Local food in charming surroundings at Store Ringheim.", meta: "Just outside the centre", map: "Flor'n Restaurant Store Ringheim, Voss" },
+            { name: "Tre Brør Café & Bar", desc: "Café with lunch, snacks and evening concerts. Sociable and central.", meta: "approx. 15 min", map: "Tre Brør, Voss" },
+            { name: "Malin Restaurant & Sushi Bar", desc: "Sushi and Asian food in modern surroundings.", meta: "approx. 15 min", map: "Malin Restaurant & Sushi Bar, Voss" },
+            { name: "Skrot Café & Bar", desc: "Trendy café with simple dishes and milkshakes.", meta: "approx. 15 min", map: "Skrot Café & Bar, Voss" },
+            { name: "Hangurstoppen Restaurant", desc: "Food with a view, at the top of the gondola.", meta: "Top of the gondola", map: "Hangurstoppen Restaurant, Voss", img: "assets/img/omrade-hangurstoppen.avif" },
+            { name: "Vangen Café", desc: "Simple Norwegian lunch in the centre.", meta: "approx. 15 min", map: "Vangen Café, Voss" }
+          ]
+        },
+        {
+          title: "Culture and family",
+          items: [
             { name: "Voss Folk Museum", desc: "Local history in beautiful surroundings.", meta: "approx. 15 min", map: "Voss Folkemuseum" },
             { name: "Voss Vind", desc: "Indoor skydiving in a wind tunnel — great fun for children and adults alike, whatever the weather is doing.", meta: "approx. 15 min", map: "Voss Vind", video: "https://www.youtube.com/watch?v=Y6_gW-LJPik" },
             { name: "Vossabadet", desc: "Indoor pool, outdoor pool and a children's area — perfect on a rainy day.", meta: "approx. 15 min", map: "Vossabadet" },
