@@ -933,16 +933,10 @@
       });
     });
 
-    var guest = document.getElementById("vc-guest");
+    // Passordfeltet står alltid på forsiden — også for den som allerede
+    // har vært innlogget. Forsiden skal se lik ut for alle.
     var form = document.getElementById("vc-form");
-
-    // Allerede innlogget: vis veien videre i stedet for passordfeltet
-    if (guest && isUnlocked()) {
-      form.parentNode.removeChild(form);
-      var hjelp = guest.querySelector("p");
-      if (hjelp) hjelp.parentNode.removeChild(hjelp);
-      guest.appendChild(el("a", { class: "btn btn-primary", href: next, text: T.nav.home }));
-    } else if (form) {
+    if (form) {
       var pw = document.getElementById("vc-pw");
       var error = document.getElementById("vc-error");
       var submit = form.querySelector("button[type=submit]");

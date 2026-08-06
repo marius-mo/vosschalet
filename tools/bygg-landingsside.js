@@ -23,7 +23,7 @@ require(path.join(ROT, "assets/js/content.js"));
 const S = global.window.SITE;
 
 const BASE = S.meta.siteUrl.replace(/\/?$/, "/");
-const VERSJON = "7"; // ?v= på js og css, så nettleseren ikke bruker gamle filer
+const VERSJON = "8"; // ?v= på js og css, så nettleseren ikke bruker gamle filer
 
 /* Landingssiden er kortet alene: bilde, kort presentasjon, «Book på
    Airbnb» og innlogging — ingenting å scrolle forbi.
