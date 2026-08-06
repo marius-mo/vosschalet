@@ -418,7 +418,7 @@ window.SITE = {
             "Ikke ta med glass, leker eller andre gjenstander i badet.",
             "Har dere brukt spaet i løpet av oppholdet: ha i omtrent ett lokk med Spa Shock (står i garasjen), kjør alle pumpene på fullt til de stopper av seg selv, og lukk lokket. Det balanserer vannet til neste gjest."
           ],
-          tip: "Saltvannet er skånsomt mot hud og hår, men badetøy kan bleknes over tid, akkurat som i et vanlig spa."
+          tip: "Saltvannet er skånsomt mot hud og hår."
         },
         {
           id: "badstue",
@@ -978,7 +978,7 @@ window.SITE = {
             "Please do not bring glass, toys or other objects into the tub.",
             "If you have used the spa during your stay: add about one capful of Spa Shock (kept in the garage), run all the pumps at full until they stop by themselves, and close the cover. That rebalances the water for the next guest."
           ],
-          tip: "The salt water is gentle on skin and hair, but swimwear may fade over time, just like in any spa."
+          tip: "The salt water is gentle on skin and hair."
         },
         {
           id: "badstue",

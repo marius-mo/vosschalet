@@ -215,9 +215,9 @@ const CSS = `
   table.fakta tr:last-child th, table.fakta tr:last-child td { border-bottom: 0; }
   .kode { font-variant-numeric: tabular-nums; letter-spacing: .02em; }
 
-  .del { margin-bottom: 7mm; }
+  /* En seksjon som ikke får plass nederst på siden, flyttes hel til neste */
+  .del { margin-bottom: 7mm; break-inside: avoid; }
   .del h2 { break-after: avoid; }
-  .del ol, .del ul { break-inside: auto; }
   .del h2 { display: flex; align-items: baseline; gap: 3mm; margin-bottom: .5em; }
   .nr {
     display: inline-grid; place-items: center; flex: none;
@@ -242,10 +242,12 @@ const CSS = `
   .qr.liten img { width: 22mm; height: 22mm; }
   .qr.stor img { width: 40mm; height: 40mm; }
 
-  .bilder { display: flex; gap: 3mm; margin-top: 2mm; break-inside: avoid; }
-  .bilder figure { flex: 1; margin: 0; }
+  /* Bildene beholder sitt eget størrelsesforhold, ingenting beskjæres */
+  .bilder { display: flex; gap: 3mm; margin-top: 2mm; align-items: flex-start; break-inside: avoid; }
+  .bilder figure { flex: 1 1 0; min-width: 0; margin: 0; }
   .bilder img {
-    width: 100%; height: 34mm; object-fit: cover;
+    display: block; width: auto; height: auto;
+    max-width: 100%; max-height: 62mm;
     border-radius: 2mm; border: 1px solid #e8e1d6;
   }
   .bilder figcaption { font-size: 8pt; color: #7a736a; margin-top: 1mm; line-height: 1.35; }

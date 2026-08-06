@@ -81,6 +81,10 @@ node tools/lag-pdf.js                # krever Playwright
 rm -rf .trykk
 ```
 
+PDF-en er satt opp slik at en seksjon som ikke får plass nederst på en side, flyttes hel til
+neste. Det gir noen luftige sider, men ingen punkter som blir delt midt i. Bildene beholder
+sitt eget størrelsesforhold og beskjæres ikke.
+
 Uten `PRINT_IMG` blir PDF-en rundt 14 MB i stedet for 1,5 — bildene legges da inn i full
 oppløsning, som er bortkastet når de vises små på papiret.
 
