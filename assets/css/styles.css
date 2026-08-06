@@ -206,13 +206,15 @@ p { margin: 0 0 1em; }
   background: var(--surface-2); border: 1px solid var(--line);
   border-radius: 999px; padding: 2px;
 }
-.lang-switch button {
-  border: 0; background: transparent; cursor: pointer;
+.lang-switch button,
+.lang-switch a {
+  border: 0; background: transparent; cursor: pointer; text-decoration: none;
   font: inherit; font-size: .8rem; font-weight: 600; letter-spacing: .04em;
   color: var(--muted); padding: .3em .7em; border-radius: 999px;
   transition: background .2s ease, color .2s ease;
 }
-.lang-switch button[aria-pressed="true"] { background: var(--surface); color: var(--ink); box-shadow: var(--shadow-s); }
+.lang-switch button[aria-pressed="true"],
+.lang-switch a[aria-current="page"] { background: var(--surface); color: var(--ink); box-shadow: var(--shadow-s); }
 
 .icon-btn {
   display: inline-flex; align-items: center; justify-content: center;
@@ -302,7 +304,7 @@ p { margin: 0 0 1em; }
 
 .landing {
   position: relative; isolation: isolate;
-  min-height: 100vh;
+  min-height: 100svh;
   display: grid; place-items: center;
   padding: 88px 0 44px;
 }
@@ -388,6 +390,15 @@ p { margin: 0 0 1em; }
   :root:not([data-theme="light"]) .form-error { color: #ffb4a2; background: #37201b; }
 }
 .landing-form .btn { width: 100%; }
+
+/* Lenken som viser at det finnes mer innhold under kortet */
+.landing-scroll { margin: 22px 0 0; font-size: .88rem; }
+.landing-scroll a { color: var(--muted); text-decoration: none; }
+.landing-scroll a::after { content: " ↓"; }
+.landing-scroll a:hover { color: var(--accent); }
+
+/* Fasiliteter og lister på landingssiden har ingen ikoner å vise */
+.amenity-groups li > span:only-child { padding-left: 0; }
 
 /* --- Nøkkelfakta ---------------------------------------------------- */
 
@@ -494,14 +505,16 @@ p { margin: 0 0 1em; }
   display: grid; gap: 12px;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
 }
-.gallery button {
-  position: relative; padding: 0; border: 0; cursor: pointer;
+.gallery button,
+.gallery.is-static figure {
+  position: relative; margin: 0; padding: 0; border: 0; cursor: pointer;
   background: var(--surface-2); border-radius: var(--radius);
   overflow: hidden; aspect-ratio: 4 / 3;
   box-shadow: var(--shadow-s);
   transition: transform .25s ease, box-shadow .25s ease;
 }
-.gallery button:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
+.gallery button:hover,
+.gallery.is-static figure:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
 .gallery img { width: 100%; height: 100%; object-fit: cover; }
 .gallery figcaption {
   position: absolute; left: 0; right: 0; bottom: 0;
@@ -509,8 +522,12 @@ p { margin: 0 0 1em; }
   font-size: .85rem; color: #fff;
   background: linear-gradient(180deg, transparent, rgba(0, 0, 0, .68));
 }
-.gallery button:first-child { grid-column: span 2; aspect-ratio: 16 / 9; }
-@media (max-width: 640px) { .gallery button:first-child { grid-column: auto; aspect-ratio: 4 / 3; } }
+.gallery button:first-child,
+.gallery.is-static figure:first-child { grid-column: span 2; aspect-ratio: 16 / 9; }
+@media (max-width: 640px) {
+  .gallery button:first-child,
+  .gallery.is-static figure:first-child { grid-column: auto; aspect-ratio: 4 / 3; }
+}
 
 /* Plassholder når bildefilen ikke finnes ennå */
 .ph {
@@ -555,6 +572,7 @@ p { margin: 0 0 1em; }
   display: flex; flex-direction: column;
 }
 .stars { display: flex; gap: 2px; margin-bottom: 14px; color: #f0a63c; }
+span.stars { display: inline-flex; }
 .stars svg { width: 15px; height: 15px; }
 .review blockquote { margin: 0 0 18px; font-size: .98rem; color: var(--ink-soft); }
 .review footer { margin-top: auto; font-size: .88rem; }

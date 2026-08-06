@@ -199,6 +199,11 @@
   var THEME_KEY = "vc-theme";
 
   function pickLang() {
+    // Landingssidene finnes som to filer (index.html og en.html), så der
+    // er språket gitt av selve siden
+    if (document.body.dataset.page === "landing") {
+      return document.documentElement.lang === "en" ? "en" : "no";
+    }
     var q = new URLSearchParams(location.search).get("lang");
     if (q === "no" || q === "en") return q;
     var saved = localStorage.getItem(LANG_KEY);
@@ -234,7 +239,9 @@
   }
 
   applyTheme();
-  document.documentElement.lang = lang === "no" ? "no" : "en";
+  if (document.body.dataset.page !== "landing") {
+    document.documentElement.lang = lang === "no" ? "no" : "en";
+  }
 
   /* --- Bilder med plassholder --------------------------------------- */
 
@@ -898,100 +905,85 @@
     main.appendChild(frag([pageHead(a.title, a.intro), body, downloads, ctaBand()]));
   }
 
-  /* --- Landingsside (index.html) --------------------------------------- */
+  /* --- Landingsside (index.html / en.html) -----------------------------
+     Landingssiden er ferdig HTML — den bygges av tools/bygg-landingsside.js
+     så søkemotorene ser teksten. Her kobler vi bare på det interaktive:
+     innlogging, temaknapp, språkvalg og bildevisning.
+     --------------------------------------------------------------------- */
 
-  function renderLanding(main) {
+  function enhanceLanding() {
     var L = T.landing;
-    var r = S.meta.rating;
+
     var next = new URLSearchParams(location.search).get("next") || "hytta.html";
-    // Bare interne sider er lov som viderekobling
     if (!/^[\w.-]+\.html(#[\w-]*)?$/.test(next)) next = "hytta.html";
 
-    // autocapitalize/autocorrect av: mobiltastatur gjør ellers gjerne
-    // «modernchalet» til «Modernchalet», og da slipper man ikke inn
-    var pw = el("input", {
-      class: "field-input", type: "password", id: "vc-pw",
-      autocomplete: "current-password", required: "",
-      autocapitalize: "none", autocorrect: "off", spellcheck: "false",
-      "aria-describedby": "vc-pw-help"
-    });
-    var error = el("p", { class: "form-error", role: "alert", hidden: "" });
-    var submit = el("button", { class: "btn btn-primary", type: "submit", text: L.submit });
+    // Temaknappen får ikonene sine her, så HTML-en holdes ren
+    var themeBtn = document.querySelector(".landing .theme-btn");
+    if (themeBtn) {
+      themeBtn.appendChild(icon("sun", { class: "icon-sun" }));
+      themeBtn.appendChild(icon("moon", { class: "icon-moon" }));
+      themeBtn.addEventListener("click", toggleTheme);
+    }
 
-    var form = el("form", { class: "landing-form" }, [
-      el("label", { class: "field" }, [
-        el("span", { text: L.passwordLabel }),
-        pw
-      ]),
-      submit,
-      error,
-      (S.meta.access && (lang === "no" ? S.meta.access.hintNo : S.meta.access.hintEn))
-        ? el("p", { class: "field-help", id: "vc-pw-help", text: lang === "no" ? S.meta.access.hintNo : S.meta.access.hintEn })
-        : null
-    ]);
-
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-      error.hidden = true;
-      submit.disabled = true;
-      // Fjern mellomrom som lett blir med ved kopiering fra en melding
-      sha256Hex(pw.value.trim()).then(function (hex) {
-        if (hex === accessHash()) {
-          unlock();
-          location.href = next;
-        } else {
-          submit.disabled = false;
-          error.textContent = L.error;
-          error.hidden = false;
-          pw.select();
-        }
-      }).catch(function () {
-        submit.disabled = false;
-        error.textContent = L.unsupported;
-        error.hidden = false;
+    // Språkvalget er ekte lenker mellom index.html og en.html. Vi husker
+    // valget, slik at gjestesidene åpner på samme språk.
+    document.querySelectorAll(".landing .lang-switch a").forEach(function (a) {
+      a.addEventListener("click", function () {
+        localStorage.setItem(LANG_KEY, a.getAttribute("hreflang") === "en" ? "en" : "no");
       });
     });
 
-    var guestBlock = isUnlocked()
-      ? el("div", { class: "landing-guest" }, [
-          el("h2", { text: L.guestTitle }),
-          el("a", { class: "btn btn-primary", href: next, text: T.nav.home })
-        ])
-      : el("div", { class: "landing-guest" }, [
-          el("h2", { text: L.guestTitle }),
-          el("p", { text: L.guestText }),
-          form
-        ]);
+    var guest = document.getElementById("vc-guest");
+    var form = document.getElementById("vc-form");
 
-    var card = el("div", { class: "landing-card" }, [
-      el("div", { class: "landing-brand" }, [icon("logo"), el("span", { text: S.meta.siteName })]),
-      el("span", { class: "eyebrow", text: L.eyebrow }),
-      el("h1", { text: L.title }),
-      el("p", { class: "landing-tagline", text: L.tagline }),
-      r ? el("div", { class: "rating-badge" }, [
-        icon("star", { fill: true }),
-        document.createTextNode((lang === "no" ? r.score : (r.scoreEn || r.score)) + " "),
-        el("span", { text: "· " + r.count + " " + (lang === "no" ? "anmeldelser" : "reviews") + " · " + (lang === "no" ? r.badgeNo : r.badgeEn) })
-      ]) : null,
-      el("a", { class: "btn btn-primary btn-lg", href: S.meta.airbnbUrl, target: "_blank", rel: "noopener", text: L.bookCta }),
-      el("hr", { class: "landing-divider" }),
-      guestBlock
-    ]);
+    // Allerede innlogget: vis veien videre i stedet for passordfeltet
+    if (guest && isUnlocked()) {
+      form.parentNode.removeChild(form);
+      var hjelp = guest.querySelector("p");
+      if (hjelp) hjelp.parentNode.removeChild(hjelp);
+      guest.appendChild(el("a", { class: "btn btn-primary", href: next, text: T.nav.home }));
+    } else if (form) {
+      var pw = document.getElementById("vc-pw");
+      var error = document.getElementById("vc-error");
+      var submit = form.querySelector("button[type=submit]");
 
-    var tools = el("div", { class: "landing-top" }, [
-      el("div", { class: "lang-switch", role: "group", "aria-label": T.common.langLabel }, [
-        el("button", { type: "button", text: "NO", "aria-pressed": String(lang === "no"), onclick: function () { setLang("no"); } }),
-        el("button", { type: "button", text: "EN", "aria-pressed": String(lang === "en"), onclick: function () { setLang("en"); } })
-      ]),
-      el("button", { class: "icon-btn theme-btn", type: "button", "aria-label": T.common.themeLabel, onclick: toggleTheme },
-        [icon("sun", { class: "icon-sun" }), icon("moon", { class: "icon-moon" })])
-    ]);
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        error.hidden = true;
+        submit.disabled = true;
+        // Trimmet: mellomrom blir lett med når passordet limes inn
+        sha256Hex(pw.value.trim()).then(function (hex) {
+          if (hex === accessHash()) {
+            unlock();
+            location.href = next;
+          } else {
+            submit.disabled = false;
+            error.textContent = L.error;
+            error.hidden = false;
+            pw.select();
+          }
+        }).catch(function () {
+          submit.disabled = false;
+          error.textContent = L.unsupported;
+          error.hidden = false;
+        });
+      });
+    }
 
-    main.appendChild(el("section", { class: "landing" }, [
-      el("div", { class: "landing-media" }, [S.media.landing ? heroImage(S.media.landing) : null]),
-      tools,
-      el("div", { class: "wrap" }, [card])
-    ]));
+    // Bildene i galleriet kan åpnes i stor visning
+    var figurer = document.querySelectorAll(".gallery.is-static figure");
+    galleryItems = Array.prototype.map.call(figurer, function (fig) {
+      var img = fig.querySelector("img");
+      return { src: img.getAttribute("src"), caption: img.getAttribute("alt") };
+    });
+    Array.prototype.forEach.call(figurer, function (fig, i) {
+      fig.addEventListener("click", function () { openLightbox(i); });
+      fig.setAttribute("role", "button");
+      fig.setAttribute("tabindex", "0");
+      fig.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openLightbox(i); }
+      });
+    });
   }
 
   /* --- Oppstart -------------------------------------------------------- */
@@ -1025,9 +1017,7 @@
 
     // Landingssiden er åpen for alle
     if (page === "landing") {
-      document.title = T.landing.title + " · " + T.landing.eyebrow;
-      document.body.classList.add("is-landing");
-      renderLanding(main);
+      enhanceLanding();
       reveal();
       return;
     }
