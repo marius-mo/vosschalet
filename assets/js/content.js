@@ -646,10 +646,10 @@ window.SITE = {
           items: [
             { name: "Lønahorgi", desc: "Kjent topptur — dere kan gå rett fra hytta.", meta: "Fra døren", map: "Lønahorgi, Voss", img: "assets/img/omrade-lonahorgi.avif" },
             { name: "Sykling og terrengsykling", desc: "Familievennlige sykkelstier rundt Vangsvatnet, og krevende stier i fjellet. Gondolen tar deg og sykkelen opp.", meta: "ca. 15 min" },
-            { name: "Rafting og elvesport", desc: "Rafting, juving og elvepadling med erfarne guider i Voss sentrum.", meta: "ca. 15 min", map: "rafting Voss", img: "assets/img/omrade-gjel.avif" },
+            { name: "Bordalsgjelet", desc: "Et trangt og frodig juv med gangbru og sti langs elva — kort, dramatisk og fint også for barn. Vil dere ut i elva selv, arrangerer flere aktører i Voss sentrum rafting, juving og elvepadling med erfarne guider.", meta: "ca. 15 min", map: "Bordalsgjelet, Voss", img: "assets/img/omrade-gjel.avif" },
             { name: "Paragliding og fallskjermhopp", desc: "Tandemhopp fra fjellet, eller fallskjermhopp fra hoppfeltet på Bømoen.", meta: "ca. 20 min", map: "Skydive Voss, Bømoen" },
             { name: "Voss Golfklubb", desc: "9-hulls bane i naturskjønne omgivelser, for både nybegynnere og erfarne.", meta: "ca. 20 min", map: "Voss Golfklubb", img: "assets/img/omrade-golf-vangsvatnet.avif" },
-            { name: "Bading i Vangsvatnet", desc: "Fin strand som er populær blant både lokale og besøkende.", meta: "ca. 15 min", map: "Vangsvatnet, Voss", img: "assets/img/omrade-bjorkemoen.jpg" }
+            { name: "Bjørkemoen badeplass", desc: "Badeplass i elva med svaberg og kulper, populær blant lokale på varme dager. Ta med håndkle og noe å sitte på.", meta: "ca. 15 min", map: "Bjørkemoen badeplass, Voss", img: "assets/img/omrade-bjorkemoen.jpg" }
           ]
         },
         {
@@ -1185,10 +1185,10 @@ window.SITE = {
           items: [
             { name: "Lønahorgi", desc: "A well-known summit hike — you can walk straight from the chalet.", meta: "From the door", map: "Lønahorgi, Voss", img: "assets/img/omrade-lonahorgi.avif" },
             { name: "Cycling and mountain biking", desc: "Family-friendly paths around Vangsvatnet and demanding trails in the mountains. The gondola takes you and your bike up.", meta: "approx. 15 min" },
-            { name: "Rafting and river sports", desc: "Rafting, canyoning and river kayaking with experienced guides in Voss centre.", meta: "approx. 15 min", map: "rafting Voss", img: "assets/img/omrade-gjel.avif" },
+            { name: "Bordalsgjelet gorge", desc: "A narrow, green gorge with a walkway and a path along the river — short, dramatic and fine for children too. If you want to get into the water yourselves, operators in Voss centre run rafting, canyoning and river kayaking with experienced guides.", meta: "approx. 15 min", map: "Bordalsgjelet, Voss", img: "assets/img/omrade-gjel.avif" },
             { name: "Paragliding and skydiving", desc: "Tandem flights from the mountain, or skydiving from the airfield at Bømoen.", meta: "approx. 20 min", map: "Skydive Voss, Bømoen" },
             { name: "Voss Golf Club", desc: "A scenic 9-hole course for beginners and experienced players alike.", meta: "approx. 20 min", map: "Voss Golfklubb", img: "assets/img/omrade-golf-vangsvatnet.avif" },
-            { name: "Swimming in Vangsvatnet", desc: "A nice beach popular with locals and visitors alike.", meta: "approx. 15 min", map: "Vangsvatnet, Voss", img: "assets/img/omrade-bjorkemoen.jpg" }
+            { name: "Bjørkemoen bathing spot", desc: "A river bathing spot with smooth rocks and pools, popular with locals on warm days. Bring a towel and something to sit on.", meta: "approx. 15 min", map: "Bjørkemoen badeplass, Voss", img: "assets/img/omrade-bjorkemoen.jpg" }
           ]
         },
         {
