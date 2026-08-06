@@ -189,6 +189,10 @@ fjernes). Fint å henge opp i hytta sammen med en QR-kode som peker til `husmanu
 **GitHub Pages:** legg filene i roten av et repo, gå til Settings → Pages, velg `main` og `/ (root)`.
 Siden blir liggende på `https://BRUKERNAVN.github.io/REPONAVN/`.
 
+Den tomme filen `.nojekyll` i roten sier til GitHub Pages at filene skal serveres som de er,
+uten å kjøres gjennom Jekyll først. Siden er ren HTML og trenger ingen behandling, og uten
+`.nojekyll` kan et Jekyll-steg feile og stoppe hele publiseringen. **Ikke slett den.**
+
 **Eget domene (f.eks. vosschalet.no):** legg en fil `CNAME` i roten med domenet som eneste
 innhold, og pek domenets DNS mot GitHub Pages. Alternativt kan mappa slippes rett inn i Netlify.
 
