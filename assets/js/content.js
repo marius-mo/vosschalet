@@ -55,14 +55,14 @@ window.SITE = {
        som står til høyre. Er verdien ulik på de to språkene, bruk
        valueNo og valueEn i stedet for value. */
     emergency: [
-      { no: "Nød – brann", en: "Emergency – fire", value: "110" },
-      { no: "Nød – politi", en: "Emergency – police", value: "112" },
-      { no: "Nød – ambulanse", en: "Emergency – ambulance", value: "113" },
+      { no: "Brann", en: "Fire", value: "110" },
+      { no: "Politi", en: "Police", value: "112" },
+      { no: "Ambulanse", en: "Ambulance", value: "113" },
       { no: "Legevakt", en: "Out-of-hours doctor", value: "116 117" },
       { no: "Veihjelp (Viking)", en: "Roadside assistance (Viking)", value: "06000" },
       { no: "Førstehjelpsskrin", en: "First aid kit",
         valueNo: "På vaskerommet", valueEn: "In the utility room" },
-      { no: "Vert – Michelle og Marius", en: "Hosts – Michelle and Marius",
+      { no: "Michelle og Marius", en: "Michelle and Marius",
         valueNo: "Meldinger i Airbnb-appen", valueEn: "Messages in the Airbnb app" }
     ],
 
@@ -149,7 +149,7 @@ window.SITE = {
         { src: "assets/video/jacuzzi.mp4", capNo: "Slik tar du av og på lokket", capEn: "How to take the cover off and put it back" },
         { src: "assets/img/manual-jacuzzi-temp.jpg", capNo: "Jacuzzien står klar på badetemperatur hele året", capEn: "The hot tub is kept at bathing temperature all year" },
         { src: "assets/img/manual-jacuzzi-ph.jpg", capNo: "Vannverdiene sjekkes før hver ankomst", capEn: "The water values are checked before every arrival" },
-        { src: "assets/img/manual-spashock.jpg", capNo: "Spa Shock-granulatet står i garasjen — ett lokk etter bruk", capEn: "The Spa Shock granulate is in the garage — one capful after use" }
+        { src: "assets/img/manual-spashock.jpg", capNo: "Spa Shock-granulatet står i garasjen, ett lokk etter bruk", capEn: "The Spa Shock granulate is in the garage, one capful after use" }
       ],
       badstue: [
         { src: "assets/video/badstue.mp4", capNo: "Slik skrur dere på badstuen i 1. etasje", capEn: "How to switch on the ground-floor sauna" },
@@ -231,11 +231,11 @@ window.SITE = {
       items: [
         { icon: "ski", title: "Ski in / ski out", text: "Skiheisene ligger rett utenfor døren, med over 40 km preparerte løyper i Voss Resort." },
         { icon: "hottub", title: "Saltvannsjacuzzi", text: "Arctic Spa med hudvennlig saltvann, tilgjengelig hele året og døgnet rundt." },
-        { icon: "sauna", title: "Badstue", text: "Perfekt etter en dag i bakken eller på fjellet." },
+        { icon: "sauna", title: "Badstue", text: "Godt å ta etter en dag i bakken eller på fjellet." },
         { icon: "mountain", title: "Utsikt over Lønavatnet", text: "Gulv-til-tak-vinduer i stuen og stor, solrik terrasse med panoramautsikt." },
         { icon: "fire", title: "Peis i åpen stue", text: "Åpen stue- og kjøkkenløsning med peis og fullt utstyrt kjøkken." },
         { icon: "car", title: "Garasje og elbillading", text: "Elbillader nivå 2 i garasjen, og gjesteparkering til fem biler." },
-        { icon: "kids", title: "Familievennlig", text: "Lekerom, hems, TV-stue og sprinkelseng — godt egnet for barnefamilier." },
+        { icon: "kids", title: "Familievennlig", text: "Lekerom, hems, TV-stue og sprinkelseng gjør hytta godt egnet for barnefamilier." },
         { icon: "bed", title: "Alt er klart", text: "Sengetøy, håndklær og forbruksvarer som såpe, sjampo og toalettpapir er inkludert." }
       ]
     },
@@ -258,7 +258,7 @@ window.SITE = {
       groups: [
         {
           title: "Ute og spa",
-          items: ["Privat saltvannsjacuzzi – hele året, hele døgnet", "Badstue", "Stor terrasse med panoramautsikt", "Utendørsdusj", "Grill", "Nær skiløype/-bakke"]
+          items: ["Privat saltvannsjacuzzi, hele året og hele døgnet", "Badstue", "Stor terrasse med panoramautsikt", "Utendørsdusj", "Grill", "Nær skiløype/-bakke"]
         },
         {
           title: "Kjøkken og stue",
@@ -270,12 +270,12 @@ window.SITE = {
         },
         {
           title: "Parkering",
-          items: ["Garasje", "Elbillader – nivå 2", "Gjesteparkering til 5 biler", "Gratis parkering på stedet"]
+          items: ["Garasje", "Elbillader (nivå 2)", "Gjesteparkering til 5 biler", "Gratis parkering på stedet"]
         }
       ],
       // Airbnb oppgir at karbonmonoksidvarsler ikke er installert – vi sier det ærlig her.
       noteTitle: "Verdt å vite",
-      note: "Hytta har røykvarslere. Karbonmonoksidvarsler er foreløpig ikke installert. Innkjørselen ned til garasjen er bratt, og kan være krevende når det er mye snø — det er god parkering på andre siden av veien."
+      note: "Hytta har røykvarslere. Karbonmonoksidvarsler er foreløpig ikke installert. Innkjørselen ned til garasjen er bratt, og kan være krevende når det er mye snø. Det er god parkering på andre siden av veien."
     },
 
     gallery: {
@@ -367,7 +367,7 @@ window.SITE = {
     manual: {
       title: "Husmanual",
       intro:
-        "Vi håper dere får et hyggelig og avslappende opphold. Her finner dere praktisk informasjon som gjør det enklere å bruke hytta og området rundt — ankomst, hvordan tingene fungerer, og hva som skal gjøres før avreise. Klikk på et punkt for å åpne det. Skulle noe gå i stykker, mangle eller ikke fungere, ta kontakt, så ordner vi det så raskt som mulig.",
+        "Vi håper dere får et hyggelig og avslappende opphold. Her finner dere praktisk informasjon som gjør det enklere å bruke hytta og området rundt: ankomst, hvordan tingene fungerer, og hva som skal gjøres før avreise. Klikk på et punkt for å åpne det. Skulle noe gå i stykker, mangle eller ikke fungere, ta kontakt, så ordner vi det så raskt som mulig.",
       wifiTitle: "Wifi",
       wifiNetwork: "Nettverk",
       wifiPassword: "Passord",
@@ -376,7 +376,7 @@ window.SITE = {
       wifiConnect: "Koble til wifi",
       wifiConnectDone: "Passordet er kopiert",
       wifiConnectHint: "Åpne wifi-innstillingene på telefonen, velg «{ssid}» og lim inn passordet.",
-      wifiQrHelp: "Eller skann denne med kameraet på telefonen — da kobler den seg til av seg selv.",
+      wifiQrHelp: "Eller skann denne med kameraet på telefonen, så kobler den seg til av seg selv.",
       checkInLabel: "Innsjekk",
       checkOutLabel: "Utsjekk",
       printCta: "Skriv ut manualen",
@@ -389,17 +389,17 @@ window.SITE = {
           icon: "key",
           title: "Ankomst og smartlås",
           paragraphs: [
-            "Innsjekk er fra kl. 15:00, og dere sjekker inn selv med smartlåsen — dere trenger ikke møte noen."
+            "Innsjekk er fra kl. 15:00, og dere sjekker inn selv med smartlåsen. Dere trenger ikke møte noen."
           ],
           steps: [
             "Koden til ytterdøren sendes på Airbnb-melding før ankomst.",
             "Dra hånden over tastaturet for å vekke knappene.",
             "Tast koden, og trykk deretter på symbolet med åpen hengelås.",
-            "Dere trenger ingen nøkkel til selve hytta — låsen går på kode.",
+            "Dere trenger ingen nøkkel til selve hytta, for låsen går på kode.",
             "Døren låses ved å dra hånden over tastene. Husk koden, så kommer dere inn igjen.",
             "De hvite nøkkelkortene i gangen åpner vegbommen.",
             "I gangen henger også fjernkontrollen til garasjen og nøkkelen til annekset. Bruk dem gjerne så lenge dere bor her, og heng dem tilbake før avreise.",
-            "Innkjørselen ned til garasjen er bratt. Kjør rolig, spesielt når det er snø og is — det er også god parkering på andre siden av veien."
+            "Innkjørselen ned til garasjen er bratt. Kjør rolig, spesielt når det er snø og is. Det er også god parkering på andre siden av veien."
           ],
           tip: "Trenger dere tidlig innsjekk eller sen utsjekk, send en melding i god tid. Vi er fleksible når hytta er ledig."
         },
@@ -408,17 +408,17 @@ window.SITE = {
           icon: "hottub",
           title: "Saltvannsjacuzzi",
           paragraphs: [
-            "Jacuzzien er en Arctic Spa med saltvannssystem. Den holder standard badetemperatur hele året, døgnet rundt, så den er klar til bruk når dere kommer. Vi sjekker at vannverdiene er riktige før ankomst — ser vannet likevel ikke bra ut, vil vi gjerne ha beskjed."
+            "Jacuzzien er en Arctic Spa med saltvannssystem. Den holder standard badetemperatur hele året, døgnet rundt, så den er klar til bruk når dere kommer. Vi sjekker at vannverdiene er riktige før ankomst. Ser vannet likevel ikke bra ut, vil vi gjerne ha beskjed."
           ],
           steps: [
-            "Skyv lokket forsiktig av og legg det på lokkholderen — ikke på bakken eller snøen.",
+            "Skyv lokket forsiktig av og legg det på lokkholderen, ikke på bakken eller snøen.",
             "God hygiene er viktig: dusj og vask dere grundig før bading. Såpe, sjampo og kremer skylles av, ellers ødelegges vannbalansen.",
             "Temperatur og bobler styrer dere på panelet på selve boblebadet.",
             "Legg lokket på igjen med én gang dere er ferdige, ellers faller temperaturen og strømforbruket øker.",
             "Ikke ta med glass, leker eller andre gjenstander i badet.",
             "Har dere brukt spaet i løpet av oppholdet: ha i omtrent ett lokk med Spa Shock (står i garasjen), kjør alle pumpene på fullt til de stopper av seg selv, og lukk lokket. Det balanserer vannet til neste gjest."
           ],
-          tip: "Saltvannet er skånsomt mot hud og hår, men badetøy kan bleknes over tid — akkurat som i et vanlig spa."
+          tip: "Saltvannet er skånsomt mot hud og hår, men badetøy kan bleknes over tid, akkurat som i et vanlig spa."
         },
         {
           id: "badstue",
@@ -431,9 +431,9 @@ window.SITE = {
             "Videoen under viser hvordan dere skrur den på.",
             "Legg alltid et håndkle under dere på benken.",
             "Vann på steinene: bruk øsekaret, litt om gangen.",
-            "Ikke tørk klær eller sko inne i badstuen — det er brannfarlig."
+            "Ikke tørk klær eller sko inne i badstuen. Det er brannfarlig."
           ],
-          tip: "Badstue først, så jacuzzi, så utedusj — den rekkefølgen anbefaler gjestene våre."
+          tip: "Badstue først, så jacuzzi, så utedusj. Den rekkefølgen anbefaler gjestene våre."
         },
         {
           id: "peis",
@@ -448,7 +448,7 @@ window.SITE = {
             "Tenn på, la døren stå på gløtt i et par minutter, og lukk den så.",
             "Når det brenner godt, skyv spjeldet halvveis inn.",
             "Legg aldri i mer enn tre kubber om gangen, og la aldri peisen stå ubevoktet.",
-            "Asken kastes i søppelpose i restavfallet — men bare når den er helt kald."
+            "Asken kastes i søppelpose i restavfallet, men bare når den er helt kald."
           ],
           tip: "Hytta har røykvarslere, men foreløpig ikke karbonmonoksidvarsler. Luft godt hvis det ryker inn, og la aldri peisen brenne mens dere sover."
         },
@@ -466,7 +466,7 @@ window.SITE = {
             "20–22 °C i stuen er behagelig.",
             "Hold vinduer og terrassedør lukket når varmen eller kjølingen står på."
           ],
-          tip: "Skru ned til normal temperatur i stedet for å skru helt av når dere er ute på dagstur — det bruker mindre strøm enn å varme opp igjen fra kaldt."
+          tip: "Skru ned til normal temperatur i stedet for å skru helt av når dere er ute på dagstur. Det bruker mindre strøm enn å varme opp igjen fra kaldt."
         },
         {
           id: "kjokken",
@@ -476,21 +476,21 @@ window.SITE = {
             "Kjøkkenet er fullt utstyrt med det dere trenger for å lage mat til hele følget."
           ],
           steps: [
-            "Platetoppen er induksjon, så kjelene må ha magnetisk bunn — de som ligger i skuffen fungerer.",
+            "Platetoppen er induksjon, så kjelene må ha magnetisk bunn. De som ligger i skuffen fungerer.",
             "Oppvaskmaskin: tablettene ligger under vasken, og programmet Auto fungerer fint til det meste.",
             "Kaffe: både filterkaffe og kaffemaskin. Kaffen står i skapet ved siden av kaffetrakteren.",
-            "Kranen på kjøkkenet gir kokende vann — se videoen under.",
+            "Kranen på kjøkkenet gir kokende vann, se videoen under.",
             "Alt som står i tørrskapet og kjøleskapet kan dere bruke.",
             "La kjøleskapet stå på når dere reiser."
           ],
-          tip: "I vinskapet står det to flasker vin som dere gjerne må nyte. Vi ber bare om at dere fyller tilbake tilsvarende antall flasker før avreise, så ordningen kan fortsette. Grillen på terrassen er kullgrill — kull ligger som regel i garasjen, men det kan være tomt, så ta gjerne med en sekk."
+          tip: "I vinskapet står det to flasker vin som dere gjerne må nyte. Vi ber bare om at dere fyller tilbake tilsvarende antall flasker før avreise, så ordningen kan fortsette. Grillen på terrassen er kullgrill. Kull ligger som regel i garasjen, men det kan være tomt, så ta gjerne med en sekk."
         },
         {
           id: "tv",
           icon: "tv",
           title: "TV, wifi og lyd",
           paragraphs: [
-            "TV-en i stua er en smart-TV. Dere kan logge inn på egne strømmekontoer — husk bare å logge ut igjen før avreise."
+            "TV-en i stua er en smart-TV. Dere kan logge inn på egne strømmekontoer, men husk å logge ut igjen før avreise."
           ],
           steps: [
             "Det er TV både i stuen nede og i stuen oppe. TV-en oppe har surroundanlegg.",
@@ -513,7 +513,7 @@ window.SITE = {
             "Lyser ladestasjonen rødt: tøm tanken med skittent vann, og fyll rent vann på den andre tanken.",
             "Roboten kan bæres opp i etasjen over. Sett den ned der dere vil at den skal jobbe, og trykk PÅ."
           ],
-          tip: "Sett den gjerne i gang før dere reiser — da er hytta et godt stykke på vei til neste gjest."
+          tip: "Sett den gjerne i gang før dere reiser, så er hytta et godt stykke på vei til neste gjest."
         },
         {
           id: "anneks",
@@ -534,11 +534,11 @@ window.SITE = {
           icon: "ski",
           title: "Ski, sko og tørking",
           paragraphs: [
-            "Med ski in/ski out kommer dere rett fra bakken og inn — og da trengs et sted for alt det våte."
+            "Med ski in/ski out kommer dere rett fra bakken og inn, og da trengs et sted for alt det våte."
           ],
           steps: [
             "Ski, staver og brett settes i garasjen, eller inntil husveggen ved parkeringen.",
-            "Skisko og skiutstyr henges på vaskerommet — der er det godt egnet for å tørke klær.",
+            "Skisko og skiutstyr henges på vaskerommet, som egner seg godt til å tørke klær.",
             "Førstehjelpsskrinet står også på vaskerommet.",
             "Ta av skistøvlene før dere går inn i stua."
           ],
@@ -552,7 +552,7 @@ window.SITE = {
             "Det er gratis parkering på stedet med plass til fem biler, samt garasje med elbillader."
           ],
           steps: [
-            "Innkjørselen til garasjen er bratt — kjør rolig, særlig ved snø og is.",
+            "Innkjørselen til garasjen er bratt, så kjør rolig, særlig ved snø og is.",
             "Garasjeporten åpnes med «Harmonie»-fjernkontrollen som henger i gangen.",
             "Elbilladeren har fastmontert type 2-kabel på 5 kW, og lading er kostnadsfri for gjester.",
             "Hytta har egne ekstraplasser over veien, rett ovenfor innkjørselen. Bruk dem gjerne, særlig når det er mye snø."
@@ -564,7 +564,7 @@ window.SITE = {
           icon: "trash",
           title: "Søppel og kildesortering",
           paragraphs: [
-            "Søppelet leveres på sorteringsstasjonen nede ved bommen — se bildet under."
+            "Søppelet leveres på sorteringsstasjonen nede ved bommen, se bildet under."
           ],
           steps: [
             "Sorter avfallet etter anvisningene på beholderne.",
@@ -604,16 +604,16 @@ window.SITE = {
         "Hytta er hjemmet vårt, og vi leier den ut fordi vi vil at flere skal få oppleve Voss. Disse reglene er der for at både dere og neste gjest skal ha det bra.",
       keyPointsTitle: "Kort oppsummert",
       items: [
-        { icon: "clock", title: "Inn- og utsjekk", text: "Innsjekk etter kl. 15:00, utsjekk før kl. 11:00. Vi er fleksible når hytta er ledig — send en melding i god tid." },
+        { icon: "clock", title: "Inn- og utsjekk", text: "Innsjekk etter kl. 15:00, utsjekk før kl. 11:00. Vi er fleksible når hytta er ledig, så send en melding i god tid." },
         { icon: "users", title: "Maks 9 gjester", text: "Alle skal være registrert i bookingen, også barn. Besøk på dagtid er greit, men gi oss beskjed." },
         { icon: "moon", title: "Nattero", text: "Vis hensyn til naboene, og hold det rolig ute og inne mellom kl. 23:00 og 07:00." },
         { icon: "party", title: "Ingen fester", text: "Hytta er ikke egnet for fester eller arrangementer. Rolig samvær med dem som bor her er selvsagt helt fint." },
-        { icon: "smoke", title: "Røykfritt innendørs", text: "Røyking er ikke tillatt inne, heller ikke på soverom eller bad. Ute er det greit — vær nøye med sneiper." },
+        { icon: "smoke", title: "Røykfritt innendørs", text: "Røyking er ikke tillatt inne, heller ikke på soverom eller bad. Ute er det greit, men vær nøye med sneiper." },
         { icon: "hottub", title: "Jacuzzi og badstue", text: "Dusj før bruk, ikke bruk glass i eller ved jacuzzien, og legg alltid på lokket etterpå. Barn skal ha tilsyn." },
         { icon: "fire", title: "Peis og levende lys", text: "Følg fyringsanvisningen i husmanualen. La aldri peis eller stearinlys stå ubevoktet, og slukk alt før dere legger dere." },
         { icon: "shoe", title: "Sko av innendørs", text: "Skiutstyr og sko settes igjen i gangen, ikke i stua." },
         { icon: "lock", title: "Privat bod", text: "Hele hytta kan brukes, og det samme kan annekset. Boden i 2. etasje er privat og skal ikke brukes av gjester." },
-        { icon: "shield", title: "Skader og uhell", text: "Uhell skjer. Si fra med én gang, så ordner vi det sammen — det er bedre enn at neste gjest oppdager det." }
+        { icon: "shield", title: "Skader og uhell", text: "Uhell skjer. Si fra med én gang, så ordner vi det sammen. Det er bedre enn at neste gjest oppdager det." }
       ],
       moreTitle: "Litt mer om praktiske ting",
       more: [
@@ -625,7 +625,7 @@ window.SITE = {
         "Avbestillingsvilkår følger det som står i Airbnb-annonsen."
       ],
       contactTitle: "Spørsmål underveis?",
-      contactText: "Send oss en melding på Airbnb — vi svarer normalt innen en time."
+      contactText: "Send oss en melding på Airbnb, så svarer vi normalt innen en time."
     },
 
     /* --- OMRÅDET ---------------------------------------------------- */
@@ -646,9 +646,9 @@ window.SITE = {
         {
           title: "Sommer og fjelltur",
           items: [
-            { name: "Lønahorgi", desc: "Kjent topptur — dere kan gå rett fra hytta.", meta: "Fra døren", map: "Lønahorgi, Voss", img: "assets/img/omrade-lonahorgi.avif" },
+            { name: "Lønahorgi", desc: "Kjent topptur, og dere kan gå rett fra hytta.", meta: "Fra døren", map: "Lønahorgi, Voss", img: "assets/img/omrade-lonahorgi.avif" },
             { name: "Sykling og terrengsykling", desc: "Familievennlige sykkelstier rundt Vangsvatnet, og krevende stier i fjellet. Gondolen tar deg og sykkelen opp.", meta: "ca. 15 min" },
-            { name: "Bordalsgjelet", desc: "Et trangt og frodig juv med gangbru og sti langs elva — kort, dramatisk og fint også for barn. Vil dere ut i elva selv, arrangerer flere aktører i Voss sentrum rafting, juving og elvepadling med erfarne guider.", meta: "ca. 15 min", map: "Bordalsgjelet, Voss", img: "assets/img/omrade-gjel.avif" },
+            { name: "Bordalsgjelet", desc: "Et trangt og frodig juv med gangbru og sti langs elva. Turen er kort, dramatisk og fin også for barn. Vil dere ut i elva selv, arrangerer flere aktører i Voss sentrum rafting, juving og elvepadling med erfarne guider.", meta: "ca. 15 min", map: "Bordalsgjelet, Voss", img: "assets/img/omrade-gjel.avif" },
             { name: "Paragliding og fallskjermhopp", desc: "Tandemhopp fra fjellet, eller fallskjermhopp fra hoppfeltet på Bømoen.", meta: "ca. 20 min", map: "Skydive Voss, Bømoen" },
             { name: "Voss Golfklubb", desc: "9-hulls bane i naturskjønne omgivelser, for både nybegynnere og erfarne.", meta: "ca. 20 min", map: "Voss Golfklubb", img: "assets/img/omrade-golf-vangsvatnet.avif" },
             { name: "Bjørkemoen badeplass", desc: "Badeplass i elva med svaberg og kulper, populær blant lokale på varme dager. Ta med håndkle og noe å sitte på.", meta: "ca. 15 min", map: "Bjørkemoen badeplass, Voss", img: "assets/img/omrade-bjorkemoen.jpg" }
@@ -657,7 +657,7 @@ window.SITE = {
         {
           title: "Spisesteder",
           items: [
-            { name: "Park Hotel Vossevangen", desc: "Fine dining, og en av verdens største vinkjellere. Vinsmaking er mulig — bestill gjerne i forkant.", meta: "ca. 15 min", map: "Park Hotel Vossevangen, Voss" },
+            { name: "Park Hotel Vossevangen", desc: "Fine dining, og en av verdens største vinkjellere. Vinsmaking er mulig, men bestill gjerne i forkant.", meta: "ca. 15 min", map: "Park Hotel Vossevangen, Voss" },
             { name: "Vossevangen Grill & Steakhouse", desc: "Burgere og biff i uformell setting. Sentralt og familievennlig.", meta: "ca. 15 min", map: "Vossevangen Grill & Steakhouse, Voss" },
             { name: "Flor'n Restaurant", desc: "Lokalmat i sjarmerende omgivelser på Store Ringheim.", meta: "Litt utenfor sentrum", map: "Flor'n Restaurant Store Ringheim, Voss" },
             { name: "Tre Brør Café & Bar", desc: "Kafé med lunsj, snacks og kveldskonserter. Sosialt og sentralt.", meta: "ca. 15 min", map: "Tre Brør, Voss" },
@@ -671,8 +671,8 @@ window.SITE = {
           title: "Kultur og familie",
           items: [
             { name: "Voss Folkemuseum", desc: "Lokalhistorie i vakre omgivelser.", meta: "ca. 15 min", map: "Voss Folkemuseum" },
-            { name: "Voss Vind", desc: "Innendørs fallskjermhopp i vindtunnel — moro for både barn og voksne, og helt uavhengig av været.", meta: "ca. 15 min", map: "Voss Vind", video: "https://www.youtube.com/watch?v=Y6_gW-LJPik" },
-            { name: "Vossabadet", desc: "Svømmehall, utendørsbasseng og egen barneavdeling — perfekt på regnværsdager.", meta: "ca. 15 min", map: "Vossabadet" },
+            { name: "Voss Vind", desc: "Innendørs fallskjermhopp i vindtunnel. Moro for både barn og voksne, og helt uavhengig av været.", meta: "ca. 15 min", map: "Voss Vind", video: "https://www.youtube.com/watch?v=Y6_gW-LJPik" },
+            { name: "Vossabadet", desc: "Svømmehall, utendørsbasseng og egen barneavdeling. Fint på regnværsdager.", meta: "ca. 15 min", map: "Vossabadet" },
             { name: "Bømoen", desc: "Turstier, sykkelmuligheter og lekeplasser barna elsker.", meta: "ca. 20 min", map: "Bømoen, Voss" }
           ]
         },
@@ -680,7 +680,7 @@ window.SITE = {
           title: "Dagsturer",
           items: [
             { name: "Flåmsbanen og Nærøyfjorden", desc: "En av verdens vakreste togturer, og en UNESCO-fjord i verdensklasse.", meta: "ca. 1–1,5 t", map: "Flåm, Norge" },
-            { name: "Hardangerfjorden", desc: "Fossefall, frukthager og fjord — flott på en dagstur.", meta: "ca. 1–1,5 t", map: "Hardangerfjorden" },
+            { name: "Hardangerfjorden", desc: "Fossefall, frukthager og fjord, flott på en dagstur.", meta: "ca. 1–1,5 t", map: "Hardangerfjorden" },
             { name: "Bergen", desc: "Bryggen, Fløyen og fisketorget. Fint som stopp på vei til eller fra flyplassen.", meta: "ca. 1,5 t", map: "Bergen, Norge" }
           ]
         },
@@ -690,7 +690,7 @@ window.SITE = {
             { name: "Dagligvare", desc: "Flere butikker å velge mellom, alle en kort kjøretur unna.", meta: "ca. 10 min", map: "dagligvare Voss" },
             { name: "Vinmonopolet Voss", desc: "I sentrum. Merk kortere åpningstid lørdag og stengt søndag.", meta: "ca. 15 min", map: "Vinmonopolet Voss" },
             { name: "Apotek og legevakt", desc: "Begge i sentrum. Legevakt: ring 116 117.", meta: "ca. 15 min", map: "Apotek Voss" },
-            { name: "Voss stasjon", desc: "Tog til Bergen og Oslo — praktisk hvis noen kommer uten bil.", meta: "ca. 15 min", map: "Voss stasjon" }
+            { name: "Voss stasjon", desc: "Tog til Bergen og Oslo, praktisk hvis noen kommer uten bil.", meta: "ca. 15 min", map: "Voss stasjon" }
           ]
         }
       ]
@@ -699,10 +699,10 @@ window.SITE = {
     // Kart og dokumenter til nedlasting, nederst på områdesiden
     downloads: {
       title: "Kart og guider",
-      subtitle: "Verdt å laste ned før dere drar ut — de virker også der mobildekningen er dårlig.",
+      subtitle: "Verdt å laste ned før dere drar ut, for de virker også der mobildekningen er dårlig.",
       items: [
         {
-          name: "Skiløypekart – Voss Resort",
+          name: "Skiløypekart for Voss Resort",
           desc: "Alle heiser og nedfarter med symbolforklaring, oversatt til engelsk.",
           meta: "JPG · 1,4 MB",
           file: "assets/filer/skikart-voss-resort.jpg",
@@ -710,7 +710,7 @@ window.SITE = {
           cta: "Åpne kartet"
         },
         {
-          name: "Vandrekart – Voss Resort",
+          name: "Vandrekart for Voss Resort",
           desc: "Tolv merkede turer med lengde, stigning og tidsbruk, på norsk og engelsk. Tur 8 går fra Hangurstoppen om Tråstølen.",
           meta: "PDF · 8,6 MB · 2 sider",
           file: "assets/filer/voss-resort-vandreguide.pdf",
@@ -787,7 +787,7 @@ window.SITE = {
         "Welcome to a modern, well-equipped chalet in Tråstølen near Voss, perfectly placed with true ski-in/ski-out access. The large, sunny terrace offers panoramic views over lake Lønavatnet.",
       paragraphs: [
         "The chalet has four bedrooms, two bathrooms, a sauna, a TV lounge, a playroom and a mezzanine. The living room and kitchen form one open space with a fireplace, large windows and a fully equipped kitchen.",
-        "On the terrace you will find an Arctic Spa salt-water hot tub — the perfect way to wind down after an active day. The eco-friendly salt-water system is gentle on skin and hair and gives a comfortable spa experience with relaxing hydrotherapy.",
+        "On the terrace you will find an Arctic Spa salt-water hot tub, a good way to wind down after an active day. The eco-friendly salt-water system is gentle on skin and hair and gives a comfortable spa experience with relaxing hydrotherapy.",
         "The chalet has modern amenities, plenty of storage, a garage, EV charging and guest parking for five cars. Bed linen and towels are included.",
         "With Voss town centre, mountain hikes, skiing and year-round activities close by, this is an ideal base for families and groups of friends who want comfort as well as nature and adventure."
       ]
@@ -798,11 +798,11 @@ window.SITE = {
       items: [
         { icon: "ski", title: "Ski-in / ski-out", text: "The lifts are right outside the door, with over 40 km of groomed slopes at Voss Resort." },
         { icon: "hottub", title: "Salt-water hot tub", text: "An Arctic Spa with skin-friendly salt water, available all year and around the clock." },
-        { icon: "sauna", title: "Sauna", text: "Hard to beat after a day on the slopes or in the mountains." },
+        { icon: "sauna", title: "Sauna", text: "Good after a day on the slopes or in the mountains." },
         { icon: "mountain", title: "Views over Lønavatnet", text: "Floor-to-ceiling windows in the living room and a large, sunny terrace with panoramic views." },
         { icon: "fire", title: "Fireplace in an open living room", text: "Open-plan living room and kitchen with a fireplace and everything you need to cook." },
         { icon: "car", title: "Garage and EV charging", text: "Level 2 EV charger in the garage, plus guest parking for five cars." },
-        { icon: "kids", title: "Family friendly", text: "Playroom, mezzanine, TV lounge and a travel cot — well suited for families with children." },
+        { icon: "kids", title: "Family friendly", text: "Playroom, mezzanine, TV lounge and a travel cot make the chalet well suited for families with children." },
         { icon: "bed", title: "Everything is ready", text: "Bed linen, towels and consumables such as soap, shampoo and toilet paper are included." }
       ]
     },
@@ -825,7 +825,7 @@ window.SITE = {
       groups: [
         {
           title: "Outdoors and spa",
-          items: ["Private salt-water hot tub – all year, 24 hours", "Sauna", "Large terrace with panoramic views", "Outdoor shower", "Barbecue", "Close to ski slopes and trails"]
+          items: ["Private salt-water hot tub, all year and around the clock", "Sauna", "Large terrace with panoramic views", "Outdoor shower", "Barbecue", "Close to ski slopes and trails"]
         },
         {
           title: "Kitchen and living room",
@@ -837,11 +837,11 @@ window.SITE = {
         },
         {
           title: "Parking",
-          items: ["Garage", "EV charger – level 2", "Guest parking for 5 cars", "Free parking on the property"]
+          items: ["Garage", "EV charger (level 2)", "Guest parking for 5 cars", "Free parking on the property"]
         }
       ],
       noteTitle: "Good to know",
-      note: "The chalet has smoke alarms. A carbon monoxide alarm is not currently installed. The driveway down to the garage is steep and can be demanding in heavy snow — there is also plenty of parking across the road."
+      note: "The chalet has smoke alarms. A carbon monoxide alarm is not currently installed. The driveway down to the garage is steep and can be demanding in heavy snow. There is also plenty of parking across the road."
     },
 
     gallery: {
@@ -927,7 +927,7 @@ window.SITE = {
     manual: {
       title: "House manual",
       intro:
-        "We hope you have a relaxing and enjoyable stay. Here you will find the practical information that makes the chalet and the area easier to use — arrival, how things work, and what to do before you leave. Click a section to open it. If anything breaks, is missing or does not work, get in touch and we will sort it out as quickly as we can.",
+        "We hope you have a relaxing and enjoyable stay. Here you will find the practical information that makes the chalet and the area easier to use: arrival, how things work, and what to do before you leave. Click a section to open it. If anything breaks, is missing or does not work, get in touch and we will sort it out as quickly as we can.",
       wifiTitle: "Wi-Fi",
       wifiNetwork: "Network",
       wifiPassword: "Password",
@@ -936,7 +936,7 @@ window.SITE = {
       wifiConnect: "Connect to Wi-Fi",
       wifiConnectDone: "Password copied",
       wifiConnectHint: "Open Wi-Fi settings on your phone, choose “{ssid}” and paste the password.",
-      wifiQrHelp: "Or scan this with your phone camera — it will connect by itself.",
+      wifiQrHelp: "Or scan this with your phone camera, and it will connect by itself.",
       checkInLabel: "Check-in",
       checkOutLabel: "Check-out",
       printCta: "Print the manual",
@@ -949,17 +949,17 @@ window.SITE = {
           icon: "key",
           title: "Arrival and smart lock",
           paragraphs: [
-            "Check-in is from 15:00, and you check in yourself using the smart lock — there is no need to meet anyone."
+            "Check-in is from 15:00, and you check in yourself using the smart lock. There is no need to meet anyone."
           ],
           steps: [
             "The door code is sent by Airbnb message before arrival.",
             "Wave your hand across the keypad to wake the buttons.",
             "Enter the code, then press the open-padlock symbol.",
-            "You do not need a key for the chalet itself — the lock works on the code.",
+            "You do not need a key for the chalet itself, as the lock works on the code.",
             "To lock the door, sweep your hand across the keypad. Remember the code so you can get back in.",
             "The white key cards in the hallway open the road barrier.",
             "The garage remote and the key to the annexe also hang in the hallway. Please use them during your stay and hang them back before you leave.",
-            "The driveway down to the garage is steep. Take it slowly, especially in snow and ice — there is also good parking across the road."
+            "The driveway down to the garage is steep. Take it slowly, especially in snow and ice. There is also good parking across the road."
           ],
           tip: "If you need an early check-in or late check-out, send us a message in good time. We are flexible when the chalet is free."
         },
@@ -968,17 +968,17 @@ window.SITE = {
           icon: "hottub",
           title: "Salt-water hot tub",
           paragraphs: [
-            "The hot tub is an Arctic Spa with a salt-water system. It is kept at bathing temperature all year, around the clock, so it is ready when you arrive. We check the water values before every arrival — if the water still does not look right, please tell us."
+            "The hot tub is an Arctic Spa with a salt-water system. It is kept at bathing temperature all year, around the clock, so it is ready when you arrive. We check the water values before every arrival. If the water still does not look right, please tell us."
           ],
           steps: [
-            "Slide the cover off carefully and place it on the cover lifter — not on the ground or in the snow.",
-            "Good hygiene matters: shower and wash thoroughly before getting in. Rinse off soap, shampoo and lotions — they upset the water balance.",
+            "Slide the cover off carefully and place it on the cover lifter, not on the ground or in the snow.",
+            "Good hygiene matters: shower and wash thoroughly before getting in. Rinse off soap, shampoo and lotions, as they upset the water balance.",
             "Temperature and jets are set on the panel on the tub itself.",
             "Put the cover back on as soon as you are done, otherwise the temperature drops and power use rises.",
             "Please do not bring glass, toys or other objects into the tub.",
             "If you have used the spa during your stay: add about one capful of Spa Shock (kept in the garage), run all the pumps at full until they stop by themselves, and close the cover. That rebalances the water for the next guest."
           ],
-          tip: "The salt water is gentle on skin and hair, but swimwear may fade over time — just like in any spa."
+          tip: "The salt water is gentle on skin and hair, but swimwear may fade over time, just like in any spa."
         },
         {
           id: "badstue",
@@ -991,9 +991,9 @@ window.SITE = {
             "The video below shows how to switch it on.",
             "Always sit on a towel.",
             "Water on the stones: use the ladle, a little at a time.",
-            "Never dry clothes or boots inside the sauna — it is a fire hazard."
+            "Never dry clothes or boots inside the sauna. It is a fire hazard."
           ],
-          tip: "Sauna first, then hot tub, then the outdoor shower — that is the order our guests recommend."
+          tip: "Sauna first, then hot tub, then the outdoor shower. That is the order our guests recommend."
         },
         {
           id: "peis",
@@ -1008,7 +1008,7 @@ window.SITE = {
             "Light it, leave the door slightly ajar for a couple of minutes, then close it.",
             "Once burning well, push the damper halfway in.",
             "Never add more than three logs at a time, and never leave the fire unattended.",
-            "Ash goes in a bin bag with the general waste — but only once it is completely cold."
+            "Ash goes in a bin bag with the general waste, but only once it is completely cold."
           ],
           tip: "The chalet has smoke alarms but no carbon monoxide alarm at present. Air the room well if smoke comes back in, and never leave the fire burning while you sleep."
         },
@@ -1024,7 +1024,7 @@ window.SITE = {
             "20–22 °C in the living room is comfortable.",
             "Keep windows and the terrace door closed while heating or cooling is running."
           ],
-          tip: "Turn it down rather than off when you head out for the day — that uses less power than heating up from cold."
+          tip: "Turn it down rather than off when you head out for the day. That uses less power than heating up from cold."
         },
         {
           id: "kjokken",
@@ -1032,21 +1032,21 @@ window.SITE = {
           title: "Kitchen and appliances",
           paragraphs: ["The kitchen is fully equipped for cooking for the whole group."],
           steps: [
-            "The hob is induction, so pans need a magnetic base — the ones in the drawer work.",
+            "The hob is induction, so pans need a magnetic base. The ones in the drawer work.",
             "Dishwasher: tablets are under the sink, and the Auto programme handles most loads well.",
             "Coffee: both filter coffee and a coffee machine. The coffee is in the cupboard next to the coffee maker.",
-            "The kitchen tap gives boiling water — see the video below.",
+            "The kitchen tap gives boiling water, see the video below.",
             "Anything in the dry-goods cupboard and the fridge is yours to use.",
             "Please leave the fridge switched on when you go."
           ],
-          tip: "There are two bottles of wine in the wine cabinet, and you are welcome to enjoy them. We only ask that you replace them with the same number of bottles before you leave, so we can keep the arrangement going. The barbecue on the terrace is a charcoal grill — charcoal is usually in the garage, but it can run out, so bring a bag if you can."
+          tip: "There are two bottles of wine in the wine cabinet, and you are welcome to enjoy them. We only ask that you replace them with the same number of bottles before you leave, so we can keep the arrangement going. The barbecue on the terrace is a charcoal grill. Charcoal is usually in the garage, but it can run out, so bring a bag if you can."
         },
         {
           id: "tv",
           icon: "tv",
           title: "TV, Wi-Fi and sound",
           paragraphs: [
-            "The living room TV is a smart TV. You are welcome to sign in to your own streaming accounts — just remember to sign out before you leave."
+            "The living room TV is a smart TV. You are welcome to sign in to your own streaming accounts, but remember to sign out before you leave."
           ],
           steps: [
             "There is a TV in the living room downstairs and in the lounge upstairs. The upstairs TV has a surround system.",
@@ -1069,7 +1069,7 @@ window.SITE = {
             "If the dock shows a red light: empty the dirty-water tank and refill the clean-water tank.",
             "You can carry the robot upstairs. Put it down where you want it to work and press ON."
           ],
-          tip: "Setting it going before you leave is a real help — the chalet is then well on its way for the next guest."
+          tip: "Setting it going before you leave is a real help, and the chalet is then well on its way for the next guest."
         },
         {
           id: "anneks",
@@ -1090,11 +1090,11 @@ window.SITE = {
           icon: "ski",
           title: "Skis, boots and drying",
           paragraphs: [
-            "With ski-in/ski-out you come straight off the slope and inside — which means there needs to be a place for all the wet gear."
+            "With ski-in/ski-out you come straight off the slope and inside, which means there needs to be a place for all the wet gear."
           ],
           steps: [
             "Skis, poles and boards go in the garage, or against the wall by the parking area.",
-            "Ski boots and gear hang in the utility room — it is the best place in the house for drying clothes.",
+            "Ski boots and gear hang in the utility room, which is the best place in the house for drying clothes.",
             "The first aid kit is in the utility room as well.",
             "Please take ski boots off before going into the living room."
           ],
@@ -1108,7 +1108,7 @@ window.SITE = {
             "There is free parking on the property for five cars, plus a garage with an EV charger."
           ],
           steps: [
-            "The driveway to the garage is steep — take it slowly, especially in snow and ice.",
+            "The driveway to the garage is steep, so take it slowly, especially in snow and ice.",
             "The garage door opens with the “Harmonie” remote hanging in the hallway.",
             "The EV charger has a fixed type 2 cable at 5 kW, and charging is free for guests.",
             "The chalet has its own extra spaces across the road, just above the driveway. Do use them, especially when there is a lot of snow."
@@ -1119,7 +1119,7 @@ window.SITE = {
           id: "soppel",
           icon: "trash",
           title: "Waste and recycling",
-          paragraphs: ["Waste goes to the sorting station down by the barrier — see the photo below."],
+          paragraphs: ["Waste goes to the sorting station down by the barrier, see the photo below."],
           steps: [
             "Sort your waste following the labels on the containers.",
             "Take the bags down with you; please do not leave them outside the chalet.",
@@ -1157,16 +1157,16 @@ window.SITE = {
         "This chalet is our home, and we rent it out because we want more people to experience Voss. These rules are here so that both you and the next guest have a good stay.",
       keyPointsTitle: "The short version",
       items: [
-        { icon: "clock", title: "Check-in and check-out", text: "Check-in after 15:00, check-out before 11:00. We are flexible when the chalet is free — just message us in good time." },
-        { icon: "users", title: "Maximum 9 guests", text: "Everyone must be listed in the booking, children included. Daytime visitors are fine — just let us know." },
+        { icon: "clock", title: "Check-in and check-out", text: "Check-in after 15:00, check-out before 11:00. We are flexible when the chalet is free, so message us in good time." },
+        { icon: "users", title: "Maximum 9 guests", text: "Everyone must be listed in the booking, children included. Daytime visitors are fine, just let us know." },
         { icon: "moon", title: "Quiet hours", text: "Please be considerate of the neighbours and keep it quiet inside and outside between 23:00 and 07:00." },
         { icon: "party", title: "No parties", text: "The chalet is not suitable for parties or events. A relaxed evening with the people staying here is of course welcome." },
-        { icon: "smoke", title: "No smoking indoors", text: "Smoking is not allowed inside, including bedrooms and bathrooms. Outside is fine — please dispose of cigarette ends carefully." },
+        { icon: "smoke", title: "No smoking indoors", text: "Smoking is not allowed inside, including bedrooms and bathrooms. Outside is fine, but please dispose of cigarette ends carefully." },
         { icon: "hottub", title: "Hot tub and sauna", text: "Shower before use, no glass in or near the hot tub, and always put the cover back on afterwards. Children must be supervised." },
         { icon: "fire", title: "Fireplace and candles", text: "Follow the instructions in the house manual. Never leave a fire or candle unattended, and put everything out before bed." },
         { icon: "shoe", title: "Shoes off indoors", text: "Leave ski gear and shoes in the hallway, not in the living room." },
         { icon: "lock", title: "Private storage", text: "The whole chalet is yours, and so is the annexe. The storage room on the second floor is private and not for guest use." },
-        { icon: "shield", title: "Damage and accidents", text: "Accidents happen. Tell us straight away and we will sort it out together — much better than the next guest finding it." }
+        { icon: "shield", title: "Damage and accidents", text: "Accidents happen. Tell us straight away and we will sort it out together. That is much better than the next guest finding it." }
       ],
       moreTitle: "A few more practical things",
       more: [
@@ -1178,7 +1178,7 @@ window.SITE = {
         "Cancellation terms follow the Airbnb listing."
       ],
       contactTitle: "Questions during your stay?",
-      contactText: "Send us a message on Airbnb — we normally reply within an hour."
+      contactText: "Send us a message on Airbnb, and we normally reply within an hour."
     },
 
     area: {
@@ -1198,9 +1198,9 @@ window.SITE = {
         {
           title: "Summer and hiking",
           items: [
-            { name: "Lønahorgi", desc: "A well-known summit hike — you can walk straight from the chalet.", meta: "From the door", map: "Lønahorgi, Voss", img: "assets/img/omrade-lonahorgi.avif" },
+            { name: "Lønahorgi", desc: "A well-known summit hike, and you can walk straight from the chalet.", meta: "From the door", map: "Lønahorgi, Voss", img: "assets/img/omrade-lonahorgi.avif" },
             { name: "Cycling and mountain biking", desc: "Family-friendly paths around Vangsvatnet and demanding trails in the mountains. The gondola takes you and your bike up.", meta: "approx. 15 min" },
-            { name: "Bordalsgjelet gorge", desc: "A narrow, green gorge with a walkway and a path along the river — short, dramatic and fine for children too. If you want to get into the water yourselves, operators in Voss centre run rafting, canyoning and river kayaking with experienced guides.", meta: "approx. 15 min", map: "Bordalsgjelet, Voss", img: "assets/img/omrade-gjel.avif" },
+            { name: "Bordalsgjelet gorge", desc: "A narrow, green gorge with a walkway and a path along the river. The walk is short, dramatic and fine for children too. If you want to get into the water yourselves, operators in Voss centre run rafting, canyoning and river kayaking with experienced guides.", meta: "approx. 15 min", map: "Bordalsgjelet, Voss", img: "assets/img/omrade-gjel.avif" },
             { name: "Paragliding and skydiving", desc: "Tandem flights from the mountain, or skydiving from the airfield at Bømoen.", meta: "approx. 20 min", map: "Skydive Voss, Bømoen" },
             { name: "Voss Golf Club", desc: "A scenic 9-hole course for beginners and experienced players alike.", meta: "approx. 20 min", map: "Voss Golfklubb", img: "assets/img/omrade-golf-vangsvatnet.avif" },
             { name: "Bjørkemoen bathing spot", desc: "A river bathing spot with smooth rocks and pools, popular with locals on warm days. Bring a towel and something to sit on.", meta: "approx. 15 min", map: "Bjørkemoen badeplass, Voss", img: "assets/img/omrade-bjorkemoen.jpg" }
@@ -1209,7 +1209,7 @@ window.SITE = {
         {
           title: "Places to eat",
           items: [
-            { name: "Park Hotel Vossevangen", desc: "Fine dining, and one of the largest wine cellars in the world. Wine tasting is possible — worth booking ahead.", meta: "approx. 15 min", map: "Park Hotel Vossevangen, Voss" },
+            { name: "Park Hotel Vossevangen", desc: "Fine dining, and one of the largest wine cellars in the world. Wine tasting is possible, but it is worth booking ahead.", meta: "approx. 15 min", map: "Park Hotel Vossevangen, Voss" },
             { name: "Vossevangen Grill & Steakhouse", desc: "Burgers and steak in a relaxed setting. Central and family friendly.", meta: "approx. 15 min", map: "Vossevangen Grill & Steakhouse, Voss" },
             { name: "Flor'n Restaurant", desc: "Local food in charming surroundings at Store Ringheim.", meta: "Just outside the centre", map: "Flor'n Restaurant Store Ringheim, Voss" },
             { name: "Tre Brør Café & Bar", desc: "Café with lunch, snacks and evening concerts. Sociable and central.", meta: "approx. 15 min", map: "Tre Brør, Voss" },
@@ -1223,8 +1223,8 @@ window.SITE = {
           title: "Culture and family",
           items: [
             { name: "Voss Folk Museum", desc: "Local history in beautiful surroundings.", meta: "approx. 15 min", map: "Voss Folkemuseum" },
-            { name: "Voss Vind", desc: "Indoor skydiving in a wind tunnel — great fun for children and adults alike, whatever the weather is doing.", meta: "approx. 15 min", map: "Voss Vind", video: "https://www.youtube.com/watch?v=Y6_gW-LJPik" },
-            { name: "Vossabadet", desc: "Indoor pool, outdoor pool and a children's area — perfect on a rainy day.", meta: "approx. 15 min", map: "Vossabadet" },
+            { name: "Voss Vind", desc: "Indoor skydiving in a wind tunnel. Great fun for children and adults alike, whatever the weather is doing.", meta: "approx. 15 min", map: "Voss Vind", video: "https://www.youtube.com/watch?v=Y6_gW-LJPik" },
+            { name: "Vossabadet", desc: "Indoor pool, outdoor pool and a children's area. Good on a rainy day.", meta: "approx. 15 min", map: "Vossabadet" },
             { name: "Bømoen", desc: "Walking trails, cycling and playgrounds the children love.", meta: "approx. 20 min", map: "Bømoen, Voss" }
           ]
         },
@@ -1232,7 +1232,7 @@ window.SITE = {
           title: "Day trips",
           items: [
             { name: "Flåm Railway and the Nærøyfjord", desc: "One of the world's most beautiful train journeys, and a UNESCO-listed fjord.", meta: "approx. 1–1.5 h", map: "Flåm, Norway" },
-            { name: "Hardangerfjord", desc: "Waterfalls, orchards and fjord — a great day out.", meta: "approx. 1–1.5 h", map: "Hardangerfjorden" },
+            { name: "Hardangerfjord", desc: "Waterfalls, orchards and fjord, a great day out.", meta: "approx. 1–1.5 h", map: "Hardangerfjorden" },
             { name: "Bergen", desc: "Bryggen, Mount Fløyen and the fish market. A good stop on the way to or from the airport.", meta: "approx. 1.5 h", map: "Bergen, Norge" }
           ]
         },
@@ -1242,7 +1242,7 @@ window.SITE = {
             { name: "Grocery stores", desc: "Several to choose from, all a short drive away.", meta: "approx. 10 min", map: "grocery store Voss" },
             { name: "Vinmonopolet Voss", desc: "The state alcohol shop in the centre. Short hours on Saturday, closed Sunday.", meta: "approx. 15 min", map: "Vinmonopolet Voss" },
             { name: "Pharmacy and out-of-hours clinic", desc: "Both in the centre. Medical helpline: 116 117.", meta: "approx. 15 min", map: "Apotek Voss" },
-            { name: "Voss train station", desc: "Trains to Bergen and Oslo — handy if someone arrives without a car.", meta: "approx. 15 min", map: "Voss stasjon" }
+            { name: "Voss train station", desc: "Trains to Bergen and Oslo, handy if someone arrives without a car.", meta: "approx. 15 min", map: "Voss stasjon" }
           ]
         }
       ]
@@ -1250,10 +1250,10 @@ window.SITE = {
 
     downloads: {
       title: "Maps and guides",
-      subtitle: "Worth downloading before you head out — they work where mobile coverage does not.",
+      subtitle: "Worth downloading before you head out, as they work where mobile coverage does not.",
       items: [
         {
-          name: "Piste map – Voss Resort",
+          name: "Piste map for Voss Resort",
           desc: "Every lift and slope with a full key, in Norwegian and English.",
           meta: "JPG · 1.4 MB",
           file: "assets/filer/skikart-voss-resort.jpg",
@@ -1261,7 +1261,7 @@ window.SITE = {
           cta: "Open the map"
         },
         {
-          name: "Hiking map – Voss Resort",
+          name: "Hiking map for Voss Resort",
           desc: "Twelve marked routes with distance, ascent and estimated time, in Norwegian and English. Route 8 runs from Hangurstoppen past Tråstølen.",
           meta: "PDF · 8.6 MB · 2 pages",
           file: "assets/filer/voss-resort-vandreguide.pdf",

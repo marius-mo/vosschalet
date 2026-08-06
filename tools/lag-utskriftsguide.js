@@ -45,8 +45,8 @@ const QR = {
 const papir = (t) => String(t || "")
   .replace(/\s*Klikk på et punkt for å åpne det\.\s*/g, " ")
   .replace(/\s*Click a section to open it\.\s*/g, " ")
-  .replace(/\s*—\s*se (videoen|bildet) under\.?/gi, ".")
-  .replace(/\s*—\s*see the (video|photo) below\.?/gi, ".")
+  .replace(/,\s*se (videoen|bildet) under\.?/gi, ".")
+  .replace(/,\s*see the (video|photo) below\.?/gi, ".")
   .replace(/Videoen under viser hvordan dere skrur den på\./g, "Skann QR-koden under, så ser dere hvordan den skrus på.")
   .replace(/The video below shows how to switch it on\./g, "Scan the QR code below to see how to switch it on.")
   .replace(/\s{2,}/g, " ").trim();
