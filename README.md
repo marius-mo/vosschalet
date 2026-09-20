@@ -24,6 +24,7 @@ GitHub Pages, Netlify, eller hvilken som helst webhotell-mappe.
 | `tools/lag-utskriftsguide.js` | Bygger den trykte husmanualen som HTML |
 | `tools/lag-trykkbilder.py` | Skalerer ned bildene som skal i PDF-en |
 | `tools/lag-pdf.js` | Gjør utskriftsguiden om til ferdige PDF-er |
+| `tools/slaa-sammen.py` | Legger forsiden foran husmanualen. Kjøres av `lag-pdf.js` |
 | `admin/passord.html` | Verktøy for å bytte passord (ikke lenket fra siden) |
 | `googlee34a42972e0cb2e8.html` | Google Search Console sin eierskapsfil. **Må ikke slettes eller endres** — da mister dere verifiseringen |
 | `.nojekyll` | Tom fil som sier til GitHub Pages at filene skal serveres som de er. **Ikke slett den** — uten den kjøres siden gjennom Jekyll, og det steget har feilet og stoppet publiseringen |
@@ -68,11 +69,32 @@ også, sammen med en kode til områdesiden (der hvert sted har kartlenke) og en 
 
 Gjestene kan også laste ned PDF-en selv, fra knappen nederst i husmanualen på nett.
 
+### Forsiden
+
+Guiden åpner med et forsideark: bilde helt ut i kanten, navn, tittel og en grønn stripe
+nederst med vertskap, innsjekk og adresse. Den ligger også som egen fil, til utskrift alene:
+
+| Fil | Språk |
+| --- | --- |
+| `assets/filer/forside-husmanual.pdf` | norsk |
+| `assets/filer/house-manual-cover.pdf` | engelsk |
+
+Forsiden lages som egen PDF fordi den skal gå helt ut i arkkanten og ikke ha bunntekst og
+sidetall. Resten av guiden har marger og sidetall, og de to tingene kan ikke skje i samme
+utskrift. `lag-pdf.js` lager begge delene og slår dem sammen. Forsiden er med vilje uten
+sidetall, så nummereringen starter på første tekstside.
+
+Bildet på forsiden er det samme som på landingssiden (`media.landing` i `content.js`).
+Bytter du det, blir forsiden oppdatert neste gang PDF-en lages. Stående bilder kler
+forsiden best. Sitter motivet feil i utsnittet, juster `object-position` under
+`.bilde img` i `FORSIDE_CSS` i `tools/lag-utskriftsguide.js`.
+
 ### Slik lager du dem på nytt
 
 Kjøres etter at du har endret tekst i `content.js`, eller lagt til nye videoer:
 
 ```bash
+pip install PyMuPDF                  # brukes til å legge forsiden foran
 python3 tools/lag-video-qr.py        # QR-koder til videoene (bare ved nye videoer)
 python3 tools/lag-trykkbilder.py     # nedskalerte bilder til trykk
 python3 -m http.server 8899 &        # bildene hentes herfra mens PDF-en lages

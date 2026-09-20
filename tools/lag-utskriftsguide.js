@@ -68,6 +68,12 @@ const T_ = {
     tips: "Tips",
     kartTittel: "Kart til hvert sted",
     kartTekst: "Skann for å åpne områdeguiden på nett. Der ligger det en kartlenke til hvert av stedene på denne siden.",
+    forsideLinje: "Velkommen til hytta. Her står alt dere trenger å vite om oppholdet, fra ankomst til utsjekk, og noen tips til området rundt.",
+    forsideVert: "Vertskap",
+    forsideInn: "Innsjekk",
+    forsideUt: "Utsjekk",
+    forsideAdresse: "Adresse",
+    velkommen: "Velkommen",
   },
   en: {
     manualTittel: "House manual",
@@ -79,8 +85,124 @@ const T_ = {
     tips: "Tip",
     kartTittel: "Maps for every place",
     kartTekst: "Scan to open the area guide online. Every place on this page has a map link there.",
+    forsideLinje: "Welcome to the chalet. This guide covers everything about your stay, from arrival to check-out, along with a few tips for the area.",
+    forsideVert: "Your hosts",
+    forsideInn: "Check-in",
+    forsideUt: "Check-out",
+    forsideAdresse: "Address",
+    velkommen: "Welcome",
   },
 };
+
+/* --- forsiden --------------------------------------------------------- */
+
+/* Forsiden er et eget ark uten marger, bunntekst eller sidetall, så den
+   blir til en egen liten PDF som legges foran husmanualen (se lag-pdf.js).
+   Den kan også skrives ut alene og legges øverst i permen. */
+
+const FORSIDE_CSS = `
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    width: 210mm; height: 297mm; overflow: hidden;
+    color: #1b1a17; background: #faf7f2;
+    font: 11pt/1.5 -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    display: flex; flex-direction: column;
+  }
+
+  /* Bildet fyller arket helt ut til kanten */
+  .bilde { height: 175mm; position: relative; overflow: hidden; background: #1b1a17; }
+  .bilde img {
+    width: 100%; height: 100%; object-fit: cover; object-position: 50% 18%;
+    display: block;
+  }
+  /* En mørk tone i overkant, så den hvite streken øverst får feste */
+  .bilde::after {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(to bottom, rgba(12,16,20,.55), rgba(12,16,20,0) 38%);
+  }
+  .stedet {
+    position: absolute; top: 14mm; left: 18mm; right: 18mm; z-index: 1;
+    color: #fff; font-size: 8.5pt; font-weight: 700;
+    letter-spacing: .22em; text-transform: uppercase;
+  }
+
+  .tekst { flex: 1; padding: 12mm 18mm 0; }
+  .navn {
+    font-family: "Iowan Old Style", Palatino, Georgia, serif;
+    font-size: 38pt; line-height: 1.02; margin: 0 0 6mm; letter-spacing: -.01em;
+  }
+  .strek { width: 26mm; height: 1.2mm; background: #2f5d50; border-radius: 1mm; }
+  .dokument {
+    font-family: "Iowan Old Style", Palatino, Georgia, serif;
+    font-size: 19pt; color: #2f5d50; margin: 5mm 0 4mm;
+  }
+  .linje { font-size: 11.5pt; color: #4a463f; max-width: 145mm; margin: 0; }
+
+  .fakta {
+    display: flex; gap: 9mm; margin-top: 9mm;
+    font-size: 9pt; color: #7a736a;
+  }
+  .fakta b { display: block; font-size: 13pt; color: #1b1a17; font-weight: 700; }
+
+  /* Bunnbordet, i samme grønnfarge som resten av guiden */
+  .bunn {
+    background: #2f5d50; color: #fff; padding: 7mm 18mm;
+    display: flex; justify-content: space-between; align-items: baseline; gap: 8mm;
+  }
+  .bunn p { margin: 0; font-size: 9.5pt; }
+  .bunn .merkelapp {
+    display: block; font-size: 7.5pt; letter-spacing: .18em;
+    text-transform: uppercase; color: #a9c6bc; margin-bottom: 1mm;
+  }
+`;
+
+function forside(L) {
+  const T = S[L];
+  const m = S.meta;
+  const f = T.facts;
+  const bilde = BILDEMAPPE
+    ? BILDEMAPPE + S.media.landing.slice("assets/img/".length)
+    : S.media.landing;
+
+  const tall = [
+    [m.facts.guests, f.guests],
+    [m.facts.bedrooms, f.bedrooms],
+    [m.facts.baths, f.baths],
+  ].map(([n, ord]) => `<div><b>${esc(n)}</b>${esc(ord)}</div>`).join("");
+
+  return `<!DOCTYPE html>
+<html lang="${L === "no" ? "no" : "en"}">
+<head>
+<meta charset="utf-8">
+<base href="${BASE}">
+<title>${esc(m.siteName)} · ${esc(T_[L].manualTittel)}</title>
+<style>${FORSIDE_CSS}</style>
+</head>
+<body>
+  <div class="bilde">
+    <p class="stedet">${esc(T.landing.eyebrow)}</p>
+    <img src="${esc(bilde)}" alt="">
+  </div>
+
+  <div class="tekst">
+    <h1 class="navn">${esc(m.siteName)}</h1>
+    <div class="strek"></div>
+    <p class="dokument">${esc(T_[L].manualTittel)}</p>
+    <p class="linje">${esc(T_[L].forsideLinje)}</p>
+    <div class="fakta">${tall}</div>
+  </div>
+
+  <div class="bunn">
+    <p><span class="merkelapp">${esc(T_[L].forsideVert)}</span>${esc((T.host && T.host.name) || m.hostName)}</p>
+    <p><span class="merkelapp">${esc(T_[L].forsideInn)} / ${esc(T_[L].forsideUt)}</span>${esc(m.checkIn)} / ${esc(m.checkOut)}</p>
+    <p><span class="merkelapp">${esc(T_[L].forsideAdresse)}</span>${esc(m.address)}</p>
+  </div>
+</body>
+</html>
+`;
+}
 
 /* --- delene ---------------------------------------------------------- */
 
@@ -92,10 +214,10 @@ function toppen(T, L) {
     return `<tr><th>${esc(navn)}</th><td>${esc(verdi)}</td></tr>`;
   }).join("");
 
+  // Navn og tittel står på forsiden, så her holder det med velkomsten
   return `
-  <header class="forside">
-    <p class="merke">${esc(m.siteName)} · ${esc(m.address)}</p>
-    <h1>${esc(T_[L].manualTittel)}</h1>
+  <header class="apning">
+    <h2 class="deltittel">${esc(T_[L].velkommen)}</h2>
     <p class="ingress">${esc(papir(T.manual.intro))}</p>
   </header>
 
@@ -238,11 +360,7 @@ const CSS = `
   h3 { font-size: 11.5pt; margin-top: 1.2em; }
   p { margin: 0 0 .7em; }
 
-  .forside { border-bottom: 2px solid #2f5d50; padding-bottom: 10mm; margin-bottom: 8mm; }
-  .merke {
-    font-size: 8pt; font-weight: 700; letter-spacing: .16em;
-    text-transform: uppercase; color: #2f5d50; margin-bottom: .8em;
-  }
+  .apning { margin-bottom: 8mm; }
   .ingress { font-size: 11pt; color: #4a463f; max-width: 60em; }
 
   .bokser { display: flex; gap: 6mm; margin-bottom: 9mm; }
@@ -350,6 +468,7 @@ ${nettsiden(T, L)}
 }
 
 ["no", "en"].forEach((L) => {
+  fs.writeFileSync(`/tmp/forside-${L}.html`, forside(L), "utf8");
   const ut = `/tmp/utskrift-${L}.html`;
   fs.writeFileSync(ut, side(L), "utf8");
   const T = S[L];
