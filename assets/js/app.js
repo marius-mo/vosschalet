@@ -583,7 +583,9 @@
     return grid;
   }
 
-  var lb, lbImg, lbCap, lbIndex = 0;
+  // Lightboxen viser galleriet som standard, men kan også få en annen
+  // liste, f.eks. bildene på ett stedskort i områdeguiden
+  var lb, lbImg, lbCap, lbIndex = 0, lbItems = null;
 
   function ensureLightbox() {
     if (lb) return;
@@ -599,10 +601,12 @@
     document.body.appendChild(lb);
   }
 
-  function openLightbox(i) {
+  function openLightbox(i, items) {
     ensureLightbox();
+    if (items) lbItems = items;
+    else if (!lb.classList.contains("is-open")) lbItems = galleryItems;
     lbIndex = i;
-    var item = galleryItems[i];
+    var item = lbItems[i];
     lbImg.src = item.src;
     lbImg.alt = item.caption || "";
     lbCap.textContent = item.caption || "";
@@ -617,8 +621,8 @@
   }
 
   function step(delta) {
-    if (!galleryItems.length) return;
-    openLightbox((lbIndex + delta + galleryItems.length) % galleryItems.length);
+    if (!lbItems || !lbItems.length) return;
+    openLightbox((lbIndex + delta + lbItems.length) % lbItems.length);
   }
 
   document.addEventListener("keydown", function (e) {
@@ -857,9 +861,23 @@
         return el("div", { class: "area-block" }, [
           el("h2", { text: cat.title }),
           el("div", { class: "area-list" }, cat.items.map(function (item) {
-            var media = item.video || item.img;
+            // Et sted kan ha `img` (ett bilde), `video`, eller `imgs` (flere
+            // bilder med bildetekst). Video vises stort, bildene under som
+            // små ruter som åpnes i lightbox. Uten video vises første bilde
+            // stort og resten som ruter.
+            var bilder = (item.imgs || []).map(function (b) {
+              return { src: b.src, caption: lang === "no" ? b.capNo : b.capEn };
+            });
+            var media = item.video || item.img || (bilder[0] && bilder[0].src);
+            var ruter = item.video ? bilder : bilder.slice(1);
             return el("article", { class: "area-item reveal" + (media ? " has-img" : "") }, [
               media ? el("div", { class: "area-img" }, [mediaItem(media, item.name)]) : null,
+              ruter.length ? el("div", { class: "area-thumbs" }, ruter.map(function (b) {
+                var i = bilder.indexOf(b);
+                return el("button", { type: "button", "aria-label": b.caption || item.name,
+                  onclick: function () { openLightbox(i, bilder); } }, [picture(b.src, b.caption)]);
+              })) : null,
+              item.credit ? el("p", { class: "area-credit", text: item.credit }) : null,
               el("div", { class: "area-body" }, [
                 el("div", { class: "area-item-head" }, [
                   el("h3", { text: item.name }),

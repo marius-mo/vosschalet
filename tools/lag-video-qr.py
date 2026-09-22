@@ -32,6 +32,7 @@ KODER = {
     "video-badstue": "assets/video/badstue.mp4",
     "video-kjokken-kokende-vann": "assets/video/kjokken-kokende-vann.mp4",
     "video-voss-vind": "https://www.youtube.com/watch?v=Y6_gW-LJPik",
+    "video-voringsfossen": "https://vimeo.com/1127538344",
     "omradet": "omradet.html",
     "nettsiden": "",
 }

@@ -40,6 +40,7 @@ const QR = {
   "assets/video/badstue.mp4": "assets/img/qr/video-badstue.svg",
   "assets/video/kjokken-kokende-vann.mp4": "assets/img/qr/video-kjokken-kokende-vann.svg",
   "https://www.youtube.com/watch?v=Y6_gW-LJPik": "assets/img/qr/video-voss-vind.svg",
+  "https://vimeo.com/1127538344": "assets/img/qr/video-voringsfossen.svg",
 };
 
 // Setninger som bare gir mening på skjerm, lukes bort fra papirversjonen

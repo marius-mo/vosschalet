@@ -795,6 +795,20 @@ p { margin: 0 0 1em; }
 .area-img iframe,
 .area-img video { width: 100%; height: 100%; object-fit: cover; border: 0; display: block; }
 
+/* Flere bilder på ett stedskort: en rad små bilder som åpnes i lightbox */
+.area-thumbs {
+  display: grid; grid-template-columns: repeat(5, 1fr); gap: 4px;
+  padding: 4px; background: var(--surface-2);
+}
+.area-thumbs button {
+  padding: 0; border: 0; background: none; cursor: pointer;
+  aspect-ratio: 1; overflow: hidden; border-radius: 6px;
+}
+.area-thumbs img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .25s; }
+.area-thumbs button:hover img { transform: scale(1.05); }
+.area-thumbs button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.area-credit { font-size: .74rem; color: var(--muted); margin: 8px 22px 0; }
+
 /* Kart og guider til nedlasting */
 .download-list { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
 .download-item {

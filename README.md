@@ -124,6 +124,12 @@ Hvert sted i områdeguiden kan ha:
 * `map: "Voss Resort, Voss"` – lager en Google Maps-lenke av søketeksten
 * `url: "https://vossresort.no"` – lenke til stedets egen nettside
 * `img:` eller `video:` – bilde, eller en YouTube-/Vimeo-lenke som spilles av i kortet
+* `imgs: [{ src, capNo, capEn }, …]` – flere bilder. Sammen med `video` vises filmen stort og
+  bildene som små ruter under, som åpnes i lightbox. Uten video vises første bilde stort.
+* `credit: "Foto: …"` – fotokreditt under bildene. Bruk den når bildene ikke er deres egne.
+
+Har stedet video, får det automatisk en QR-kode i papirguiden, forutsatt at lenken er lagt
+inn i `tools/lag-video-qr.py` og `tools/lag-utskriftsguide.js` (se over).
 
 ## Passord
 
