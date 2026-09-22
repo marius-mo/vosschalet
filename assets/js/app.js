@@ -387,16 +387,6 @@
     ]);
   }
 
-  function ctaBand() {
-    return el("section", { class: "cta-band is-quiet" }, [
-      el("div", { class: "wrap" }, [
-        el("h2", { text: T.cta.title }),
-        el("p", { text: T.cta.text }),
-        el("a", { class: "btn btn-ghost", href: S.meta.airbnbUrl, target: "_blank", rel: "noopener", text: T.cta.button })
-      ])
-    ]);
-  }
-
   function pageHead(title, intro) {
     return el("section", { class: "page-head" }, [
       el("div", { class: "wrap" }, [
@@ -410,18 +400,12 @@
   /* --- Forsiden ------------------------------------------------------ */
 
   function renderHome(main) {
-    var r = S.meta.rating;
 
     var hero = el("section", { class: "hero" }, [
       el("div", { class: "hero-media" }, [S.media.hero ? heroImage() : null]),
       el("div", { class: "wrap" }, [
         el("div", { class: "hero-inner" }, [
           el("span", { class: "eyebrow", text: T.hero.eyebrow }),
-          r ? el("div", { class: "rating-badge" }, [
-            icon("star", { fill: true }),
-            document.createTextNode((lang === "no" ? r.score : (r.scoreEn || r.score)) + " "),
-            el("span", { text: "· " + r.count + " " + (lang === "no" ? "anmeldelser" : "reviews") + " · " + (lang === "no" ? r.badgeNo : r.badgeEn) })
-          ]) : null,
           el("h1", { text: T.hero.title }),
           el("p", { text: T.hero.subtitle }),
           el("div", { class: "hero-actions" }, [
@@ -524,24 +508,8 @@
       ])
     ]);
 
-    var reviews = el("section", { class: "section section-alt", id: "anmeldelser" }, [
-      el("div", { class: "wrap" }, [
-        sectionHead(T.reviews.title, T.reviews.subtitle),
-        el("div", { class: "review-grid" }, T.reviews.items.map(function (rev) {
-          var stars = el("div", { class: "stars", "aria-label": "5/5" });
-          for (var i = 0; i < 5; i++) stars.appendChild(icon("star", { fill: true }));
-          return el("article", { class: "review reveal" }, [
-            stars,
-            el("blockquote", { text: "“" + rev.text + "”" }),
-            el("footer", {}, [el("strong", { text: rev.author }), el("span", { text: rev.meta })])
-          ]);
-        })),
-        el("p", { style: "margin-top:24px" }, [
-          el("a", { class: "btn btn-ghost btn-sm", href: S.meta.airbnbUrl, target: "_blank", rel: "noopener", text: T.reviews.cta })
-        ])
-      ])
-    ]);
-
+    // Anmeldelsene og bookingfeltet vises ikke lenger: siden er for gjester
+    // som alt bor her. Tekstene ligger fortsatt i content.js.
     var location = el("section", { class: "section", id: "beliggenhet" }, [
       el("div", { class: "wrap" }, [
         sectionHead(T.location.title),
@@ -583,7 +551,7 @@
       ])
     ]);
 
-    main.appendChild(frag([hero, guide, facts, about, highlights, sleeping, amenities, gallery, reviews, location, host, ctaBand()]));
+    main.appendChild(frag([hero, guide, facts, about, highlights, sleeping, amenities, gallery, location, host]));
   }
 
   /* --- Galleri og lightbox ------------------------------------------ */
@@ -959,7 +927,7 @@
       ])
     ]) : null;
 
-    main.appendChild(frag([pageHead(a.title, a.intro), guide, body, downloads, ctaBand()]));
+    main.appendChild(frag([pageHead(a.title, a.intro), guide, body, downloads]));
   }
 
   /* --- Landingsside (index.html) --------------------------------------- */

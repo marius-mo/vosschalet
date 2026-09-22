@@ -634,13 +634,6 @@ a.guide-card:hover .guide-more svg { transform: translateX(3px); }
 }
 .cta-band .btn:hover { filter: brightness(.96); }
 
-/* Den dempede varianten: booking er ikke hovedsaken for en gjest som alt bor her */
-.cta-band.is-quiet { background: var(--surface-2); color: var(--ink); border-top: 1px solid var(--line); }
-.cta-band.is-quiet h2 { font-size: 1.35rem; }
-.cta-band.is-quiet p { color: var(--muted); opacity: 1; }
-.cta-band.is-quiet .btn { background: transparent; color: var(--ink); border-color: var(--line); }
-.cta-band.is-quiet .btn:hover { color: var(--accent); border-color: var(--accent); filter: none; }
-
 /* --- Sidetopp på undersider ----------------------------------------- */
 
 .page-head {

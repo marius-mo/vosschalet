@@ -50,8 +50,12 @@ av listen `PAGES` øverst i `app.js`; ordene ligger under `nav` i `content.js`. 
 rekkefølgen brukes i hamburgermenyen på mobil og i bunnteksten.
 
 De fire kortene rett under toppbildet på hyttesiden ligger under `guideCards` i
-`content.js`. «Book på Airbnb» finnes fortsatt i menyen, i bunnteksten og nederst på
-hyttesiden, men som dempet knapp, ikke den grønne hovedknappen.
+`content.js`. «Book på Airbnb» finnes fortsatt i menyen og i bunnteksten, men som dempet
+knapp, ikke den grønne hovedknappen.
+
+Anmeldelsene, vurderingsmerket i toppbildet og bookingfeltet nederst vises ikke lenger.
+Tekstene ligger igjen i `content.js` (`reviews` og `cta`) i tilfelle dere vil ha dem tilbake;
+da er det `renderHome` i `app.js` som må få seksjonene inn igjen.
 
 ## Wifi-QR
 

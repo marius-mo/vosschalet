@@ -296,6 +296,8 @@ window.SITE = {
       subtitle: "Klikk på et bilde for å se det større."
     },
 
+    // Anmeldelsene vises ikke på siden lenger (den er for gjester som alt bor
+    // her), men tekstene er beholdt i tilfelle dere vil ha dem tilbake.
     reviews: {
       title: "Hva gjestene sier",
       subtitle: "Utdrag fra anmeldelser på Airbnb.",
@@ -366,6 +368,7 @@ window.SITE = {
       ]
     },
 
+    // Bookingfeltet nederst er tatt bort av samme grunn. Teksten står igjen.
     cta: {
       title: "Vil dere komme tilbake?",
       text: "Kalender og priser ligger på Airbnb. Vi svarer gjerne på spørsmål før dere bestiller.",
@@ -890,6 +893,8 @@ window.SITE = {
       subtitle: "Click an image to view it larger."
     },
 
+    // Anmeldelsene vises ikke på siden lenger (den er for gjester som alt bor
+    // her), men tekstene er beholdt i tilfelle dere vil ha dem tilbake.
     reviews: {
       title: "What guests say",
       subtitle: "Excerpts from Airbnb reviews.",
@@ -959,6 +964,7 @@ window.SITE = {
       ]
     },
 
+    // Bookingfeltet nederst er tatt bort av samme grunn. Teksten står igjen.
     cta: {
       title: "Coming back?",
       text: "Calendar and rates are on Airbnb. Happy to answer questions before you book.",
