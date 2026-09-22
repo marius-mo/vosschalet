@@ -324,6 +324,7 @@ function omradet(T, L) {
   <section class="del sideskift">
     <h2 class="deltittel">${esc(papir(a.title))}</h2>
     <p class="ingress">${esc(papir(a.intro))}</p>
+    ${a.guide && a.guide.url ? `<p class="ingress">${esc(papir(a.guide.text))} <strong>${esc(a.guide.linkText || a.guide.url)}</strong></p>` : ""}
     <div class="qr">
       <img src="assets/img/qr/omradet.svg" alt="">
       <p><strong>${esc(T_[L].kartTittel)}</strong><br>${esc(T_[L].kartTekst)}</p>

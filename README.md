@@ -119,6 +119,9 @@ oppløsning, som er bortkastet når de vises små på papiret.
 Nederst på områdesiden ligger kart og guider til nedlasting, satt opp under `downloads` i
 `content.js`. Legg filen i `assets/filer/`, og et forhåndsvisningsbilde i `assets/img/`.
 
+Lenken til visitvoss.no rett under ingressen på områdesiden styres av `guide` under `area`
+(`text`, `linkText`, `url`). Den følger også med i papirguiden.
+
 Hvert sted i områdeguiden kan ha:
 
 * `map: "Voss Resort, Voss"` – lager en Google Maps-lenke av søketeksten

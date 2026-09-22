@@ -927,7 +927,18 @@
       ]);
     }
 
-    main.appendChild(frag([pageHead(a.title, a.intro), body, downloads, ctaBand()]));
+    // Lenke til den offisielle reiseguiden, rett under ingressen
+    var guide = (a.guide && a.guide.url) ? el("section", { class: "area-guide" }, [
+      el("div", { class: "wrap" }, [
+        el("p", {}, [
+          document.createTextNode(a.guide.text + " "),
+          el("a", { href: a.guide.url, target: "_blank", rel: "noopener" },
+            [icon("link"), document.createTextNode(a.guide.linkText || kortUrl(a.guide.url))])
+        ])
+      ])
+    ]) : null;
+
+    main.appendChild(frag([pageHead(a.title, a.intro), guide, body, downloads, ctaBand()]));
   }
 
   /* --- Landingsside (index.html) --------------------------------------- */

@@ -624,13 +624,19 @@ window.SITE = {
       title: "Voss og området rundt",
       intro:
         "Voss er kjent som Norges ekstremsporthovedstad, men her er like mye rolige turer, god mat og fine bad. Her er noen av favorittene våre.",
+      // Lenke til den offisielle reiseguiden, vises rett under ingressen
+      guide: {
+        text: "Arrangementer, åpningstider og alt vi ikke har fått med, finner dere hos den offisielle reiseguiden:",
+        linkText: "visitvoss.no",
+        url: "https://www.visitvoss.no/"
+      },
       categories: [
         {
           title: "Vinter",
           items: [
             { name: "Voss Resort", desc: "Over 40 km preparerte løyper for alle nivåer, og skiheisene ligger rett utenfor døren. Skikort kjøpes på vossresort.no, og hele løypekartet ligger til nedlasting nederst på siden.", meta: "Ski in / ski out", map: "Voss Resort, Voss", url: "https://vossresort.no", img: "assets/img/skikart-voss-resort.jpg" },
             { name: "Myrkdalen", desc: "Snøsikkert alpinanlegg med god variasjon hvis dere vil bytte bakke for en dag.", meta: "ca. 30 min", map: "Myrkdalen Fjellandsby" },
-            { name: "Hanguren", desc: "Dere kan gå opp fra hytta, eller ta skiheisen rett opp herfra. Alternativt tar dere gondolen opp fra Voss sentrum, ca. 15 minutter med bil. Spektakulær utsikt og lett tilgjengelige løyper på toppen.", meta: "Fra hytta", map: "Hangurstoppen, Voss", img: "assets/img/omrade-hangurstoppen.avif" },
+            { name: "Hanguren", desc: "Dere kan gå opp fra hytta, eller ta skiheisen rett opp herfra. Alternativt tar dere gondolen opp fra Voss sentrum, ca. 15 minutter med bil. Spektakulær utsikt og lett tilgjengelige løyper på toppen.", meta: "Fra hytta", map: "Hangurstoppen, Voss", url: "https://www.visitvoss.no/en/voss-gondol", img: "assets/img/omrade-hangurstoppen.avif" },
             { name: "Nordlys", desc: "På klare vinterkvelder har gjester sett nordlyset rett fra terrassen.", meta: "Fra hytta", img: "assets/img/nordlys.avif" }
           ]
         },
@@ -654,16 +660,16 @@ window.SITE = {
             { name: "Tre Brør Café & Bar", desc: "Kafé med lunsj, snacks og kveldskonserter. Sosialt og sentralt.", meta: "ca. 15 min", map: "Tre Brør, Voss" },
             { name: "Malin Restaurant & Sushi Bar", desc: "Sushi og asiatisk mat i moderne lokaler.", meta: "ca. 15 min", map: "Malin Restaurant & Sushi Bar, Voss" },
             { name: "Skrot Café & Bar", desc: "Trendy kafé med enkle retter og milkshakes.", meta: "ca. 15 min", map: "Skrot Café & Bar, Voss" },
-            { name: "Hangurstoppen Restaurant", desc: "Mat med utsikt, på toppen av gondolen.", meta: "Toppen av gondolen", map: "Hangurstoppen Restaurant, Voss", img: "assets/img/omrade-hangurstoppen.avif" },
+            { name: "Hangurstoppen Restaurant", desc: "Mat med utsikt, på toppen av gondolen.", meta: "Toppen av gondolen", map: "Hangurstoppen Restaurant, Voss", url: "https://www.visitvoss.no/en/hangurstoppen-restaurant", img: "assets/img/omrade-hangurstoppen.avif" },
             { name: "Vangen Café", desc: "Enkel norsk lunsj i sentrum.", meta: "ca. 15 min", map: "Vangen Café, Voss" }
           ]
         },
         {
           title: "Kultur og familie",
           items: [
-            { name: "Voss Folkemuseum", desc: "Lokalhistorie i vakre omgivelser.", meta: "ca. 15 min", map: "Voss Folkemuseum" },
+            { name: "Voss Folkemuseum", desc: "Lokalhistorie i vakre omgivelser.", meta: "ca. 15 min", map: "Voss Folkemuseum", url: "https://www.visitvoss.no/en/voss-folk-museum-get-great-view-voss" },
             { name: "Voss Vind", desc: "Innendørs fallskjermhopp i vindtunnel. Moro for både barn og voksne, og helt uavhengig av været.", meta: "ca. 15 min", map: "Voss Vind", video: "https://www.youtube.com/watch?v=Y6_gW-LJPik" },
-            { name: "Vossabadet", desc: "Svømmehall, utendørsbasseng og egen barneavdeling. Fint på regnværsdager.", meta: "ca. 15 min", map: "Vossabadet" },
+            { name: "Vossabadet", desc: "Svømmehall, utendørsbasseng og egen barneavdeling. Fint på regnværsdager.", meta: "ca. 15 min", map: "Vossabadet", url: "https://www.visitvoss.no/en/vossabadet-indoor-swimming-centre" },
             { name: "Bømoen", desc: "Turstier, sykkelmuligheter og lekeplasser barna elsker.", meta: "ca. 20 min", map: "Bømoen, Voss" }
           ]
         },
@@ -1177,13 +1183,18 @@ window.SITE = {
       title: "Voss and around",
       intro:
         "Voss is known as Norway's extreme sports capital, but there is just as much quiet hiking, good food and fine swimming. Here are some of our favourites.",
+      guide: {
+        text: "Events, opening hours and everything we have not covered are on the official travel guide:",
+        linkText: "visitvoss.no",
+        url: "https://www.visitvoss.no/en"
+      },
       categories: [
         {
           title: "Winter",
           items: [
             { name: "Voss Resort", desc: "Over 40 km of groomed slopes for every level, with the lifts right outside the door. Lift passes are sold at vossresort.no, and the full piste map is available to download at the bottom of this page.", meta: "Ski-in / ski-out", map: "Voss Resort, Voss", url: "https://vossresort.no", img: "assets/img/skikart-voss-resort.jpg" },
             { name: "Myrkdalen", desc: "Snow-sure ski resort with plenty of variety if you fancy a change for a day.", meta: "approx. 30 min", map: "Myrkdalen Fjellandsby" },
-            { name: "Hanguren", desc: "You can walk up from the chalet, or take the ski lift straight up from here. Alternatively, take the gondola up from Voss centre, about 15 minutes by car. Spectacular views and easily accessible trails at the top.", meta: "From the chalet", map: "Hangurstoppen, Voss", img: "assets/img/omrade-hangurstoppen.avif" },
+            { name: "Hanguren", desc: "You can walk up from the chalet, or take the ski lift straight up from here. Alternatively, take the gondola up from Voss centre, about 15 minutes by car. Spectacular views and easily accessible trails at the top.", meta: "From the chalet", map: "Hangurstoppen, Voss", url: "https://www.visitvoss.no/en/voss-gondol", img: "assets/img/omrade-hangurstoppen.avif" },
             { name: "Northern lights", desc: "On clear winter evenings guests have watched the aurora straight from the terrace.", meta: "From the chalet", img: "assets/img/nordlys.avif" }
           ]
         },
@@ -1207,16 +1218,16 @@ window.SITE = {
             { name: "Tre Brør Café & Bar", desc: "Café with lunch, snacks and evening concerts. Sociable and central.", meta: "approx. 15 min", map: "Tre Brør, Voss" },
             { name: "Malin Restaurant & Sushi Bar", desc: "Sushi and Asian food in modern surroundings.", meta: "approx. 15 min", map: "Malin Restaurant & Sushi Bar, Voss" },
             { name: "Skrot Café & Bar", desc: "Trendy café with simple dishes and milkshakes.", meta: "approx. 15 min", map: "Skrot Café & Bar, Voss" },
-            { name: "Hangurstoppen Restaurant", desc: "Food with a view, at the top of the gondola.", meta: "Top of the gondola", map: "Hangurstoppen Restaurant, Voss", img: "assets/img/omrade-hangurstoppen.avif" },
+            { name: "Hangurstoppen Restaurant", desc: "Food with a view, at the top of the gondola.", meta: "Top of the gondola", map: "Hangurstoppen Restaurant, Voss", url: "https://www.visitvoss.no/en/hangurstoppen-restaurant", img: "assets/img/omrade-hangurstoppen.avif" },
             { name: "Vangen Café", desc: "Simple Norwegian lunch in the centre.", meta: "approx. 15 min", map: "Vangen Café, Voss" }
           ]
         },
         {
           title: "Culture and family",
           items: [
-            { name: "Voss Folk Museum", desc: "Local history in beautiful surroundings.", meta: "approx. 15 min", map: "Voss Folkemuseum" },
+            { name: "Voss Folk Museum", desc: "Local history in beautiful surroundings.", meta: "approx. 15 min", map: "Voss Folkemuseum", url: "https://www.visitvoss.no/en/voss-folk-museum-get-great-view-voss" },
             { name: "Voss Vind", desc: "Indoor skydiving in a wind tunnel. Great fun for children and adults alike, whatever the weather is doing.", meta: "approx. 15 min", map: "Voss Vind", video: "https://www.youtube.com/watch?v=Y6_gW-LJPik" },
-            { name: "Vossabadet", desc: "Indoor pool, outdoor pool and a children's area. Good on a rainy day.", meta: "approx. 15 min", map: "Vossabadet" },
+            { name: "Vossabadet", desc: "Indoor pool, outdoor pool and a children's area. Good on a rainy day.", meta: "approx. 15 min", map: "Vossabadet", url: "https://www.visitvoss.no/en/vossabadet-indoor-swimming-centre" },
             { name: "Bømoen", desc: "Walking trails, cycling and playgrounds the children love.", meta: "approx. 20 min", map: "Bømoen, Voss" }
           ]
         },
