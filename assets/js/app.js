@@ -264,11 +264,14 @@
 
   /* --- Toppmeny og bunntekst ---------------------------------------- */
 
+  // Rekkefølgen her er rekkefølgen i menyen, hamburgermenyen og bunnteksten.
+  // Siden er for gjester som allerede bor her, så husmanualen står først.
   var PAGES = [
-    { key: "home", href: "hytta.html", label: function () { return T.nav.home; } },
     { key: "manual", href: "husmanual.html", label: function () { return T.nav.manual; } },
+    { key: "area", href: "omradet.html", label: function () { return T.nav.area; } },
+    { key: "food", href: "spisesteder.html", label: function () { return T.nav.food; } },
     { key: "rules", href: "husregler.html", label: function () { return T.nav.rules; } },
-    { key: "area", href: "omradet.html", label: function () { return T.nav.area; } }
+    { key: "home", href: "hytta.html", label: function () { return T.nav.home; } }
   ];
 
   var page = document.body.dataset.page || "home";
@@ -282,7 +285,9 @@
           "aria-current": p.key === page ? "page" : null
         });
       }).concat([
-        el("a", { class: "btn btn-primary btn-sm nav-book-desktop", href: S.meta.airbnbUrl, target: "_blank", rel: "noopener", text: T.nav.book })
+        // Booking er ikke hovedhandlingen for en gjest som alt bor her,
+        // så knappen er der, men dempet
+        el("a", { class: "btn btn-ghost btn-sm nav-book-desktop", href: S.meta.airbnbUrl, target: "_blank", rel: "noopener", text: T.nav.book })
       ])
     );
 
@@ -383,11 +388,11 @@
   }
 
   function ctaBand() {
-    return el("section", { class: "cta-band" }, [
+    return el("section", { class: "cta-band is-quiet" }, [
       el("div", { class: "wrap" }, [
         el("h2", { text: T.cta.title }),
         el("p", { text: T.cta.text }),
-        el("a", { class: "btn", href: S.meta.airbnbUrl, target: "_blank", rel: "noopener", text: T.cta.button })
+        el("a", { class: "btn btn-ghost", href: S.meta.airbnbUrl, target: "_blank", rel: "noopener", text: T.cta.button })
       ])
     ]);
   }
@@ -420,12 +425,28 @@
           el("h1", { text: T.hero.title }),
           el("p", { text: T.hero.subtitle }),
           el("div", { class: "hero-actions" }, [
-            el("a", { class: "btn btn-primary", href: S.meta.airbnbUrl, target: "_blank", rel: "noopener", text: T.hero.ctaPrimary }),
-            el("a", { class: "btn btn-light", href: "husmanual.html", text: T.hero.ctaSecondary })
+            el("a", { class: "btn btn-primary", href: "husmanual.html", text: T.hero.ctaPrimary }),
+            el("a", { class: "btn btn-light", href: "omradet.html", text: T.hero.ctaSecondary })
           ])
         ])
       ])
     ]);
+
+    // Fire kort som tar gjesten rett til det de leter etter
+    var g = T.guideCards;
+    var guide = (g && g.items) ? el("section", { class: "section guide-section" }, [
+      el("div", { class: "wrap" }, [
+        sectionHead(g.title),
+        el("div", { class: "card-grid" }, g.items.map(function (it) {
+          return el("a", { class: "card guide-card reveal", href: it.href }, [
+            el("div", { class: "card-icon" }, [icon(it.icon)]),
+            el("h3", { text: it.title }),
+            el("p", { text: it.text }),
+            el("span", { class: "guide-more" }, [document.createTextNode(T.common.open || "→"), icon("chevronRight")])
+          ]);
+        }))
+      ])
+    ]) : null;
 
     var f = S.meta.facts;
     var facts = el("section", { class: "facts" }, [
@@ -562,7 +583,7 @@
       ])
     ]);
 
-    main.appendChild(frag([hero, facts, about, highlights, sleeping, amenities, gallery, reviews, location, host, ctaBand()]));
+    main.appendChild(frag([hero, guide, facts, about, highlights, sleeping, amenities, gallery, reviews, location, host, ctaBand()]));
   }
 
   /* --- Galleri og lightbox ------------------------------------------ */
@@ -853,9 +874,9 @@
     return kort.length > 34 ? kort.split("/")[0] : kort;
   }
 
-  function renderArea(main) {
-    var a = T.area;
-
+  // Brukes av både områdesiden (T.area) og spisestedene (T.food):
+  // samme kort, samme lenker, bare forskjellig innhold
+  function renderArea(main, a, medNedlasting) {
     var body = el("section", { class: "section" }, [
       el("div", { class: "wrap" }, a.categories.map(function (cat) {
         return el("div", { class: "area-block" }, [
@@ -904,7 +925,7 @@
     // Kart og dokumenter til nedlasting
     var dl = T.downloads;
     var downloads = null;
-    if (dl && dl.items && dl.items.length) {
+    if (medNedlasting && dl && dl.items && dl.items.length) {
       downloads = el("section", { class: "section section-alt", id: "nedlasting" }, [
         el("div", { class: "wrap" }, [
           sectionHead(dl.title, dl.subtitle),
@@ -1085,7 +1106,8 @@
 
     if (page === "manual") renderManual(main);
     else if (page === "rules") renderRules(main);
-    else if (page === "area") renderArea(main);
+    else if (page === "area") renderArea(main, T.area, true);
+    else if (page === "food") renderArea(main, T.food, false);
     else renderHome(main);
 
     document.body.appendChild(buildFooter());
@@ -1102,7 +1124,7 @@
   }
 
   function pageTitleKey() {
-    return page === "manual" ? "manual" : page === "rules" ? "rules" : "area";
+    return page === "manual" ? "manual" : page === "rules" ? "rules" : page === "food" ? "food" : "area";
   }
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);

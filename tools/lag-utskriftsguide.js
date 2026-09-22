@@ -299,7 +299,9 @@ function omradet(T, L) {
   const a = T.area;
   if (!a || !a.categories) return "";
 
-  const grupper = a.categories.map((kat) => {
+  // På nett er spisestedene egen side. På papir hører de hjemme her.
+  const kategorier = a.categories.concat((T.food && T.food.categories) || []);
+  const grupper = kategorier.map((kat) => {
     const steder = kat.items.map((p) => {
       const meta = p.meta ? `<span class="avstand">${esc(p.meta)}</span>` : "";
       const kode = p.video && QR[p.video] ? `
@@ -474,7 +476,8 @@ ${nettsiden(T, L)}
   const ut = `/tmp/utskrift-${L}.html`;
   fs.writeFileSync(ut, side(L), "utf8");
   const T = S[L];
-  const steder = T.area.categories.reduce((n, k) => n + k.items.length, 0);
+  const steder = T.area.categories.concat((T.food && T.food.categories) || [])
+    .reduce((n, k) => n + k.items.length, 0);
   console.log(`${ut}  (${T.manual.sections.length} seksjoner, ` +
     `${T.rules.items.length} husregler, ${steder} steder i området)`);
 });

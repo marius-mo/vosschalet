@@ -12,7 +12,8 @@ GitHub Pages, Netlify, eller hvilken som helst webhotell-mappe.
 | `hytta.html` | Hyttesiden: hero, om hytta, høydepunkter, soverom, fasiliteter, galleri, anmeldelser, beliggenhet, vertskap |
 | `husmanual.html` | Husmanual med wifi, viktige numre og trekkspill-seksjoner (ankomst, jacuzzi, badstue, peis …) |
 | `husregler.html` | Husregler |
-| `omradet.html` | Guide til Voss og omegn |
+| `omradet.html` | Aktiviteter og turtips i Voss og omegn |
+| `spisesteder.html` | Restaurantanbefalinger. Innholdet ligger under `food` i `content.js` |
 | `assets/js/content.js` | **All tekst på siden.** Det er her du redigerer. |
 | `assets/js/app.js` | Bygger sidene ut fra `content.js`. Trenger normalt ingen endringer. |
 | `assets/css/styles.css` | Design, farger og mørkt tema |
@@ -40,6 +41,17 @@ Endrer du noe i den ene, husk å endre tilsvarende i den andre.
 
 Nøkkelinfo som gjelder begge språk (adresse, innsjekkstider, wifi, Airbnb-lenke, nødnumre,
 kart) ligger øverst i `meta:`.
+
+## Menyen og hyttesiden
+
+Siden er laget for gjester som allerede bor på hytta, så husmanualen står først i menyen,
+deretter aktiviteter, spisesteder og husregler, og til slutt hyttesiden. Rekkefølgen styres
+av listen `PAGES` øverst i `app.js`; ordene ligger under `nav` i `content.js`. Den samme
+rekkefølgen brukes i hamburgermenyen på mobil og i bunnteksten.
+
+De fire kortene rett under toppbildet på hyttesiden ligger under `guideCards` i
+`content.js`. «Book på Airbnb» finnes fortsatt i menyen, i bunnteksten og nederst på
+hyttesiden, men som dempet knapp, ikke den grønne hovedknappen.
 
 ## Wifi-QR
 

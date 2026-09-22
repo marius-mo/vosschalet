@@ -176,11 +176,13 @@ window.SITE = {
      3. NORSK INNHOLD
      =================================================================== */
   no: {
+    // Rekkefølgen i menyen styres i app.js (PAGES); her står bare ordene
     nav: {
       home: "Hytta",
       manual: "Husmanual",
+      area: "Aktiviteter",
+      food: "Spisesteder",
       rules: "Husregler",
-      area: "Området",
       book: "Book på Airbnb"
     },
 
@@ -210,8 +212,19 @@ window.SITE = {
       title: "Moderne hytte i Voss",
       subtitle:
         "Ny hytte med ekte ski in/ski out i Tråstølen. Fire soverom, badstue, saltvannsjacuzzi og stor terrasse med panoramautsikt over Lønavatnet.",
-      ctaPrimary: "Sjekk ledige datoer",
-      ctaSecondary: "Se husmanualen"
+      ctaPrimary: "Åpne husmanualen",
+      ctaSecondary: "Aktiviteter og turtips"
+    },
+
+    // De fire kortene rett under toppbildet på hyttesiden
+    guideCards: {
+      title: "Alt dere trenger under oppholdet",
+      items: [
+        { icon: "house", title: "Husmanual", text: "Wifi, jacuzzi, badstue, peis, utsjekk og alt annet praktisk.", href: "husmanual.html" },
+        { icon: "mountain", title: "Aktiviteter og turtips", text: "Ski, fjellturer, bading, dagsturer og det vi liker best i området.", href: "omradet.html" },
+        { icon: "kitchen", title: "Spisesteder", text: "Restaurantene og kafeene vi anbefaler på Voss.", href: "spisesteder.html" },
+        { icon: "shield", title: "Husregler", text: "Kort og greit om hva vi ber dere om.", href: "husregler.html" }
+      ]
     },
 
     about: {
@@ -354,9 +367,9 @@ window.SITE = {
     },
 
     cta: {
-      title: "Ledig for din neste tur?",
-      text: "Priser, kalender og booking ligger på Airbnb. Har du spørsmål før du bestiller, er det bare å ta kontakt.",
-      button: "Se ledige datoer på Airbnb"
+      title: "Vil dere komme tilbake?",
+      text: "Kalender og priser ligger på Airbnb. Vi svarer gjerne på spørsmål før dere bestiller.",
+      button: "Se ledige datoer"
     },
 
     /* --- HUSMANUAL -------------------------------------------------
@@ -619,6 +632,28 @@ window.SITE = {
       contactText: "Send oss en melding på Airbnb, så svarer vi normalt innen en time."
     },
 
+    /* --- SPISESTEDER (egen side, spisesteder.html) ------------------ */
+    food: {
+      title: "Spisesteder",
+      intro:
+        "Anbefalingene våre på Voss, fra fine dining til enkel lunsj. Bestill bord i helger og i høysesong.",
+      categories: [
+        {
+          title: "Spisesteder",
+          items: [
+            { name: "Park Hotel Vossevangen", desc: "Fine dining, og en av verdens største vinkjellere. Vinsmaking er mulig, men bestill gjerne i forkant.", meta: "ca. 15 min", map: "Park Hotel Vossevangen, Voss" },
+            { name: "Vossevangen Grill & Steakhouse", desc: "Burgere og biff i uformell setting. Sentralt og familievennlig.", meta: "ca. 15 min", map: "Vossevangen Grill & Steakhouse, Voss" },
+            { name: "Flor'n Restaurant", desc: "Lokalmat i sjarmerende omgivelser på Store Ringheim.", meta: "Litt utenfor sentrum", map: "Flor'n Restaurant Store Ringheim, Voss" },
+            { name: "Tre Brør Café & Bar", desc: "Kafé med lunsj, snacks og kveldskonserter. Sosialt og sentralt.", meta: "ca. 15 min", map: "Tre Brør, Voss" },
+            { name: "Malin Restaurant & Sushi Bar", desc: "Sushi og asiatisk mat i moderne lokaler.", meta: "ca. 15 min", map: "Malin Restaurant & Sushi Bar, Voss" },
+            { name: "Skrot Café & Bar", desc: "Trendy kafé med enkle retter og milkshakes.", meta: "ca. 15 min", map: "Skrot Café & Bar, Voss" },
+            { name: "Hangurstoppen Restaurant", desc: "Mat med utsikt, på toppen av gondolen.", meta: "Toppen av gondolen", map: "Hangurstoppen Restaurant, Voss", url: "https://www.visitvoss.no/en/hangurstoppen-restaurant", img: "assets/img/omrade-hangurstoppen.avif" },
+            { name: "Vangen Café", desc: "Enkel norsk lunsj i sentrum.", meta: "ca. 15 min", map: "Vangen Café, Voss" }
+          ]
+        }
+      ]
+    },
+
     /* --- OMRÅDET ---------------------------------------------------- */
     area: {
       title: "Voss og området rundt",
@@ -649,19 +684,6 @@ window.SITE = {
             { name: "Paragliding og fallskjermhopp", desc: "Tandemhopp fra fjellet, eller fallskjermhopp fra hoppfeltet på Bømoen.", meta: "ca. 20 min", map: "Skydive Voss, Bømoen" },
             { name: "Voss Golfklubb", desc: "9-hulls bane i naturskjønne omgivelser, for både nybegynnere og erfarne.", meta: "ca. 20 min", map: "Voss Golfklubb", img: "assets/img/omrade-golf-vangsvatnet.avif" },
             { name: "Bjørkemoen badeplass", desc: "Badeplass i elva med svaberg og kulper, populær blant lokale på varme dager. Ta med håndkle og noe å sitte på.", meta: "ca. 15 min", map: "Bjørkemoen badeplass, Voss", img: "assets/img/omrade-bjorkemoen.jpg" }
-          ]
-        },
-        {
-          title: "Spisesteder",
-          items: [
-            { name: "Park Hotel Vossevangen", desc: "Fine dining, og en av verdens største vinkjellere. Vinsmaking er mulig, men bestill gjerne i forkant.", meta: "ca. 15 min", map: "Park Hotel Vossevangen, Voss" },
-            { name: "Vossevangen Grill & Steakhouse", desc: "Burgere og biff i uformell setting. Sentralt og familievennlig.", meta: "ca. 15 min", map: "Vossevangen Grill & Steakhouse, Voss" },
-            { name: "Flor'n Restaurant", desc: "Lokalmat i sjarmerende omgivelser på Store Ringheim.", meta: "Litt utenfor sentrum", map: "Flor'n Restaurant Store Ringheim, Voss" },
-            { name: "Tre Brør Café & Bar", desc: "Kafé med lunsj, snacks og kveldskonserter. Sosialt og sentralt.", meta: "ca. 15 min", map: "Tre Brør, Voss" },
-            { name: "Malin Restaurant & Sushi Bar", desc: "Sushi og asiatisk mat i moderne lokaler.", meta: "ca. 15 min", map: "Malin Restaurant & Sushi Bar, Voss" },
-            { name: "Skrot Café & Bar", desc: "Trendy kafé med enkle retter og milkshakes.", meta: "ca. 15 min", map: "Skrot Café & Bar, Voss" },
-            { name: "Hangurstoppen Restaurant", desc: "Mat med utsikt, på toppen av gondolen.", meta: "Toppen av gondolen", map: "Hangurstoppen Restaurant, Voss", url: "https://www.visitvoss.no/en/hangurstoppen-restaurant", img: "assets/img/omrade-hangurstoppen.avif" },
-            { name: "Vangen Café", desc: "Enkel norsk lunsj i sentrum.", meta: "ca. 15 min", map: "Vangen Café, Voss" }
           ]
         },
         {
@@ -743,6 +765,7 @@ window.SITE = {
       langLabel: "Språk",
       themeLabel: "Bytt mellom lyst og mørkt tema",
       imagePlaceholder: "Bilde kommer",
+      open: "Åpne",
       logout: "Logg ut"
     }
   },
@@ -754,8 +777,9 @@ window.SITE = {
     nav: {
       home: "The chalet",
       manual: "House manual",
+      area: "Activities",
+      food: "Restaurants",
       rules: "House rules",
-      area: "The area",
       book: "Book on Airbnb"
     },
 
@@ -784,8 +808,18 @@ window.SITE = {
       title: "Modern chalet in Voss",
       subtitle:
         "A new chalet with true ski-in/ski-out in Tråstølen. Four bedrooms, sauna, salt-water hot tub and a large terrace with panoramic views over Lønavatnet.",
-      ctaPrimary: "Check availability",
-      ctaSecondary: "Read the house manual"
+      ctaPrimary: "Open the house manual",
+      ctaSecondary: "Activities and tips"
+    },
+
+    guideCards: {
+      title: "Everything you need during your stay",
+      items: [
+        { icon: "house", title: "House manual", text: "Wifi, hot tub, sauna, fireplace, check-out and everything else practical.", href: "husmanual.html" },
+        { icon: "mountain", title: "Activities and tips", text: "Skiing, hiking, swimming, day trips and our favourite spots nearby.", href: "omradet.html" },
+        { icon: "kitchen", title: "Restaurants", text: "The restaurants and cafés we recommend in Voss.", href: "spisesteder.html" },
+        { icon: "shield", title: "House rules", text: "Short and simple: what we ask of you.", href: "husregler.html" }
+      ]
     },
 
     about: {
@@ -926,9 +960,9 @@ window.SITE = {
     },
 
     cta: {
-      title: "Free for your next trip?",
-      text: "Rates, calendar and booking are on Airbnb. If you have questions before you book, just get in touch.",
-      button: "See available dates on Airbnb"
+      title: "Coming back?",
+      text: "Calendar and rates are on Airbnb. Happy to answer questions before you book.",
+      button: "See available dates"
     },
 
     manual: {
@@ -1179,6 +1213,28 @@ window.SITE = {
       contactText: "Send us a message on Airbnb, and we normally reply within an hour."
     },
 
+    /* --- SPISESTEDER (egen side, spisesteder.html) ------------------ */
+    food: {
+      title: "Restaurants",
+      intro:
+        "Our recommendations in Voss, from fine dining to a simple lunch. Book a table at weekends and in high season.",
+      categories: [
+        {
+          title: "Places to eat",
+          items: [
+            { name: "Park Hotel Vossevangen", desc: "Fine dining, and one of the largest wine cellars in the world. Wine tasting is possible, but it is worth booking ahead.", meta: "approx. 15 min", map: "Park Hotel Vossevangen, Voss" },
+            { name: "Vossevangen Grill & Steakhouse", desc: "Burgers and steak in a relaxed setting. Central and family friendly.", meta: "approx. 15 min", map: "Vossevangen Grill & Steakhouse, Voss" },
+            { name: "Flor'n Restaurant", desc: "Local food in charming surroundings at Store Ringheim.", meta: "Just outside the centre", map: "Flor'n Restaurant Store Ringheim, Voss" },
+            { name: "Tre Brør Café & Bar", desc: "Café with lunch, snacks and evening concerts. Sociable and central.", meta: "approx. 15 min", map: "Tre Brør, Voss" },
+            { name: "Malin Restaurant & Sushi Bar", desc: "Sushi and Asian food in modern surroundings.", meta: "approx. 15 min", map: "Malin Restaurant & Sushi Bar, Voss" },
+            { name: "Skrot Café & Bar", desc: "Trendy café with simple dishes and milkshakes.", meta: "approx. 15 min", map: "Skrot Café & Bar, Voss" },
+            { name: "Hangurstoppen Restaurant", desc: "Food with a view, at the top of the gondola.", meta: "Top of the gondola", map: "Hangurstoppen Restaurant, Voss", url: "https://www.visitvoss.no/en/hangurstoppen-restaurant", img: "assets/img/omrade-hangurstoppen.avif" },
+            { name: "Vangen Café", desc: "Simple Norwegian lunch in the centre.", meta: "approx. 15 min", map: "Vangen Café, Voss" }
+          ]
+        }
+      ]
+    },
+
     area: {
       title: "Voss and around",
       intro:
@@ -1207,19 +1263,6 @@ window.SITE = {
             { name: "Paragliding and skydiving", desc: "Tandem flights from the mountain, or skydiving from the airfield at Bømoen.", meta: "approx. 20 min", map: "Skydive Voss, Bømoen" },
             { name: "Voss Golf Club", desc: "A scenic 9-hole course for beginners and experienced players alike.", meta: "approx. 20 min", map: "Voss Golfklubb", img: "assets/img/omrade-golf-vangsvatnet.avif" },
             { name: "Bjørkemoen bathing spot", desc: "A river bathing spot with smooth rocks and pools, popular with locals on warm days. Bring a towel and something to sit on.", meta: "approx. 15 min", map: "Bjørkemoen badeplass, Voss", img: "assets/img/omrade-bjorkemoen.jpg" }
-          ]
-        },
-        {
-          title: "Places to eat",
-          items: [
-            { name: "Park Hotel Vossevangen", desc: "Fine dining, and one of the largest wine cellars in the world. Wine tasting is possible, but it is worth booking ahead.", meta: "approx. 15 min", map: "Park Hotel Vossevangen, Voss" },
-            { name: "Vossevangen Grill & Steakhouse", desc: "Burgers and steak in a relaxed setting. Central and family friendly.", meta: "approx. 15 min", map: "Vossevangen Grill & Steakhouse, Voss" },
-            { name: "Flor'n Restaurant", desc: "Local food in charming surroundings at Store Ringheim.", meta: "Just outside the centre", map: "Flor'n Restaurant Store Ringheim, Voss" },
-            { name: "Tre Brør Café & Bar", desc: "Café with lunch, snacks and evening concerts. Sociable and central.", meta: "approx. 15 min", map: "Tre Brør, Voss" },
-            { name: "Malin Restaurant & Sushi Bar", desc: "Sushi and Asian food in modern surroundings.", meta: "approx. 15 min", map: "Malin Restaurant & Sushi Bar, Voss" },
-            { name: "Skrot Café & Bar", desc: "Trendy café with simple dishes and milkshakes.", meta: "approx. 15 min", map: "Skrot Café & Bar, Voss" },
-            { name: "Hangurstoppen Restaurant", desc: "Food with a view, at the top of the gondola.", meta: "Top of the gondola", map: "Hangurstoppen Restaurant, Voss", url: "https://www.visitvoss.no/en/hangurstoppen-restaurant", img: "assets/img/omrade-hangurstoppen.avif" },
-            { name: "Vangen Café", desc: "Simple Norwegian lunch in the centre.", meta: "approx. 15 min", map: "Vangen Café, Voss" }
           ]
         },
         {
@@ -1300,6 +1343,7 @@ window.SITE = {
       langLabel: "Language",
       themeLabel: "Switch between light and dark theme",
       imagePlaceholder: "Photo coming",
+      open: "Open",
       logout: "Sign out"
     }
   }

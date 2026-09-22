@@ -195,9 +195,9 @@ p { margin: 0 0 1em; }
 .nav a:hover { background: var(--surface-2); color: var(--ink); }
 .nav a[aria-current="page"] { color: var(--accent); background: var(--accent-soft); }
 
-/* Bookingknappen i menyen skal beholde knappefargene */
-.nav a.btn-primary,
-.nav a.btn-primary:hover { color: var(--accent-ink); background: var(--accent); }
+/* Bookingknappen i menyen: dempet, med kant, ikke den grønne hovedknappen */
+.nav a.btn-ghost { color: var(--ink-soft); background: transparent; border: 1px solid var(--line); margin-left: 6px; }
+.nav a.btn-ghost:hover { color: var(--accent); border-color: var(--accent); background: transparent; }
 
 .header-tools { display: flex; align-items: center; gap: 8px; }
 
@@ -456,6 +456,18 @@ p { margin: 0 0 1em; }
 }
 .card-icon svg { width: 22px; height: 22px; }
 
+/* De fire kortene rett under toppbildet på hyttesiden */
+.guide-section { padding-top: 36px; padding-bottom: 8px; }
+a.guide-card { display: flex; flex-direction: column; text-decoration: none; color: inherit; }
+a.guide-card:hover h3 { color: var(--accent); }
+.guide-more {
+  margin-top: auto; padding-top: 16px;
+  display: inline-flex; align-items: center; gap: .25em;
+  color: var(--accent); font-size: .9rem; font-weight: 600;
+}
+.guide-more svg { width: 16px; height: 16px; transition: transform .2s ease; }
+a.guide-card:hover .guide-more svg { transform: translateX(3px); }
+
 /* --- Soverom -------------------------------------------------------- */
 
 .room-grid { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
@@ -621,6 +633,13 @@ p { margin: 0 0 1em; }
   background: var(--accent-ink); color: var(--accent);
 }
 .cta-band .btn:hover { filter: brightness(.96); }
+
+/* Den dempede varianten: booking er ikke hovedsaken for en gjest som alt bor her */
+.cta-band.is-quiet { background: var(--surface-2); color: var(--ink); border-top: 1px solid var(--line); }
+.cta-band.is-quiet h2 { font-size: 1.35rem; }
+.cta-band.is-quiet p { color: var(--muted); opacity: 1; }
+.cta-band.is-quiet .btn { background: transparent; color: var(--ink); border-color: var(--line); }
+.cta-band.is-quiet .btn:hover { color: var(--accent); border-color: var(--accent); filter: none; }
 
 /* --- Sidetopp på undersider ----------------------------------------- */
 
