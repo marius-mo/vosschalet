@@ -842,6 +842,13 @@
 
   /* --- Området -------------------------------------------------------- */
 
+  // Lenketeksten på stedskortene. Lange adresser kortes ned til domenet,
+  // ellers sprenger de kortet på mobil.
+  function kortUrl(url) {
+    var kort = String(url).replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "");
+    return kort.length > 34 ? kort.split("/")[0] : kort;
+  }
+
   function renderArea(main) {
     var a = T.area;
 
@@ -867,7 +874,7 @@
                   }, [icon("marker"), el("span", { text: T.location.mapCta })]) : null,
                   item.url ? el("a", {
                     class: "area-link", href: item.url, target: "_blank", rel: "noopener"
-                  }, [icon("link"), el("span", { text: item.url.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "") })]) : null
+                  }, [icon("link"), el("span", { text: kortUrl(item.url) })]) : null
                 ]) : null
               ])
             ]);

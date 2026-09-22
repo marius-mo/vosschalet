@@ -672,6 +672,7 @@ window.SITE = {
           items: [
             { name: "Flåmsbanen og Nærøyfjorden", desc: "En av verdens vakreste togturer, og en UNESCO-fjord i verdensklasse.", meta: "ca. 1-1,5 t", map: "Flåm, Norge" },
             { name: "Hardangerfjorden", desc: "Fossefall, frukthager og fjord, flott på en dagstur.", meta: "ca. 1-1,5 t", map: "Hardangerfjorden" },
+            { name: "Vøringsfossen", desc: "Fossen faller 182 meter ned i Måbødalen, og utsiktsplatåene ligger noen skritt fra parkeringen. Trappebrua krysser juvet på 99 trinn rett ved fossekanten. Det er bratt og åpent flere steder, så hold godt i barna. Brua og utsiktspunktene er stengt om vinteren, og åpner normalt i april.", meta: "ca. 1,5 t", map: "Vøringsfossen, Eidfjord", url: "https://www.nasjonaleturistveger.no/no/turistvegene/hardangervidda/voringsfossen/" },
             { name: "Bergen", desc: "Bryggen, Fløyen og fisketorget. Fint som stopp på vei til eller fra flyplassen.", meta: "ca. 1,5 t", map: "Bergen, Norge" }
           ]
         },
@@ -1215,6 +1216,7 @@ window.SITE = {
           items: [
             { name: "Flåm Railway and the Nærøyfjord", desc: "One of the world's most beautiful train journeys, and a UNESCO-listed fjord.", meta: "approx. 1-1.5 h", map: "Flåm, Norway" },
             { name: "Hardangerfjord", desc: "Waterfalls, orchards and fjord, a great day out.", meta: "approx. 1-1.5 h", map: "Hardangerfjorden" },
+            { name: "Vøringsfossen", desc: "The waterfall drops 182 metres into the Måbødalen valley, and the viewing platforms are a few steps from the car park. A stepped bridge crosses the gorge on 99 steps right by the edge. Several spots are steep and open, so keep a hand on small children. The bridge and the viewpoints close for winter and normally reopen in April.", meta: "approx. 1.5 h", map: "Vøringsfossen, Eidfjord", url: "https://www.nasjonaleturistveger.no/no/turistvegene/hardangervidda/voringsfossen/" },
             { name: "Bergen", desc: "Bryggen, Mount Fløyen and the fish market. A good stop on the way to or from the airport.", meta: "approx. 1.5 h", map: "Bergen, Norge" }
           ]
         },
